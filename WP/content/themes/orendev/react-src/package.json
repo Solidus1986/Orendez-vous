@@ -2,40 +2,18 @@
     "name": "orendev",
     "version": "0.1.0",
     "private": true,
-    "devDependencies": {
-      "@babel/core": "*",
-      "@babel/plugin-proposal-class-properties": "*",
-      "@babel/plugin-proposal-object-rest-spread": "*",
-      "@babel/preset-env": "*",
-      "@babel/preset-react": "*",
-      "autoprefixer": "*",
-      "babel-eslint": "*",
-      "babel-loader": "*",
-      "css-loader": "*",
-      "eslint": "*",
-      "eslint-config-airbnb": "*",
-      "eslint-import-resolver-webpack": "*",
-      "eslint-plugin-import": "*",
-      "eslint-plugin-jsx-a11y": "*",
-      "eslint-plugin-react": "*",
-      "file-loader": "*",
-      "html-webpack-plugin": "*",
-      "ignore-styles": "*",
-      "mini-css-extract-plugin": "*",
-      "node-sass": "*",
-      "optimize-css-assets-webpack-plugin": "*",
-      "postcss": "*",
-      "postcss-loader": "*",
-      "sass-loader": "*",
-      "style-loader": "*",
-      "stylelint": "*",
-      "stylelint-config-recommended": "*",
-      "uglifyjs-webpack-plugin": "*"
-    },
     "dependencies": {
-        "@devloco\/react-scripts-wptheme": "^3.3.0-wp.11",
+        "@babel/register": "^7.7.7",
+        "@devloco/react-scripts-wptheme": "^3.3.0-wp.11",
+        "chai": "^4.2.0",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
+        "mocha": "^7.0.0",
+        "node-sass": "^4.13.1",
+        "prop-types": "^15.7.2",
         "react": "^16.12.0",
-        "react-dom": "^16.12.0"
+        "react-dom": "^16.12.0",
+        "react-router-dom": "^5.1.2"
     },
     "scripts": {
         "crabuild": "react-scripts build",
@@ -62,6 +40,6 @@
             "last 1 safari version"
         ]
     },
-    "homepage": "\/ORENDEZVOUS\/projet-rdv-osteo-pilates\/WP\/content\/themes\/orendev",
-    "browserLaunchTo": "http:\/\/localhost:8888\/ORENDEZVOUS\/projet-rdv-osteo-pilates\/WP\/wp"
+    "homepage": "/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/content/themes/orendev",
+    "browserLaunchTo": "http://localhost:8888/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/wp"
 }

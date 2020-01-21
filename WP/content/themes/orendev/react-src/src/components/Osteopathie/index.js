@@ -4,8 +4,8 @@ import './osteopathie.scss'
 
 const Osteopathie = () => {
   return (
-  <>
-    <h1>Ostéopathie</h1>
+  <div className="osteo">
+    <h1 className="title">Ostéopathie</h1>
       <ul>
         <li>Adulte</li>
         <li>Femme enceinte</li>
@@ -22,7 +22,7 @@ const Osteopathie = () => {
     <button className="infos-osteo">Infos</button>
     <button className="activity-pilates">Pilates</button>
     
-  </>
+  </div>
   )
 }
 
