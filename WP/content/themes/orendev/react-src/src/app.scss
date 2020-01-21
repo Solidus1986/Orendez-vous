@@ -1,5 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
 #app {
   font-size: 1.2em;
   text-align: center;
   margin: 1em;
+}
+
+.logo {
+  margin: .7rem;
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+.profil {
+  margin: .7rem;
+  height: 50px;
+  width: 50px;
+  float: right;
+}
+
+.osteopathie {
+  font-family: 'Varela Round', sans-serif;
+  color:white;
+  font-size: 2.5rem;
+  margin: .5rem;
+  height: 500px;
+  width: 500px;
+  background-color: #C2DCFF;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.pilates {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 2rem;
+  color:white;
+  margin: .5rem;
+  height: 300px;
+  width: 300px;
+  background-color: #EEC2FF;
+  border-radius: 50%;
+  display: inline-block;
 }
