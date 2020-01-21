@@ -2,6 +2,7 @@
 /wp
 /wp-config.php
 /content/plugins/*
+!/content/plugins/orendez-vous
 /content/themes/*
 !/content/themes/orendezvous
 !/content/themes/orendev
