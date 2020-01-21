@@ -12,6 +12,7 @@ if (!defined('WPINC')) {
 
 require plugin_dir_path(__FILE__) . 'inc/osteo_cpt.php';
 require plugin_dir_path(__FILE__) . 'inc/pilates_cpt.php';
+require plugin_dir_path(__FILE__) . 'inc/info_custom_field.php';
 
 // CPT OSTEO + TAXOS
 $osteo_cpt = new Osteo_cpt;
@@ -23,3 +24,7 @@ $pilates_cpt = new Pilates_cpt;
 register_activation_hook(__FILE__, [$pilates_cpt, 'activation']);
 register_deactivation_hook(__FILE__, [$pilates_cpt, 'deactivation']);
 
+// Custom Fields Infos Pratiques
+$info_custom_fields = new Info_custom_field;
+register_activation_hook(__FILE__, [$info_custom_fields, 'activation']);
+register_deactivation_hook(__FILE__, [$info_custom_fields, 'deactivation']);
