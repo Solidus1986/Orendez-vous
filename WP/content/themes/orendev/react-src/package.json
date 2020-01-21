@@ -1,35 +1,67 @@
 {
-  "name": "orendev",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@devloco/react-scripts-wptheme": "^3.3.0-wp.11",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  },
-  "scripts": {
-    "crabuild": "react-scripts build",
-    "craeject": "react-scripts eject",
-    "crastart": "react-scripts start",
-    "cratest": "react-scripts test",
-    "build": "wptheme-scripts build",
-    "start": "wptheme-scripts start",
-    "wpbuild": "wptheme-scripts wpbuild",
-    "wpstart": "wptheme-scripts wpstart"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "orendev",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+      "@babel/core": "*",
+      "@babel/plugin-proposal-class-properties": "*",
+      "@babel/plugin-proposal-object-rest-spread": "*",
+      "@babel/preset-env": "*",
+      "@babel/preset-react": "*",
+      "autoprefixer": "*",
+      "babel-eslint": "*",
+      "babel-loader": "*",
+      "css-loader": "*",
+      "eslint": "*",
+      "eslint-config-airbnb": "*",
+      "eslint-import-resolver-webpack": "*",
+      "eslint-plugin-import": "*",
+      "eslint-plugin-jsx-a11y": "*",
+      "eslint-plugin-react": "*",
+      "file-loader": "*",
+      "html-webpack-plugin": "*",
+      "ignore-styles": "*",
+      "mini-css-extract-plugin": "*",
+      "node-sass": "*",
+      "optimize-css-assets-webpack-plugin": "*",
+      "postcss": "*",
+      "postcss-loader": "*",
+      "sass-loader": "*",
+      "style-loader": "*",
+      "stylelint": "*",
+      "stylelint-config-recommended": "*",
+      "uglifyjs-webpack-plugin": "*"
+    },
+    "dependencies": {
+        "@devloco\/react-scripts-wptheme": "^3.3.0-wp.11",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+    },
+    "scripts": {
+        "crabuild": "react-scripts build",
+        "craeject": "react-scripts eject",
+        "crastart": "react-scripts start",
+        "cratest": "react-scripts test",
+        "build": "wptheme-scripts build",
+        "start": "wptheme-scripts start",
+        "wpbuild": "wptheme-scripts wpbuild",
+        "wpstart": "wptheme-scripts wpstart"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "homepage": "\/ORENDEZVOUS\/projet-rdv-osteo-pilates\/WP\/content\/themes\/orendev",
+    "browserLaunchTo": "http:\/\/localhost:8888\/ORENDEZVOUS\/projet-rdv-osteo-pilates\/WP\/wp"
 }
