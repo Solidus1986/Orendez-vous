@@ -4,22 +4,21 @@ import './pilates.scss'
 
 const Pilates = () => {
   return (
-  <>
+  <div className="pilates">
     <h1>Pilates</h1>
       <ul>
         <li>Pour Qui?</li>
         <li>Matériel</li>
       </ul>
-    <button className="coach">Praticien</button>
+    <a className="coach">Praticien</a>
     <p>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas magnam dolorum vitae aut qui quam laboriosam eius 
       omnis quo? Dolore explicabo incidunt quia fugiat consequuntur vero unde omnis eius tempore?
     </p>
-    <button className="appointment">Rendez-vous</button>
-    <button className="infos-pilates">Infos</button>
-    <button className="activity-osteo">Ostéopathie</button>
-    
-  </>
+    <a className="appointment">Rendez-vous</a>
+    <a className="infos-pilates">Infos</a>
+    <a className="activity-osteo">Ostéopathie</a>
+  </div>
   )
 }
 

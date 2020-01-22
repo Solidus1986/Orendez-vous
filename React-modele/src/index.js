@@ -14,7 +14,7 @@ import App from 'src/components/App';
 // 1. Le composant racine (celui qui contient l'ensemble de l'app)
 const rootComponent = 
     <Router>    
-      <App />;
+      <App />
     </Router>
 // 2. La cible du DOM (là où la structure doit prendre vie dans le DOM)
 const target = document.getElementById('root');

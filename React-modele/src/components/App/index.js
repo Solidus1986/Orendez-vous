@@ -11,9 +11,11 @@ import Footer from 'src/components/Footer';
 
 
 
-
 // == Import : local
 import './app.scss';
+import Osteopathie from '../Page/Osteopathie';
+import Pilates from '../Page/Pilates';
+import Praticiens from '../Praticiens';
 
 // == Composant
 class App extends React.Component {
@@ -24,14 +26,28 @@ class App extends React.Component {
   render () {
     return(
       <div id="app">
-          <Header />
-          <Nav />
-          <Footer />
+          <Switch>
+                <Route exact path='/'>
+                  <Header />
+                  <Nav />
+                  <Footer />  
+                </Route>
+                <Route exact path='/osteopathie'>
+                  <Osteopathie />
+                </Route>
+                <Route exact path='/pilates'>
+                  <Pilates />
+                </Route>
+                <Route path='/osteopathie/praticiens'>
+                  <Praticiens />
+                </Route>
+
+          </Switch>
         
       </div>
     )
   }
-};
+}
 
 // == Export
 export default App;

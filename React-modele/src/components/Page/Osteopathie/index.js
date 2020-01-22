@@ -1,19 +1,15 @@
 import React from 'react';
-import {Switch, NavLink, Route} from 'react-router-dom';
-
-
-import Praticiens from 'src/components/Praticiens';
+import { Link } from 'react-router-dom';
 
 
 import './osteopathie.scss'
 
 class Osteopathie extends React.Component{
+  
 
-  try = () => {
-    this.props.history.push('/osteopathie/praticiens');
-}
   render(){
     return(
+      
       <div className="osteo">
           <div className="osteo-block">
             <h1 className="title">Ostéopathie</h1>
@@ -24,13 +20,9 @@ class Osteopathie extends React.Component{
                 <li>Sportif</li>
                 <li>Sénior</li>
               </ul>
-              <div className="praticiens">
-                {/* <button className="btn-praticiens"><NavLink to={'/osteopathie/praticiens'}>Praticiens</NavLink></button>
-                <Switch>
-                  <Route path='/osteopathie/praticiens' component={Praticiens} />
-                </Switch> */}
-                <button id="b1" onClick ={this.try}>Praticiens</button>
-                <Route path="/osteopathie/praticiens" component={Praticiens}/>
+              
+              <div>
+              <Link to={'/osteopathie/praticiens'}>Praticiens</Link>
               </div>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet augue lectus. Donec elit erat, fermentum et 
@@ -51,6 +43,7 @@ class Osteopathie extends React.Component{
       </div>
       )
   }
+  
 }
 
 export default Osteopathie;

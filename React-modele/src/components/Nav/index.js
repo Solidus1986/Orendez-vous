@@ -17,11 +17,6 @@ const Nav = () => {
               <Link to={'/pilates'} className="pilates">Pilates</Link>
             </div>
           </nav>
-          <Switch>
-              <Route exact path='/'/>
-              <Route path='/osteopathie' component={Osteopathie} />
-              <Route path='/pilates' component={Pilates} />
-          </Switch>
         </div>
         )};
 
