@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Varela+Round&display=swap);
 /* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -64,10 +65,55 @@ input, button {
 body {
   font-family: sans-serif; }
 
+.osteo {
+  background-color: #C2DCFF;
+  width: 100%;
+  height: auto;
+  color: white; }
+
+
 #app {
   font-size: 1.2em;
   text-align: center;
   margin: 1em; }
+
+.logo {
+  margin: .7rem;
+  height: 50px;
+  width: 50px;
+  float: left; }
+
+.profil {
+  margin: .7rem;
+  height: 50px;
+  width: 50px;
+  float: right; }
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.osteopathie {
+  font-family: 'Varela Round', sans-serif;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  font-size: 2rem;
+  color: #fff;
+  line-height: 500px;
+  background: #C2DCFF; }
+
+.pilates {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 2rem;
+  margin: 3rem;
+  background-color: #EEC2FF;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  color: #fff;
+  line-height: 500px; }
 
 
 /*# sourceMappingURL=main.chunk.css.map*/

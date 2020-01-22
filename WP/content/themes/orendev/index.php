@@ -39,7 +39,7 @@
         Learn how to configure a non-root public URL by running `npm run wpbuild`.
     -->
     <title>React WordPress Theme</title>
-<link href="/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/content/themes/orendev/static/css/main.chunk.css?270583b66835e090de93" rel="stylesheet"></head>
+<link href="/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/content/themes/orendev/static/css/main.chunk.css?faa95db5f6e6876d5341" rel="stylesheet"></head>
     <body>
     <noscript>
         You need to enable JavaScript to run this app.
@@ -55,5 +55,5 @@
         To begin the development, run `npm run wpstart` or `yarn wpstart`.
         To create a production bundle, use `npm run wpbuild` or `yarn wpbuild`.
     -->
-    <script src="/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/content/themes/orendev/static/js/bundle.js?270583b66835e090de93"></script><script src="/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/content/themes/orendev/static/js/0.chunk.js?270583b66835e090de93"></script><script src="/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/content/themes/orendev/static/js/main.chunk.js?270583b66835e090de93"></script></body>
+    <script src="/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/content/themes/orendev/static/js/bundle.js?faa95db5f6e6876d5341"></script><script src="/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/content/themes/orendev/static/js/1.chunk.js?faa95db5f6e6876d5341"></script><script src="/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/content/themes/orendev/static/js/main.chunk.js?faa95db5f6e6876d5341"></script></body>
 </html>
