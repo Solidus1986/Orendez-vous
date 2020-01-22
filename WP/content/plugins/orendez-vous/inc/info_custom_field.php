@@ -64,7 +64,7 @@ class Info_custom_field
                 'key' => self::FIELD_WORKFLOW_KEY,
                 'label' => 'Déroulement de la séance',
                 'name' => 'workflow',
-                'type' => 'textarea',
+                'type' => 'wysiwyg',
                 'parent' => self::FIELD_GROUP_KEY,
             ]
         );
@@ -74,7 +74,7 @@ class Info_custom_field
                 'key' => self::FIELD_PRICE_KEY,
                 'label' => 'Prix d\'une séance',
                 'name' => 'price',
-                'type' => 'textarea',
+                'type' => 'wysiwyg',
                 'parent' => self::FIELD_GROUP_KEY,
             ]
         );
@@ -84,7 +84,7 @@ class Info_custom_field
                 'key' => self::FIELD_HISTORY_KEY,
                 'label' => 'Histoire et Législation',
                 'name' => 'history',
-                'type' => 'textarea',
+                'type' => 'wysiwyg',
                 'parent' => self::FIELD_GROUP_KEY,
             ]
         );
@@ -94,7 +94,7 @@ class Info_custom_field
                 'key' => self::FIELD_CONTACT_KEY,
                 'label' => 'Contact',
                 'name' => 'contact',
-                'type' => 'textarea',
+                'type' => 'wysiwyg',
                 'parent' => self::FIELD_GROUP_KEY,
             ]
         );

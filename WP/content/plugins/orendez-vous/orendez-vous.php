@@ -13,6 +13,7 @@ if (!defined('WPINC')) {
 require plugin_dir_path(__FILE__) . 'inc/osteo_cpt.php';
 require plugin_dir_path(__FILE__) . 'inc/pilates_cpt.php';
 require plugin_dir_path(__FILE__) . 'inc/info_custom_field.php';
+require plugin_dir_path(__FILE__) . 'inc/rest_api.php';
 
 // CPT OSTEO + TAXOS
 $osteo_cpt = new Osteo_cpt;
@@ -28,3 +29,6 @@ register_deactivation_hook(__FILE__, [$pilates_cpt, 'deactivation']);
 $info_custom_fields = new Info_custom_field;
 register_activation_hook(__FILE__, [$info_custom_fields, 'activation']);
 register_deactivation_hook(__FILE__, [$info_custom_fields, 'deactivation']);
+
+// REST API
+$ordv_rest_api = new oRdvRestApi;
