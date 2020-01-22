@@ -29,9 +29,7 @@ const Osteopathie = () => {
         , egestas efficitur mauris massa in elit. Maecenas maximus est vel lacinia sollicitudin. Nulla volutpat sem vitae ligula interdum sollicitudin
         Donec mollis porta placerat. In facilisis laoreet orci, et auctor sapien gravida ac.
         </p>
-        <button className="appointment">Rendez-vous</button>
-        <button className="infos-osteo">Infos</button>
-        <button className="activity-pilates">Pilates</button>
+        <button className="btn-appointment">Rendez vous</button>
       </div>
   </div>
   )
