@@ -1,0 +1,28 @@
+import React from 'react';
+import { Route, Link, Switch, NavLink} from 'react-router-dom';
+
+import Osteopathie from 'src/components/Osteopathie';
+import Pilates from 'src/components/Pilates';
+
+import './nav.scss';
+
+const Nav = () => {
+    return (
+    <div>
+        <nav className="nav">
+        <div className="osteopathie">
+          <NavLink to={'/osteopathie'}>Ostéopathie </NavLink>
+        </div>
+        <div className="pilates">
+          <Link to={'/pilates'} className="pilates">Pilates</Link>
+        </div>
+      </nav>
+      <Switch>
+          <Route exact path='/'/>
+          <Route path='/osteopathie' component={Osteopathie} />
+          <Route path='/pilates' component={Pilates} />
+      </Switch>
+    </div>
+    )};
+
+export default Nav;

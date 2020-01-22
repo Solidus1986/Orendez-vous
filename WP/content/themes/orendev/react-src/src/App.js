@@ -1,12 +1,14 @@
 // == Import : npm
 import React from 'react';
-import { Route, Link, Switch, NavLink} from 'react-router-dom'
+import { Route, Link, Switch, NavLink} from 'react-router-dom';
 
 
 
 // Import composants
-import Osteopathie from './components/Osteopathie'
-import Pilates from './components/Pilates'
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Osteopathie from './components/Osteopathie';
+import Pilates from './components/Pilates';
 
 
 // == Import : local
@@ -22,9 +24,11 @@ class App extends React.Component {
     return(
       <div id="app">
         <header>
+          <Header />
           <div className="logo"><Link to={'/ORENDEZVOUS/projet-rdv-osteo-pilates/WP/wp'}></Link>Logo</div>
           <div className="profil">Compte</div>
           <div>
+          <Nav />
           <nav className="nav">
             <div className="osteopathie">
               <NavLink to={'/osteopathie'}>Ostéopathie </NavLink>
