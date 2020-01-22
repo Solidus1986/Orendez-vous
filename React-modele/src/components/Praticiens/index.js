@@ -1,16 +1,19 @@
 import React from 'react';
+import {Switch, NavLink, Route} from 'react-router-dom';
 
 import './praticiens.scss';
+import singlePraticien from 'src/components/Praticiens';
 
 const Praticiens = () => {
     return(
-      <div>
-            <button className="coachs"><NavLink to={'/osteopathie/praticiens/praticien'}>Praticiens</NavLink></button>
-            <Switch>
-              <Route path='/osteopathie/praticiens/praticien' component={Praticien} />
-            </Switch>
+      <div>   
         <h1>All Praticiens</h1> 
-        <div className="avatar">Toto</div>      
+        <div className="avatar">Toto
+            <NavLink to={'/osteopathie/praticiens/praticien'}>Praticiens</NavLink>
+        </div>  
+        <Switch>
+            <Route path='/osteopathie/praticiens/praticien' component={singlePraticien} />
+        </Switch>    
       </div>
     )
 };
