@@ -4,7 +4,7 @@ import {Switch, NavLink, Route} from 'react-router-dom';
 
 
 import Infos from 'src/components/Infos';
-import Pilates from 'src/components/Pilates';
+import Page from 'src/components/Page';
 
 
 import './footer.scss';
@@ -15,10 +15,10 @@ const Footer = () => {
     <div>
         
         <button className="btn-infos-osteo"><NavLink to={'/infos'}>Infos</NavLink></button>
-        <button className="btn-activity-pilates"><NavLink to={'pilates'}>Pilates</NavLink></button>
+        <button className="btn-activity-pilates"><NavLink to={'/page'}>Page</NavLink></button>
         <Switch>
           <Route path='/infos' component={Infos} />
-          <Route path='/pilates' component={Pilates} />
+          <Route path='/page' component={Page} />
       </Switch>
     </div>
     )

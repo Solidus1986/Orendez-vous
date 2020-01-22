@@ -1,4 +1,9 @@
 import React from 'react';
+import {Switch, NavLink, Route} from 'react-router-dom';
+
+
+import Praticiens from 'src/components/Praticiens';
+
 
 import './osteopathie.scss'
 
@@ -14,7 +19,15 @@ const Osteopathie = () => {
             <li>Sportif</li>
             <li>Sénior</li>
           </ul>
-        <button className="coach">Praticiens</button>
+          <div className="btn-praticiens">
+            <NavLink to={'/osteopathie/praticiens'}>Praticiens</NavLink>
+            <Switch>
+              <Route path='/osteopathie/praticiens' component={Praticiens} />
+          </Switch>
+              
+           
+            
+          </div>
         <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet augue lectus. Donec elit erat, fermentum et 
         convallis sed, fermentum dictum justo. Etiam dapibus erat nec leo ultrices, sed bibendum ante malesuada. Praesent aliquam 

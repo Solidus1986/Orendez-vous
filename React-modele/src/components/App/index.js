@@ -11,13 +11,14 @@ import Footer from 'src/components/Footer';
 
 
 
+
 // == Import : local
 import './app.scss';
 
 // == Composant
 class App extends React.Component {
   state={
-    currentView: [],
+    isEmptyState: true 
   }
 
   render () {
