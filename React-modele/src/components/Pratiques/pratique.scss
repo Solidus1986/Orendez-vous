@@ -1,0 +1,32 @@
+
+  .pratique-block{
+    display:inline-block;
+    text-align: center;
+    width: 50%;
+  }
+  
+  .btn-appointment {
+    background-color: white;
+    padding: 20px;
+    color:#C2DCFF;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    height: 100px;
+    width: 100px;
+    margin: 1.4rem;
+    border-radius: 50%;
+    border: solid 1px #C2DCFF;
+    box-shadow: 1px 4px 2px rgb(196, 181, 181);
+    cursor: pointer;
+  
+    &:hover{
+      background-color: #C2DCFF;
+    padding: 20px;
+    color:white;
+    }
+  }
+  
+  

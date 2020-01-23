@@ -2,17 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-import './osteopathie.scss'
+import './pratique.scss'
 
-class Osteopathie extends React.Component{
+class Pratique extends React.Component{
   
-
   render(){
     return(
       
-      <div className="osteo">
-          <div className="osteo-block">
-            <h1 className="title">Ostéopathie</h1>
+      <div>
+          <div className="pratique-block">
+            <h1 className="title">Pratique</h1>
               <ul>
                 <li>Adulte</li>
                 <li>Femme enceinte</li>
@@ -22,7 +21,7 @@ class Osteopathie extends React.Component{
               </ul>
               
               <div>
-              <Link to={'/osteopathie/praticiens'}>Praticiens</Link>
+              <Link to={'/praticiens'}>Praticiens</Link>
               </div>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet augue lectus. Donec elit erat, fermentum et 
@@ -38,7 +37,7 @@ class Osteopathie extends React.Component{
             , egestas efficitur mauris massa in elit. Maecenas maximus est vel lacinia sollicitudin. Nulla volutpat sem vitae ligula interdum sollicitudin
             Donec mollis porta placerat. In facilisis laoreet orci, et auctor sapien gravida ac.
             </p>
-            <button className="btn-appointment">Rendez vous</button>
+            <a className="btn-appointment">Rendez vous</a>
           </div>
       </div>
       )
@@ -46,4 +45,4 @@ class Osteopathie extends React.Component{
   
 }
 
-export default Osteopathie;
+export default Pratique;
