@@ -15,6 +15,7 @@ import Infos from '../Infos';
 import Profil from '../Profil';
 import Form from '../Form';
 
+
 // == Composant
 class App extends React.Component {
   state={}
@@ -22,9 +23,10 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
+      <Header />
         <Switch>
           <Route exact path="/">
-            <Header />
+            
             <Nav />
             <Footer />
           </Route>
