@@ -7,6 +7,7 @@ class oRdvRestApi
         add_action('rest_api_init', [$this, 'metaFields']);
         add_action('rest_api_init', [$this, 'thumbnailField']);
         add_action('rest_api_init', [$this, 'register_user']);
+        add_action('rest_api_init', [$this, 'metaUsers']);
     }
 
     public function metaFields()
@@ -36,7 +37,7 @@ class oRdvRestApi
 
         $array_return = [];
 
-        // on parcours toutes les meta
+        // on parcours toutes les metas
         foreach ($all_meta as $meta_name => $meta_value) {
             // https://www.php.net/manual/fr/function.substr.php
             // on "filtre" les meta pour ne récupérer que les CF
@@ -121,7 +122,7 @@ class oRdvRestApi
             return $error;
         }
         if (empty($lastname)) {
-            $error->add(404, __("Lastname field 'lastename' is required.", 'wp-rest-user'), array('status' => 400));
+            $error->add(404, __("Last Name field 'lastname' is required.", 'wp-rest-user'), array('status' => 400));
             return $error;
         }
 
@@ -147,5 +148,47 @@ class oRdvRestApi
         }
 
         return new WP_REST_Response($response);
+    }
+
+    public function metaUsers()
+    {
+        register_rest_field(
+            'user',
+            'meta',
+            [
+                // fonction à appeler lors d'un GET
+                'get_callback' => [$this, 'user_meta_callback'],
+                // Fonction à appeler lors d'un POST
+                'update_callback' => null,
+                // Structure de la donnée
+                'schema' => null
+            ]
+        );
+    }
+
+    public function user_meta_callback($user, $field_name, $request)
+    {
+        $current_user_ID = wp_get_current_user()->data->ID;
+        $current_user_role = wp_get_current_user()->roles[0];
+        // Sécurité :
+        // On veut masquer les meta pour les users de rôle Abonné (subscriber)
+        // Sauf pour l'url de l'API /users/me, puisque ce sont leurs infos personnelles
+        if($current_user_role == 'subscriber' && $user['id'] != $current_user_ID) {
+            return $meta = [];
+        }
+
+        // Ici, on est sûr qu'on affiche les meta uniquement
+        // - soit aux users qui ont a minima le rôle Contributeur
+        // - soit à l'utilisateur qui cherche à accéder à ses propres informations
+        $data = get_userdata($user[ 'id' ]);
+        $allMeta = get_user_meta( $user[ 'id' ]);
+        $meta = [
+            'first_name' => $allMeta['first_name'][0],
+            'last_name' => $allMeta['last_name'][0],
+            'nb_seance' => isset($allMeta['nb_seance'][0]) ? $allMeta['nb_seance'][0] : '',
+            'phone_number' => isset($allMeta['phone_number'][0]) ? $allMeta['phone_number'][0] : '',
+            'email' => $data->user_email
+        ];
+        return $meta;
     }
 }
