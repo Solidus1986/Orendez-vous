@@ -12,6 +12,8 @@ import './app.scss';
 import Pratiques from '../Pratiques';
 import Praticiens from '../Praticiens';
 import Infos from '../Infos';
+import Profil from '../Profil';
+import Form from '../Form';
 
 // == Composant
 class App extends React.Component {
@@ -25,6 +27,12 @@ class App extends React.Component {
             <Header />
             <Nav />
             <Footer />
+          </Route>
+          <Route path="/connexion">
+            <Form />
+          </Route>
+          <Route path="/profil">
+            <Profil />
           </Route>
           <Route exact path="/pratiques">
             <Pratiques />
