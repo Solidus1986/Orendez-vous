@@ -30,5 +30,4 @@ $info_custom_fields = new Info_custom_field;
 register_activation_hook(__FILE__, [$info_custom_fields, 'activation']);
 register_deactivation_hook(__FILE__, [$info_custom_fields, 'deactivation']);
 
-// REST API
-$ordv_rest_api = new oRdvRestApi;
+

@@ -161,6 +161,14 @@ define('AUTOMATIC_UPDATER_DISABLED', true);
  * @link https://wordpress.org/support/article/editing-wp-config-php/#disable-wordpress-core-updates
  */
 define('WP_AUTO_UPDATE_CORE', false);
+
+/**
+ * JWT authentification
+ * @link https://api.wordpress.org/secret-key/1.1/salt/
+ */
+
+define('JWT_AUTH_SECRET_KEY', 'your-top-secret-key');
+define('JWT_AUTH_CORS_ENABLE', true);
 /* That's all, stop editing! Happy publishing. */
 /** Absolute path to the WordPress directory. */
 if (!defined('ABSPATH')) {

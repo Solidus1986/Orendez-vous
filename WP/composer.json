@@ -17,7 +17,8 @@
         "wpackagist-theme/twentytwenty": "1.0",
         "wpackagist-plugin/akismet": "^4.1",
         "wpackagist-plugin/advanced-custom-fields": "^5.8",
-        "wpackagist-plugin/what-the-file": "^1.5"
+        "wpackagist-plugin/what-the-file": "^1.5",
+        "wpackagist-plugin/jwt-authentication-for-wp-rest-api": "^1.2"
     },
     "extra" : {
         "wordpress-install-dir": "wp",
