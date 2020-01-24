@@ -37,7 +37,7 @@ class Pratique extends React.Component{
             , egestas efficitur mauris massa in elit. Maecenas maximus est vel lacinia sollicitudin. Nulla volutpat sem vitae ligula interdum sollicitudin
             Donec mollis porta placerat. In facilisis laoreet orci, et auctor sapien gravida ac.
             </p>
-            <a className="btn-appointment">Rendez vous</a>
+            <Link to="/pratiques/reservation" className="btn-appointment">Rendez vous</Link>
           </div>
       </div>
       )

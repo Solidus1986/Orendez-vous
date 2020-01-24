@@ -1,6 +1,11 @@
+.navbar{
+  display:flex;
+  flex-direction: row;
+}
+
+
 .nav{
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     font-family: 'Varela Round', sans-serif;
     width: 500px;

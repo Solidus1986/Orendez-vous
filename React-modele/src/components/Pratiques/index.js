@@ -6,9 +6,9 @@ import './pratiques.scss';
 
 const Pratiques = () => {
   return (
-    <div className="pratique">
-      <Pratique />
-    </div>
+      <div className="pratique">
+        <Pratique />
+      </div>
   );
 };
 

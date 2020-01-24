@@ -15,6 +15,7 @@ import Praticiens from '../Praticiens';
 import Infos from '../Infos';
 import Profil from '../Profil';
 import Form from '../Form';
+import Reservation from '../Reservation';
 // Data
 
 
@@ -36,7 +37,13 @@ class App extends React.Component {
           <Route path="/profil">
             <Profil data={usersData} />
           </Route>
-          <Route exact path="/pratiques">
+          <Route exact path="/pratiques1">
+            <Pratiques />
+          </Route>
+          <Route exact path="/pratiques/reservation">
+            <Reservation />
+          </Route>
+          <Route exact path="/pratiques2">
             <Pratiques />
           </Route>
           <Route path="/praticiens">
