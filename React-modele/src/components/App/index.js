@@ -1,6 +1,8 @@
 // == Import : npm
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Import composants
 import Header from 'src/components/Header';
@@ -18,42 +20,54 @@ import Form from '../Form';
 import Reservation from '../Reservation';
 // Data
 
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+};
 
 // == Composant
 class App extends React.Component {
   state={}
 
   render() {
+    const classes = styles.root;
     return (
-      <div id="app">
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <Nav />
-          </Route>
-          <Route path="/connexion">
-            <Form />
-          </Route>
-          <Route path="/profil">
-            <Profil data={usersData} />
-          </Route>
-          <Route exact path="/pratiques1">
-            <Pratiques />
-          </Route>
-          <Route exact path="/pratiques/reservation">
-            <Reservation />
-          </Route>
-          <Route exact path="/pratiques2">
-            <Pratiques />
-          </Route>
-          <Route path="/praticiens">
-            <Praticiens />
-          </Route>
-          <Route path="/infos">
-            <Infos />
-          </Route>
-        </Switch>
-        <Footer />
+      <div id="app" className={classes}>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Header />
+          </Grid>
+          <Switch>
+            <Route exact path="/">
+              <Nav />
+            </Route>
+            <Route path="/connexion">
+              <Form />
+            </Route>
+            <Route path="/profil">
+              <Profil data={usersData} />
+            </Route>
+            <Route exact path="/pratiques1">
+              <Pratiques />
+            </Route>
+            <Route exact path="/pratiques/reservation">
+              <Reservation />
+            </Route>
+            <Route exact path="/pratiques2">
+              <Pratiques />
+            </Route>
+            <Route path="/praticiens">
+              <Praticiens />
+            </Route>
+            <Route path="/infos">
+              <Infos />
+            </Route>
+          </Switch>
+          <Grid item xs={12}>
+            <Footer />
+          </Grid>
+        </Grid>
       </div>
     );
   }

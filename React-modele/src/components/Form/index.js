@@ -64,22 +64,31 @@ class Form extends React.Component {
     switch(step){
       case 1:
         return (
-          <UserDetails
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-           />
+          <div>
+            <UserDetails
+              nextStep={this.nextStep}
+              handleChange={this.handleChange}
+              values={values}
+            />
+          </div>
         )
       case 2 :
         return (
-          <Confirm
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            values={values}
-          />
+          <div>
+            <Confirm
+              nextStep={this.nextStep}
+              prevStep={this.prevStep}
+              values={values}
+            />
+          </div>
         )
         case 3:
-          return <Success />;
+          return (
+            <div>
+              <Success />;
+
+            </div>
+          )
       }
     }
   }

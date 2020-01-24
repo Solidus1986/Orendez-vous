@@ -6,7 +6,7 @@ import './pratiques.scss';
 
 const Pratiques = () => {
   return (
-      <div className="pratique">
+      <div>
         <Pratique />
       </div>
   );
