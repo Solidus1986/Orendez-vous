@@ -14,6 +14,8 @@ require plugin_dir_path(__FILE__) . 'inc/osteo_cpt.php';
 require plugin_dir_path(__FILE__) . 'inc/pilates_cpt.php';
 require plugin_dir_path(__FILE__) . 'inc/info_custom_field.php';
 require plugin_dir_path(__FILE__) . 'inc/rest_api.php';
+require plugin_dir_path(__FILE__) . 'inc/role.php';
+
 
 // CPT OSTEO + TAXOS
 $osteo_cpt = new Osteo_cpt;
@@ -30,4 +32,8 @@ $info_custom_fields = new Info_custom_field;
 register_activation_hook(__FILE__, [$info_custom_fields, 'activation']);
 register_deactivation_hook(__FILE__, [$info_custom_fields, 'deactivation']);
 
+// Rôles
+$ordv_role = new ORdvRole;
+register_activation_hook(__FILE__, [$ordv_role, 'activation']);
+register_deactivation_hook(__FILE__, [$ordv_role, 'deactivation']);
 
