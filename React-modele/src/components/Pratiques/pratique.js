@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Header, Menu, Button, Dropdown } from 'semantic-ui-react'
+import { Container, Header, Button } from 'semantic-ui-react'
 
 
 // import local
@@ -12,18 +12,14 @@ class Pratique extends React.Component {
 
     return(
       <Container text>
-        <Header as='h2'>L'ostéopathier</Header>
-         <Menu>
-            <Dropdown item text='Pour qui?'>
-              <Dropdown.Menu>
-                <Dropdown.Item>Adulte</Dropdown.Item>
-                <Dropdown.Item>Enfant</Dropdown.Item>
-                <Dropdown.Item>Femme enceinte</Dropdown.Item>
-                <Dropdown.Item>Nourisson</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Button primary><Link to={'/praticiens'}>Praticiens</Link></Button>
-          </Menu>
+        <Header as='h2'>L'ostéopathie</Header>
+          <div>
+            <Button>Adulte</Button>
+            <Button>Femme Enceinte</Button>
+            <Button>Nourisson</Button>
+            <Button>Sportif</Button> 
+          </div>
+          <Button><Link to={'/praticiens'}>Praticiens</Link></Button>
           <p>
           L’ostéopathie est une thérapie manuelle reconnue en France qui vise à maintenir et
           restituer un bon état de santé à votre corps. Elle ne substitue pas à la médecine

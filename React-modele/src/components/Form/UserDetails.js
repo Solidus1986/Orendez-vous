@@ -9,6 +9,11 @@ const styles = {
   root: {
     flexGrow: 1,
   },
+  title:{
+    paddingBottom: 25,
+    color: 'blue',
+    textAlign:'center'
+  },
   field: {
     width: '150%',   
     marginLeft: '50px',
@@ -16,7 +21,7 @@ const styles = {
     paddingBottom: 12,
     marginTop: 20,
     fontWeight: 500,
-  }
+  },
 }
 
 
@@ -32,11 +37,14 @@ class UserDetails extends Component {
     return ( 
       <div className={classes.root}> 
         <Grid container spacing={3}>
-          <Grid item xs={12}></Grid>
-            <h2 className="userdetails-title">Créer un Compte</h2>
-            <h1 className="userdetails-subtilte">Saississez vos informations</h1>
-          </Grid>
-          <Grid item xs={12}>
+          <Grid 
+          
+          
+          >
+            <div>
+              <h2 style={classes.title}>Créer un Compte</h2>
+              <h1 style={classes.title}>Saississez vos informations</h1>
+            </div>
             <TextField 
               style={classes.field}
               placeholder ="Prénom"
@@ -44,7 +52,7 @@ class UserDetails extends Component {
               onChange={handleChange('firstName')}
               defaultValue={values.firstName}
               variant="outlined"
-              size={classes.field}
+              size='small'
             />
             <br/>
             <TextField 
@@ -69,10 +77,10 @@ class UserDetails extends Component {
             <br/>
             <TextField 
               style={classes.field}
-              placeholder="Téléphone"
-              label="Téléphone"
-              onChange={handleChange('phone')}
-              defaultValue={values.phone}
+              placeholder="Adresse email"
+              label="Adresse email"
+              onChange={handleChange('email')}
+              defaultValue={values.email}
               variant="outlined"
               size="small"
             />
@@ -117,6 +125,7 @@ class UserDetails extends Component {
                 style={styles.button}
               >Continue</Button>
             </Grid>
+          </Grid>
           </div>
      );
   }
