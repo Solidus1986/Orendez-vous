@@ -46,10 +46,10 @@ class CustomTable
             a_id INT NOT NULL,
             user_id BIGINT(20) UNSIGNED NOT NULL,
             booking_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-            PRIMARY KEY (a_id, user_id)
-        ) $charset_collate;
-        ALTER TABLE $booking_table_name ADD CONSTRAINT `booking_appointment` FOREIGN KEY (`a_id`) REFERENCES `wp_appointment`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
-        ALTER TABLE $booking_table_name ADD CONSTRAINT`booking_users` FOREIGN KEY (`user_id`) REFERENCES `wp_users`(`ID`) ON DELETE CASCADE ON UPDATE RESTRICT";
+            PRIMARY KEY (a_id, user_id),
+            CONSTRAINT `booking_appointment` FOREIGN KEY (`a_id`) REFERENCES `wp_appointment`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+            CONSTRAINT`booking_users` FOREIGN KEY (`user_id`) REFERENCES `wp_users`(`ID`) ON DELETE CASCADE ON UPDATE RESTRICT
+        ) $charset_collate;";
 
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
