@@ -1,0 +1,23 @@
+
+.fiche {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 20px;
+    background-color: #EEC2FF;
+     
+
+    &-info {
+        display: inline-block;
+        text-align: center;
+        line-height: 2em;
+        margin: 10px;
+        height: auto;        
+        width: 20em; 
+        background:  #D473D4;
+        border-radius: .3em;
+    };
+
+}

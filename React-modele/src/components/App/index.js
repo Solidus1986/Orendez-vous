@@ -9,11 +9,14 @@ import Footer from 'src/components/Footer';
 
 // == Import : local
 import './app.scss';
+import usersData from 'src/Data/users';
 import Pratiques from '../Pratiques';
 import Praticiens from '../Praticiens';
 import Infos from '../Infos';
 import Profil from '../Profil';
 import Form from '../Form';
+// Data
+
 
 // == Composant
 class App extends React.Component {
@@ -22,17 +25,16 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
+        <Header />
         <Switch>
           <Route exact path="/">
-            <Header />
             <Nav />
-            <Footer />
           </Route>
           <Route path="/connexion">
             <Form />
           </Route>
           <Route path="/profil">
-            <Profil />
+            <Profil data={usersData} />
           </Route>
           <Route exact path="/pratiques">
             <Pratiques />
@@ -44,6 +46,7 @@ class App extends React.Component {
             <Infos />
           </Route>
         </Switch>
+        <Footer />
       </div>
     );
   }
