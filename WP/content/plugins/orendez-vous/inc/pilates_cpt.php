@@ -48,6 +48,7 @@ class Pilates_cpt
             ],
             'show_in_rest' => true,
             'map_meta_cap' => true,
+            'capability_type'   => 'pilates',
         ];
 
         register_post_type(self::CPT_PILATES, $args);
@@ -77,6 +78,15 @@ class Pilates_cpt
                 'show_in_rest' => true
             ]
         );
+
+        wp_insert_term(
+            'Pour qui ?',
+            'category-pilates',
+            [
+                'slug' => 'publics-pilates'
+            ]
+        );
+
         wp_insert_term(
             'Informations pratiques Pilates',
             'category-pilates',
@@ -89,7 +99,7 @@ class Pilates_cpt
             'Coach',
             'category-pilates',
             [
-                'slug' => 'Coach'
+                'slug' => 'coach'
             ]
         );
     }

@@ -51,6 +51,7 @@ class Osteo_cpt
             ],
             'show_in_rest' => true,
             'map_meta_cap' => true,
+            'capability_type'   => 'osteo',
         ];
 
         register_post_type(self::CPT_OSTEO, $args);
