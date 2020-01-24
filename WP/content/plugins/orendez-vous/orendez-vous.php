@@ -15,6 +15,7 @@ require plugin_dir_path(__FILE__) . 'inc/pilates_cpt.php';
 require plugin_dir_path(__FILE__) . 'inc/info_custom_field.php';
 require plugin_dir_path(__FILE__) . 'inc/rest_api.php';
 require plugin_dir_path(__FILE__) . 'inc/role.php';
+require plugin_dir_path(__FILE__) . 'inc/custom_table.php';
 
 
 // CPT OSTEO + TAXOS
@@ -36,4 +37,7 @@ register_deactivation_hook(__FILE__, [$info_custom_fields, 'deactivation']);
 $ordv_role = new ORdvRole;
 register_activation_hook(__FILE__, [$ordv_role, 'activation']);
 register_deactivation_hook(__FILE__, [$ordv_role, 'deactivation']);
+
+// Custom Table
+$custom_table = new CustomTable;
 
