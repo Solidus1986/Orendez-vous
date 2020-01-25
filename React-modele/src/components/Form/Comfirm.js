@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { List, ListItem, ListItemText } from '@material-ui/core/';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+
 
 class Confirm extends Component {
   continue = e => {
@@ -21,38 +23,43 @@ class Confirm extends Component {
         lastName,
         phone,
         email,
-      }
+      }, classes
     } = this.props;
     return (
-        <>
+      <div style={classes.root}> 
+        <Grid container justify = "center">
+          <Grid>
           <List>
             <ListItem>
-              <ListItemText primary="Prénom" secondary={firstName} /> 
+              <ListItemText primary="Prénom :" secondary={firstName} /> 
             </ListItem>
             <ListItem>
-              <ListItemText primary="Nom" secondary={lastName} /> 
+              <ListItemText primary="Nom :" secondary={lastName} /> 
             </ListItem>
             <ListItem>
-              <ListItemText primary="Téléphone" secondary={phone} /> 
+              <ListItemText primary="Téléphone :" secondary={phone} /> 
             </ListItem>
             <ListItem>
-              <ListItemText primary="adresse email" secondary={email} /> 
+              <ListItemText primary="adresse email :" secondary={email} /> 
             </ListItem>
           </List>
           <br />
         
           <Button
-            color="secondary"
-            variant="contained"
+            variant='outline'
+            style={classes.button}
             onClick={this.back}
           >Back</Button>
 
           <Button
-            color="primary"
-            variant="contained"
+            variant='outline'
+            style={classes.button}
             onClick={this.continue}
           >Confirm</Button>
-        </>
+        </Grid>
+      </Grid>
+    </div>
+ 
     );
   }
 }

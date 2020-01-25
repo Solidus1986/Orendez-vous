@@ -1,9 +1,35 @@
 
 import React from 'react';
 import UserDetails from './UserDetails';
-import Confirm from './Comfirm';
+import Confirm from './comfirm';
 import Success from './Success'
 
+
+const styles = {
+  root: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      height: 'auto',
+      width: '100vw',  
+  },
+  title:{
+    paddingBottom: 25,
+    color: 'black',
+    textAlign:'center'
+  },
+  field: {
+    width:'35vw',
+    marginLeft: '50px',
+    marginRight: '50px',            
+    paddingBottom: 5,
+    marginTop: 20,
+  },
+  button:{
+    margin:'1.5rem',
+    border:'solid 2px black'
+  }
+}
 
 class Form extends React.Component {
   state = { 
@@ -41,6 +67,7 @@ class Form extends React.Component {
   
 
   render() { 
+    const classes = styles;
     const { step } = this.state;
     const { 
     firstName,
@@ -64,31 +91,31 @@ class Form extends React.Component {
     switch(step){
       case 1:
         return (
-          <div>
             <UserDetails
+              classes={classes}
               nextStep={this.nextStep}
               handleChange={this.handleChange}
               values={values}
             />
-          </div>
         )
       case 2 :
         return (
-          <div>
+          
             <Confirm
+              classes={classes}
               nextStep={this.nextStep}
               prevStep={this.prevStep}
               values={values}
             />
-          </div>
         )
         case 3:
           return (
-            <div>
-              <Success />;
+            <Success
+              classes={classes}
+          />);
 
-            </div>
-          )
+            
+          
       }
     }
   }

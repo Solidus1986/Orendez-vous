@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import './nav.scss';
@@ -9,27 +8,42 @@ import './nav.scss';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    margin:'7rem 0rem',
   },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
+  pratique:{
+    height: '100%',
+    width: '100%',
+    margin:'1.4rem',
+    textTransform: 'uppercase',
+    fontSize: '2.4rem',
+    borderRadius: '50%',
+    backgroundColor:'white',
+    border: 'solid 2px black',
+    padding: '8rem',
+    '@media screen and (min-width: 600px) and (max-width: 1200px)': {
+      fontSize: '1.7rem',
+      borderRadius: '50%',
+      padding: '9rem', 
+  }}
 }));
 
-const Nav = () => {
+const Nav = (props) => {
   const classes = useStyles();
+  const { data } = props
+  console.log("data:",data);
+
   return (
-    <div className={classes.root}>
-       <Grid container spacing={3}>
-        <Grid item xs={6}>
-          <Link className={classes.paper} to="/pratiques1" id="pratiques">Ostéopathie</Link>
-        </Grid>
-        <Grid item xs={6}>
-        <Link className={classes.paper} to="/pratiques2" id="pratiques">Pilates</Link>
+      <Grid container className={classes.root} spacing={2}>
+      <Grid item xs={12}>
+        <Grid container justify="center" spacing={2}>
+          {data.map(p => (
+            <Grid key={p.id}>
+              <Link to="/pratiques" className={classes.pratique}>{p.pratique}</Link>
+            </Grid>
+          ))}
         </Grid>
       </Grid>
-    </div>
+    </Grid>
   );
 };
 

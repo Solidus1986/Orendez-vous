@@ -2,6 +2,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Varela Round Web:400', 'sans-serif']
+  }
+});
 
 // == Import : local
 // Styles de base

@@ -5,11 +5,13 @@ import './infos.scss';
 const Infos = () => {
 
     return (
+    <>
     <div>
-    <p>Adresse du cabinet</p>
-    <p>Telephone</p>
-    <p>Mail</p>
+      <p>Adresse du cabinet</p>
+      <p>Telephone</p>
+      <p>Mail</p>
     </div>
+    </>
     )
 };
 

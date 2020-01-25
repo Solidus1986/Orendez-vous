@@ -5,25 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  title:{
-    paddingBottom: 25,
-    color: 'blue',
-    textAlign:'center'
-  },
-  field: {
-    width: '150%',   
-    marginLeft: '50px',
-    marginRight: '200px',            
-    paddingBottom: 12,
-    marginTop: 20,
-    fontWeight: 500,
-  },
-}
-
 
 class UserDetails extends Component {
   continue = e => {
@@ -32,15 +13,11 @@ class UserDetails extends Component {
 
   }
   render() { 
-    const { values, handleChange } = this.props
-    const classes = styles
+    const { classes, values, handleChange } = this.props
     return ( 
-      <div className={classes.root}> 
-        <Grid container spacing={3}>
-          <Grid 
-          
-          
-          >
+      <div style={classes.root}> 
+        <Grid container justify = "center">
+          <Grid>
             <div>
               <h2 style={classes.title}>Créer un Compte</h2>
               <h1 style={classes.title}>Saississez vos informations</h1>
@@ -119,10 +96,9 @@ class UserDetails extends Component {
             <br/>
             <br />
               <Button
-                color="primary"
-                variant="contained"
+                variant="outlined"
                 onClick={this.continue}
-                style={styles.button}
+                style={classes.button}
               >Continue</Button>
             </Grid>
           </Grid>

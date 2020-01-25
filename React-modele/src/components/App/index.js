@@ -12,6 +12,7 @@ import Footer from 'src/components/Footer';
 // == Import : local
 import './app.scss';
 import usersData from 'src/Data/users';
+import pratiqueData from 'src/Data/pratiques';
 import Pratiques from '../Pratiques';
 import Praticiens from '../Praticiens';
 import Infos from '../Infos';
@@ -28,19 +29,17 @@ const styles = {
 
 // == Composant
 class App extends React.Component {
-  state={}
-
   render() {
     const classes = styles.root;
     return (
       <div id="app" className={classes}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item xs={12}>
             <Header />
           </Grid>
           <Switch>
             <Route exact path="/">
-              <Nav />
+              <Nav data={pratiqueData}/>
             </Route>
             <Route path="/connexion">
               <Form />
@@ -48,14 +47,11 @@ class App extends React.Component {
             <Route path="/profil">
               <Profil data={usersData} />
             </Route>
-            <Route exact path="/pratiques1">
-              <Pratiques />
+            <Route exact path="/pratiques">
+              <Pratiques data={pratiqueData}/>
             </Route>
             <Route exact path="/pratiques/reservation">
               <Reservation />
-            </Route>
-            <Route exact path="/pratiques2">
-              <Pratiques />
             </Route>
             <Route path="/praticiens">
               <Praticiens />
