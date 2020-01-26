@@ -78,7 +78,7 @@ class Pratique extends React.Component {
             variant='outline'
             style={classes.button}
           >
-          Rendez vous
+          Prendre rendez vous
           </Button>
         </Link>
         </Grid>
