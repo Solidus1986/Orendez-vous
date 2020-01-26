@@ -1,8 +1,8 @@
 
 import React from 'react';
 import UserDetails from './UserDetails';
-import Confirm from './comfirm';
-import Success from './Success'
+import Confirm from './Confirm';
+import Success from './Success';
 
 
 const styles = {

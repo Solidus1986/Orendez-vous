@@ -1,25 +1,62 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Header, Button } from 'semantic-ui-react'
+
+//impoort Material UI
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 
 // import local
 import './pratique.scss'
 
+
 class Pratique extends React.Component {
 
   render() {
-
+    const {classes} = this.props
     return(
-      <Container text>
-        <Header as='h2'>L'ostéopathie</Header>
-          <div>
-            <Button>Adulte</Button>
-            <Button>Femme Enceinte</Button>
-            <Button>Nourisson</Button>
-            <Button>Sportif</Button> 
-          </div>
-          <Button><Link to={'/praticiens'}>Praticiens</Link></Button>
+      <div>
+        <Grid container justify = "center">
+          <Grid>
+          <h1 style={classes.title}>L'ostéopathie</h1>
+            <div>
+              <Button
+              variant='outline'
+              style={classes.button}
+              // onClick={this.continue}
+              >
+                Adulte
+              </Button>
+              <Button
+              variant='outline'
+              style={classes.button}
+              // onClick={this.continue}
+              >
+                Femme enceinte
+              </Button>
+              <Button
+              variant='outline'
+              style={classes.button}
+              // onClick={this.continue}
+              >
+                Nourisson
+              </Button>
+              <Button
+              variant='outline'
+              style={classes.button}
+              // onClick={this.continue}
+              >
+                Sportif
+              </Button>
+            </div>
+          <Link to={'/praticiens'}>
+            <Button 
+              variant='outline'
+              style={classes.button}
+            >
+            Praticiens
+            </Button>
+          </Link>
           <p>
           L’ostéopathie est une thérapie manuelle reconnue en France qui vise à maintenir et
           restituer un bon état de santé à votre corps. Elle ne substitue pas à la médecine
@@ -35,8 +72,18 @@ class Pratique extends React.Component {
           
           L’ostéopathie est une science, un art et une philosophie – Andrew Taylor Still
           </p>
-        <Link to="/pratiques/reservation" className="btn-appointment">Rendez vous</Link>
-    </Container>
+
+        <Link to={'/pratiques/reservation'}>
+          <Button 
+            variant='outline'
+            style={classes.button}
+          >
+          Rendez vous
+          </Button>
+        </Link>
+        </Grid>
+      </Grid>
+    </div>
     )
   }
 }
