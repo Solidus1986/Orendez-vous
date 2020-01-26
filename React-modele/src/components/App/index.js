@@ -37,29 +37,31 @@ class App extends React.Component {
           <Grid item xs={12}>
             <Header />
           </Grid>
-          <Switch>
-            <Route exact path="/">
-              <Nav data={pratiqueData}/>
-            </Route>
-            <Route path="/connexion">
-              <Form />
-            </Route>
-            <Route path="/profil">
-              <Profil data={usersData} />
-            </Route>
-            <Route exact path="/pratiques">
-              <Pratiques data={pratiqueData}/>
-            </Route>
-            <Route exact path="/pratiques/reservation">
-              <Reservation />
-            </Route>
-            <Route path="/praticiens">
-              <Praticiens />
-            </Route>
-            <Route path="/infos">
-              <Infos />
-            </Route>
-          </Switch>
+          <Grid item xs={12}>
+            <Switch>
+              <Route exact path="/">
+                <Nav data={pratiqueData}/>
+              </Route>
+              <Route path="/connexion">
+                <Form />
+              </Route>
+              <Route path="/profil">
+                <Profil data={usersData} />
+              </Route>
+              <Route exact path="/pratiques">
+                <Pratiques data={pratiqueData}/>
+              </Route>
+              <Route exact path="/pratiques/reservation">
+                <Reservation />
+              </Route>
+              <Route path="/praticiens">
+                <Praticiens />
+              </Route>
+              <Route path="/infos">
+                <Infos />
+              </Route>
+            </Switch>
+          </Grid>
           <Grid item xs={12}>
             <Footer />
           </Grid>
