@@ -1,27 +1,31 @@
 import React from 'react';
-import {Switch, NavLink, Route} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-
-
-import Infos from 'src/components/Infos';
-import Page from 'src/components/Page';
-
+const styles = {
+  footer:{
+    backgroundColor: "#F8F8F8",
+    borderTop: "2px solid black",
+    textAlign: "center",
+    padding: "20px",
+    position: "fixed",
+    left: "0",
+    bottom: "0",
+    height: "50px",
+    width: "100%",
+    'z-index':'2000'
+  }
+}
 
 import './footer.scss';
 
 const Footer = () => {
-
-    return (
-    <div>
-        
-        <button className="btn-infos-osteo"><NavLink to={'/infos'}>Infos</NavLink></button>
-        <button className="btn-activity-pilates"><NavLink to={'/page'}>Page</NavLink></button>
-        <Switch>
-          <Route path='/infos' component={Infos} />
-          <Route path='/page' component={Page} />
-      </Switch>
+  const classes = styles
+  return(
+    <div style={classes.footer}>
+      <Link to="/infos" >Infos</Link>
     </div>
-    )
+
+  )
 };
 
 export default Footer;

@@ -1,56 +1,75 @@
 // == Import : npm
 import React from 'react';
-import { Route, Link, Switch, NavLink} from 'react-router-dom';
-
-
+import { Route, Switch } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 // Import composants
 import Header from 'src/components/Header';
 import Nav from 'src/components/Nav';
 import Footer from 'src/components/Footer';
 
-
-
 // == Import : local
 import './app.scss';
-import Osteopathie from '../Page/Osteopathie';
-import Pilates from '../Page/Pilates';
+import usersData from 'src/Data/users';
+import pratiqueData from 'src/Data/pratiques';
+import Pratiques from '../Pratiques';
 import Praticiens from '../Praticiens';
+import Infos from '../Infos';
+import Profil from '../Profil';
+import Form from '../Form';
+import Reservation from '../Reservation';
+// Data
+
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+};
 
 // == Composant
 class App extends React.Component {
-  state={
-    isEmptyState: true 
-  }
-
-  render () {
-    return(
-      <div id="app">
-          <Switch>
-                <Route exact path='/'>
-                  <Header />
-                  <Nav />
-                  <Footer />  
-                </Route>
-                <Route exact path='/osteopathie'>
-                  <Osteopathie />
-                </Route>
-                <Route exact path='/pilates'>
-                  <Pilates />
-                </Route>
-                <Route path='/osteopathie/praticiens'>
-                  <Praticiens />
-                </Route>
-
-          </Switch>
-        
+  render() {
+    const classes = styles.root;
+    return (
+      <div id="app" className={classes}>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Header />
+          </Grid>
+          <Grid item xs={12}>
+            <Switch>
+              <Route exact path="/">
+                <Nav data={pratiqueData}/>
+              </Route>
+              <Route path="/connexion">
+                <Form />
+              </Route>
+              <Route path="/profil">
+                <Profil data={usersData} />
+              </Route>
+              <Route exact path="/pratiques">
+                <Pratiques data={pratiqueData}/>
+              </Route>
+              <Route exact path="/pratiques/reservation">
+                <Reservation />
+              </Route>
+              <Route path="/praticiens">
+                <Praticiens />
+              </Route>
+              <Route path="/infos">
+                <Infos />
+              </Route>
+            </Switch>
+          </Grid>
+          <Grid item xs={12}>
+            <Footer />
+          </Grid>
+        </Grid>
       </div>
-    )
+    );
   }
 }
 
 // == Export
 export default App;
-
-      
-     

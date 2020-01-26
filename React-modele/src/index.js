@@ -2,6 +2,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {
+    families: ['Varela Round Web:400', 'sans-serif']
+  }
+});
 
 // == Import : local
 // Styles de base
@@ -13,9 +20,9 @@ import App from 'src/components/App';
 // == Render
 // 1. Le composant racine (celui qui contient l'ensemble de l'app)
 const rootComponent = 
-    <Router>    
-      <App />
-    </Router>
+  <Router>
+    <App />
+  </Router>
 // 2. La cible du DOM (là où la structure doit prendre vie dans le DOM)
 const target = document.getElementById('root');
 
