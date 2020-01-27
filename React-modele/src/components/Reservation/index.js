@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 
 
 
@@ -37,7 +38,7 @@ const styles = makeStyles(theme => ({
     borderRadius: 3,
     border: 1,
     color: 'black',
-    padding: '.5rem 2rem',
+    padding: '.5rem 1.4rem',
     margin:'.5rem',
     boxShadow: '0 3px 5px 2px grey',
   },
@@ -122,10 +123,33 @@ const Reservation = () => {
               <Typography className={classes.heading}>Dimanche 26 Janvier</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography
-                  className={classes.button}
-                >9H30
-              </Typography>        
+              <Link
+                className={classes.button}
+                component="button"
+                variant="body2"
+                onClick={() => {
+                  console.info("I'm a button.");
+                }}
+              >9H30
+              </Link>
+              <Link
+                className={classes.button}
+                component="button"
+                variant="body2"
+                onClick={() => {
+                  console.info("I'm a button.");
+                }}
+              >10H30
+              </Link>     
+              <Link
+                className={classes.button}
+                component="button"
+                variant="body2"
+                onClick={() => {
+                  console.info("I'm a button.");
+                }}
+              >11H00
+              </Link> 
             </ExpansionPanelDetails>
           </ExpansionPanel>
 
@@ -143,10 +167,15 @@ const Reservation = () => {
               <Typography className={classes.heading}>Lundi 27 Janvier</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography
-                  className={classes.button}
-                >9H30
-              </Typography>        
+            <Link
+                className={classes.button}
+                component="button"
+                variant="body2"
+                onClick={() => {
+                  console.info("I'm a button.");
+                }}
+              >13H00
+              </Link>         
             </ExpansionPanelDetails>
           </ExpansionPanel>
 
@@ -164,18 +193,15 @@ const Reservation = () => {
               <Typography className={classes.heading}>Mardi 28 Janvier</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography
-                  className={classes.button}
-                >9H30
-              </Typography>    
-              <Typography
-                  className={classes.button}
-                >9H30
-              </Typography> 
-              <Typography
-                  className={classes.button}
-                >9H30
-              </Typography>     
+            <Link
+                className={classes.button}
+                component="button"
+                variant="body2"
+                onClick={() => {
+                  console.info("I'm a button.");
+                }}
+              >10H30
+              </Link>          
             </ExpansionPanelDetails>
           </ExpansionPanel>
 
