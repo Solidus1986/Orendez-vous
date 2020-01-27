@@ -109,6 +109,7 @@ const Reservation = () => {
         <Grid item xs={12}>
           <h2 style={{margin:'1rem'}} className="datum">Choisir votre date de rendez-vous</h2>
         </Grid>
+        
         <Grid item xs={6}>
           <ExpansionPanel
             className={classes.panel}
