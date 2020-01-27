@@ -139,7 +139,7 @@ const Reservation = () => {
                   console.info("I'm a button.");
                 }}
               >10H30
-              </Link>     
+              </Link>
               <Link
                 className={classes.button}
                 component="button"
