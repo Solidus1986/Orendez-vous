@@ -24,9 +24,11 @@ class CustomTable
             end_date DATETIME NOT NULL,
             max_places TINYINT NOT NULL,
             available_places TINYINT NOT NULL,
+            user_id BIGINT(20) UNSIGNED NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
             updated_at DATETIME NULL,
-            PRIMARY KEY (id)
+            PRIMARY KEY (id),
+            CONSTRAINT`appointment_users` FOREIGN KEY (`user_id`) REFERENCES `wp_users`(`ID`) ON DELETE CASCADE ON UPDATE RESTRICT
         ) $charset_collate;";
 
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
