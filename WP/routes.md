@@ -5,6 +5,7 @@
 - [Pages de pratiques](#pages-de-pratiques)
   - [Ostéopathie](#ost%c3%a9opathie)
   - [Pilates](#pilates)
+- [Informations pratiques](#informations-pratiques)
 - [Page d'inscription](#page-dinscription)
 - [Page de connexion](#page-de-connexion)
 - [Validation du bearer token](#validation-du-bearer-token)
@@ -45,11 +46,10 @@ Il faut donc récupérer toutes les clés du json obtenu en réponse, sauf `post
 
 ### Ostéopathie
 
-Nous avons créé une taxonomie `category-osteo`. Elle regroupe 3 termes :
+Nous avons créé une taxonomie `category-osteo`. Elle regroupe 2 termes :
 
 - `publics`
 - `praticiens`
-- `infos-pratiques-osteo`
 
 Ce sont ces termes qui permettront de différencier les contenus à afficher sur la page Ostéopathie.
 
@@ -59,17 +59,6 @@ Cette route retourne tous les termes, et leurs informations. Par exemple :
 
 ```json
 [
-    {
-        "id": 3,
-        "count": 1,
-        "description": "",
-        "link": "http://localhost/Apo/projet-rdv-osteo-pilates/WP/category-osteo/infos-pratiques-osteo/",
-        "name": "Informations pratiques Ostéopathie",
-        "slug": "infos-pratiques-osteo",
-        "taxonomy": "category-osteo",
-        "parent": 0,
-        "meta": []
-    },
     {
         "id": 4,
         "count": 1,
@@ -170,26 +159,12 @@ Cette requête retourne la liste des posts sous le format suivant :
 ]
 ```
 
-Précision pour les informations pratiques :
-
-Les blocs utilisés pour l'accordéon se trouvent dans la clé `meta`. Les meta sont retournées uniquement pour le terme `infos-pratiques-osteo`. Par exemple :
-
-```json
-"meta": {
-    "workflow": "Préparer votre séance :  pensez à vous munir de vos derniers examens complémentaires (imagerie, bilan sanguin..) et carnet de santé (pour les bébés et les enfants). Consulter un médecin n’est pas nécessaire avant de consulter l’ostéopathe.<br><br>La tenue requise est : sous vêtements adaptés, ou leggin, ou short souple. Si vous préférez rester habillé(e) pendant la consultation, n’hésitez pas à le signaler, l’ostéopathe s’adaptera.<br><br>La consultation débute par l’anamnèse pendant laquelle l’ostéopathe vous pose des questions (sur votre motif de consultation, antécédents médicaux, traumatismes, mode de vie).<br><br>L’ostéopathe effectue un diagnostic clinique :  Elle détermine si cela relève ou non de sa compétence d’ostéopathe. Si tel n’est pas le cas, elle vous oriente vers la profession de santé nécessaire.<br><br>L’ostéopathe soigne manuellement le déséquilibre de votre corps et son origine afin d’éviter les récidives.<br><br>Les techniques employées : elles sont adaptées à chaque patient : les nourrissons, les enfants, les adultes, les femmes enceintes, les sportifs et les seniors. Il s’agit de techniques musculo-squelettiques (des techniques sur les muscles et les articulations), et des techniques encore plus douces telles que les techniques viscérales, crâniennes et tissulaires dites fasciales. Si vous appréhendez le craquement, vous pouvez le signaler à l’ostéopathe pour qu’elle puisse ajuster ses techniques à votre bien-être. Les techniques ne font jamais mal et assurent votre sécurité.<br><br>Les petits plus : grâce à ses formations complémentaires en stretching-postural et en Pilates, l’ostéopathe peut vous conseiller les étirements et les mouvements que vous pouvez effectuer dans votre quotidien utiles et spécialisés pour votre corps, votre posture, votre position de travail, votre sport, vos loisirs, afin d’éviter les douleurs et déséquilibres.",
-    "price": "durée de la consultation : entre 45 min et une heure<br><br>tarif : 55 euros<br><br>modes de paiement :<br><br>chèques et espèces : acceptés<br>CB  : non acceptée<br>remboursement :<br><br>l’ostéopathie n’est pas remboursée par la sécurité sociale<br>remboursement par votre mutuelle complémentaire selon votre contrat :<br>https://www.osteopathe-syndicat.fr/mutuelle-osteopathie",
-    "history": "L’ostéopathie est née de quelle manière ?<br><br>Naissance de l’ostéopathie aux Etats-Unis en 1874 avec le médecin chirurgien Andrew Taylor Still. Suite à la mort de 4 membres de sa famille atteints de méningite, il rompt avec la médecine traditionnelle pour soigner les causes et non les symptômes des maladies. Huit ans plus tard, face à ses succès médicaux, Still fonda la première école d’ostéopathie à Kirksville, l’American School of Osteopathy.<br>Naissance de l’ostéopathie crânienne et fasciale en 1900 avec William Garner Sutherland<br>1950 : ouverture de la première école d’ostéopathie en France par Paul Gény<br>L’ostéopathie & la loi :<br><br>Le titre d’ostéopathie est reconnu en France depuis mars 2002 dans l’article 75 de la loi relative aux droits des malades.",
-    "contact": "CONSULTATION SUR RDV, réservation possible aussi par : <br><br>téléphone :  07.60.16.62.36 (mobile)  ou 09.82.47.72.38 (fixe)<br>par mail : sautier.laure@gmail.com<br>Adresse du cabinet : <br><br>3 rue Honoré d’Estienne d’Orves – 93310 Le Pré Saint Gervais<br><br>Situation géographique :<br><br>Dans le centre ville, en face de la banque CIC<br><br>Métro : Hoche (L5), Le Pré Saint Gervais (L7)<br><br>Périphérique : porte des Lilas ou porte du Pré saint Gervais<br><br>Utilisation du GPS :<br><br>Les GPS ne trouvent pas toujours facilement la rue.<br><br>Vous pouvez inscrire la  rue Gabriel Péri  (93310) qui prolonge la rue Honoré d’Estienne d’Orves<br><br>Parking à proximité : <br><br>au 3 rue Danton – 93310 Le Pré Saint Gervais<br><br>Le cabinet se trouve à proximité de :<br><br>la commune des Lilas, de Pantin, du 19e et du 20e et de Romainville."
-},
-```
-
 ### Pilates
 
-Nous avons créé une taxonomie `category-pilates`. Elle regroupe 3 termes :
+Nous avons créé une taxonomie `category-pilates`. Elle regroupe 2 termes :
 
 - `publics-pilates`
 - `coach`
-- `infos-pratiques-pilates`
 
 Ce sont ces termes qui permettront de différencier les contenus à afficher sur la page Pilates.
 
@@ -210,16 +185,6 @@ Cette route retourne tous les termes, et leurs informations. Par exemple :
         "meta": [],
     },
     {
-        "id": 9,
-        "count": 0,
-        "description": "",
-        "name": "Informations pratiques Pilates",
-        "slug": "infos-pratiques-pilates",
-        "taxonomy": "category-pilates",
-        "parent": 0,
-        "meta": [],
-        },
-    {
         "id": 17,
         "count": 0,
         "description": "",
@@ -235,6 +200,71 @@ Cette route retourne tous les termes, et leurs informations. Par exemple :
 Comme pour ostéopathie, une fois qu'on a récupéré les id des différents termes, on peut faire une nouvelle requête pour afficher les posts de ce terme précis, grâce à l'url `/wp-json/wp/v2/pilates?category-pilates=<id>` en GET, où `<id>` est à remplacer par l'id du terme.
 
 Le format de sortie est identique que pour ostéopathie.
+
+## Informations pratiques
+
+Les informations pratiques sont accessibles depuis l'url `/wp-json/wp/v2/info` en GET :
+
+```json
+[
+    {
+        "id": 13,
+        "date": "2020-01-28T13:46:49",
+        "date_gmt": "2020-01-28T12:46:49",
+        "guid": {
+            "rendered": "http://localhost/Apo/projet-rdv-osteo-pilates/WP/?post_type=info&#038;p=13"
+        },
+        "modified": "2020-01-28T13:46:49",
+        "modified_gmt": "2020-01-28T12:46:49",
+        "slug": "contact",
+        "status": "publish",
+        "type": "info",
+        "link": "http://localhost/Apo/projet-rdv-osteo-pilates/WP/info/contact/",
+        "title": {
+            "rendered": "Contact"
+        },
+        "content": {
+            "rendered": "\n<p>Informations de contact&#8230;</p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Informations de contact&#8230;</p>\n",
+            "protected": false
+        },
+        "featured_media": 0,
+        "template": "",
+        "meta": []
+    },
+    {
+        "id": 12,
+        "date": "2020-01-28T13:43:37",
+        "date_gmt": "2020-01-28T12:43:37",
+        "guid": {
+            "rendered": "http://localhost/Apo/projet-rdv-osteo-pilates/WP/?post_type=info&#038;p=12"
+        },
+        "modified": "2020-01-28T13:43:37",
+        "modified_gmt": "2020-01-28T12:43:37",
+        "slug": "tarifs",
+        "status": "publish",
+        "type": "info",
+        "link": "http://localhost/Apo/projet-rdv-osteo-pilates/WP/info/tarifs/",
+        "title": {
+            "rendered": "Tarifs"
+        },
+        "content": {
+            "rendered": "\n<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>\n",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, [&hellip;]</p>\n",
+            "protected": false
+        },
+        "featured_media": 0,
+        "template": "",
+        "meta": []
+    }
+]
+```
 
 ## Page d'inscription
 

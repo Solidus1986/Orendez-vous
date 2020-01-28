@@ -88,14 +88,6 @@ class Pilates_cpt
         );
 
         wp_insert_term(
-            'Informations pratiques Pilates',
-            'category-pilates',
-            [
-                'slug' => 'infos-pratiques-pilates'
-            ]
-        );
-
-        wp_insert_term(
             'Coach',
             'category-pilates',
             [
