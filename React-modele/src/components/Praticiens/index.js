@@ -74,6 +74,7 @@ class Praticiens extends React.Component {
             {osteopathes.map((osteo=>{
 
               {console.log('osteo',osteo)};
+              {console.log('title',osteo.title.rendered)};
 
               <Card style={classes.card}>
                 <CardMedia
