@@ -13,6 +13,7 @@ import Footer from 'src/components/Footer';
 import './app.scss';
 import usersData from 'src/Data/users';
 import pratiqueData from 'src/Data/pratiques';
+import infosData from 'src/Data/infos';
 import Pratiques from '../Pratiques';
 import Praticiens from '../Praticiens';
 import Infos from '../Infos';
@@ -25,7 +26,8 @@ import Praticien from '../Praticiens/singlePraticien';
 
 const styles = {
   root: {
-    flexGrow: 1,
+    flexGrow: 1,   
+    height:"100vh"
   },
 };
 
@@ -35,7 +37,7 @@ class App extends React.Component {
     const classes = styles.root;
     return (
       <div id="app" className={classes}>
-        <Grid container spacing={2}>
+        <Grid container id='carton' spacing={2}>
           <Grid item xs={12}>
             <Header />
           </Grid>
@@ -63,12 +65,12 @@ class App extends React.Component {
                 <Praticien />
               </Route>
               <Route path="/infos">
-                <Infos />
+                <Infos infos={infosData}/>
               </Route>
             </Switch>
           </Grid>
           <Grid item xs={12}>
-            <Footer />
+            <Footer  />
           </Grid>
         </Grid>
       </div>
