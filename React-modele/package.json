@@ -53,6 +53,7 @@
     "@material-ui/pickers": "^3.2.9",
     "@mui-treasury/components": "^0.3.12",
     "@mui-treasury/styles": "^0.3.6",
+    "axios": "^0.19.2",
     "chai": "^4.2.0",
     "date-fns": "^2.9.0",
     "enzyme": "^3.11.0",

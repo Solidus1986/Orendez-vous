@@ -1,8 +1,8 @@
 // == Import : npm
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 
 // Import composants
 import Header from 'src/components/Header';
@@ -11,9 +11,6 @@ import Footer from 'src/components/Footer';
 
 // == Import : local
 import './app.scss';
-import usersData from 'src/Data/users';
-import pratiqueData from 'src/Data/pratiques';
-import infosData from 'src/Data/infos';
 import Pratiques from '../Pratiques';
 import Praticiens from '../Praticiens';
 import Infos from '../Infos';
@@ -22,7 +19,13 @@ import Form from '../Form';
 import Reservation from '../Reservation';
 import Praticien from '../Praticiens/singlePraticien';
 
+
 // Data
+import usersData from 'src/Data/users';
+import pratiqueData from 'src/Data/pratiques';
+import infosData from 'src/Data/infos';
+
+// const WP_URL ='http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json';
 
 const styles = {
   root: {
@@ -33,6 +36,17 @@ const styles = {
 
 // == Composant
 class App extends React.Component {
+  // state = {}
+
+  // componentDidMount() {
+  //   axios.get(`${WP_URL}`)
+  //     .then(res => {
+  //       const persons = res.data;
+  //       this.setState({ persons });
+  //     })
+  // }
+
+
   render() {
     const classes = styles.root;
     return (
