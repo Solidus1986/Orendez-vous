@@ -13,16 +13,11 @@ const useStyles = makeStyles(theme => ({
 
   pratique:{
     display:'inline-block',
-    // height: '100%',
-    // width: '100%',
     margin:'1.4rem',
 
     textTransform: 'uppercase',
     fontSize: '12rem',
-    // borderRadius: '50%',
     backgroundColor:'white',
-    // border: 'solid 2px black',
-    // padding: '8rem',
     '@media screen and (min-width: 600px) and (max-width: 1200px)': {
 
       fontSize: '10rem',
