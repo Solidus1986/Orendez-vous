@@ -9,10 +9,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-const WP_URL ='http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/';
-const Osteopathes='osteopathie?category-osteo=4';
+import Praticien from './singlePraticien';
 
-
+const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/';
+const Osteopathes = 'osteopathie?category-osteo=4';
 
 const styles = {
   root: {
@@ -46,13 +46,11 @@ const styles = {
   },
 };
 
-import Praticien from './singlePraticien';
- 
-
 class Praticiens extends React.Component {
   state = {
-    osteopathes: []
+    osteopathes: [],
   }
+
   componentDidMount() {
     axios.get(`${WP_URL}${Osteopathes}`)
       .then(res => {
@@ -65,7 +63,7 @@ class Praticiens extends React.Component {
 
   render() {
     const classes = styles;
-    const { osteopathes } = this.state
+    const { osteopathes } = this.state;
     return (
       <Grid container style={classes.root}>
         <Grid container justify="center">
@@ -74,10 +72,8 @@ class Praticiens extends React.Component {
           </Grid>
           <Grid style={classes.panel}>
             {osteopathes.map((osteo=>{
-              {console.log('osteo',osteo)};
-              {console.log('title',osteo.title.rendered)};
-              {console.log('type',osteo.type)};
 
+              {console.log('osteo',osteo)};
 
               <Card style={classes.card}>
                 <CardMedia
@@ -89,9 +85,11 @@ class Praticiens extends React.Component {
                   <CardContent style={classes.content}>
                     <Typography component="h5" variant="h5">
                       {osteo.title.rendered}
+                      {console.log('title',osteo.title.rendered)};
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
                       {osteo.type}
+                      {console.log('type',osteo.type)};
                     </Typography>
                   </CardContent>
                   <div style={classes.controls}>
