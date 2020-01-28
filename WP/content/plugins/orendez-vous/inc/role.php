@@ -77,6 +77,18 @@ class ORdvRole
             $role->add_cap('edit_pilatess');
             $role->add_cap('publish_pilatess');
         }
+
+            $admin = get_role('administrator');
+            $admin->add_cap('read_infos');
+            $admin->add_cap('delete_infos');
+            $admin->add_cap('delete_private_infos');
+            $admin->add_cap('delete_published_infos');
+            $admin->add_cap('delete_others_infos');
+            $admin->add_cap('edit_private_infos');
+            $admin->add_cap('edit_published_infos');
+            $admin->add_cap('edit_others_infos');
+            $admin->add_cap('edit_infos');
+            $admin->add_cap('publish_infos');
     }
 
     public function removeRole()

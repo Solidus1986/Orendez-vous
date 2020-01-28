@@ -91,14 +91,6 @@ class Osteo_cpt
         );
 
         wp_insert_term(
-            'Informations pratiques Ostéopathie',
-            'category-osteo',
-            [
-                'slug' => 'infos-pratiques-osteo'
-            ]
-        );
-
-        wp_insert_term(
             'Praticiens',
             'category-osteo',
             [

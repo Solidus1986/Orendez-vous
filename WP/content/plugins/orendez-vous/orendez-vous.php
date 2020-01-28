@@ -12,7 +12,7 @@ if (!defined('WPINC')) {
 
 require plugin_dir_path(__FILE__) . 'inc/osteo_cpt.php';
 require plugin_dir_path(__FILE__) . 'inc/pilates_cpt.php';
-require plugin_dir_path(__FILE__) . 'inc/info_custom_field.php';
+require plugin_dir_path(__FILE__) . 'inc/info_cpt.php';
 require plugin_dir_path(__FILE__) . 'inc/rest_api.php';
 require plugin_dir_path(__FILE__) . 'inc/role.php';
 
@@ -27,10 +27,10 @@ $pilates_cpt = new Pilates_cpt;
 register_activation_hook(__FILE__, [$pilates_cpt, 'activation']);
 register_deactivation_hook(__FILE__, [$pilates_cpt, 'deactivation']);
 
-// Custom Fields Infos Pratiques
-$info_custom_fields = new Info_custom_field;
-register_activation_hook(__FILE__, [$info_custom_fields, 'activation']);
-register_deactivation_hook(__FILE__, [$info_custom_fields, 'deactivation']);
+// CPT INFOS PRATIQUES + TAXO
+$info_cpt = new Info_cpt;
+register_activation_hook(__FILE__, [$info_cpt, 'activation']);
+register_deactivation_hook(__FILE__, [$info_cpt, 'deactivation']);
 
 // Rôles
 $ordv_role = new ORdvRole;
