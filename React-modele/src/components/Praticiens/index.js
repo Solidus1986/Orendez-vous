@@ -77,9 +77,7 @@ const Praticiens = () => {
                 </Typography>
               </CardContent>
               <div className={classes.controls}>
-                  <Button variant="outlined" className={classes.button}>
-                    <Praticien />
-                  </Button>
+                <Praticien />
               </div>
             </div>
           </Card>
@@ -101,9 +99,7 @@ const Praticiens = () => {
                 </Typography>
               </CardContent>
               <div className={classes.controls}>
-                  <Button variant="outlined" className={classes.button}>
-                    <Praticien />
-                  </Button>
+                <Praticien />
               </div>
             </div>
           </Card>
