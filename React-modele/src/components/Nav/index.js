@@ -8,13 +8,15 @@ import './nav.scss';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    margin:'7rem 0rem',
+    margin: '7rem 0rem',
   },
+
   pratique:{
     display:'inline-block',
     // height: '100%',
     // width: '100%',
     margin:'1.4rem',
+
     textTransform: 'uppercase',
     fontSize: '12rem',
     // borderRadius: '50%',
@@ -22,6 +24,7 @@ const useStyles = makeStyles(theme => ({
     // border: 'solid 2px black',
     // padding: '8rem',
     '@media screen and (min-width: 600px) and (max-width: 1200px)': {
+
       fontSize: '10rem',
   },
   '@media screen and (min-width: 200px) and (max-width: 600px)': {
@@ -33,7 +36,7 @@ const useStyles = makeStyles(theme => ({
 
 const Nav = (props) => {
   const classes = useStyles();
-  const { data } = props
+  const { data } = props;
   console.log("data:",data);
 
   return (

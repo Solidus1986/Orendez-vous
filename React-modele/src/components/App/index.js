@@ -20,6 +20,8 @@ import Infos from '../Infos';
 import Profil from '../Profil';
 import Form from '../Form';
 import Reservation from '../Reservation';
+import Praticien from '../Praticiens/singlePraticien';
+
 // Data
 
 const styles = {
@@ -56,8 +58,11 @@ class App extends React.Component {
               <Route exact path="/pratiques/reservation">
                 <Reservation />
               </Route>
-              <Route path="/praticiens">
+              <Route exact path="/praticiens">
                 <Praticiens />
+              </Route>
+              <Route exact path="/praticiens/praticien">
+                <Praticien />
               </Route>
               <Route path="/infos">
                 <Infos infos={infosData}/>
