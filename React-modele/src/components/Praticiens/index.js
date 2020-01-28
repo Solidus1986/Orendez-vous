@@ -13,7 +13,7 @@ import Praticien from './singlePraticien';
 
 const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/';
 const Osteopathes = 'osteopathie?category-osteo=4';
-const Pilates = 'pilates?category-pilates=13';
+const Pilates = 'pilates?category-pilates=6';
 
 const styles = {
   root: {
@@ -86,7 +86,7 @@ class Praticiens extends React.Component {
                 <Card key={osteo.id} style={classes.card}>
                   <CardMedia
                     style={classes.cover}
-                    image="src/Images/avatar1.jpg"
+                    image={osteo.thumbnail_url}
                     title={osteo.title.rendered}
                   />
                   <div style={classes.details}>
@@ -110,7 +110,7 @@ class Praticiens extends React.Component {
                 <Card key={pilate.id} style={classes.card}>
                   <CardMedia
                     style={classes.cover}
-                    image="src/Images/avatar1.jpg"
+                    image={pilate.thumbnail_url}
                     title={pilate.title.rendered}
                   />
                   <div style={classes.details}>
