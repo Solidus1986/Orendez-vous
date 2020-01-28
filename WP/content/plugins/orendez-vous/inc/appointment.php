@@ -42,50 +42,81 @@ class Appointment
         $current_user_role = wp_get_current_user()->roles[0];
         $txt = '';
         if($current_user_role == 'coach' || $current_user_role == 'administrator') {
-            $txt = '<label for="available_places">Place(s) disponible(s)</label>
-            <input type="number" name="available_places" id="available_places" min="1"  value="1" required>';
+            $txt = '<div>
+                <label for="available_places">Place(s) disponible(s)</label>
+                <input type="number" name="available_places" id="available_places" min="1"  value="1" required>
+            </div>';
         }
 
         echo '
         <h1>Créer des nouveaux créneaux</h1>
         <form method="POST">
-            <label for="type">Type</label>
-            <select name="type" id="type">
-                <option value="osteo">Ostéopathie</option>
-                <option value="pilates">Pilates</option>
-            </select>
-            <label for="start_date">Début de la planification</label>
-            <input type="date" name="start_date" id="start_date" value="' . $date . '">
-            <label for="weeks">Nombre de semaines de planification</label>
-            <input type="number" name="weeks" id="weeks" value="1" min="1">
+            <div>
+                <label for="type">Type</label>
+                <select name="type" id="type">
+                    <option value="osteo">Ostéopathie</option>
+                    <option value="pilates">Pilates</option>
+                </select>
+            </div>
+            <div>
+                <div>
+                <label for="start_date">Début de la planification</label>
+                <input type="date" name="start_date" id="start_date" value="' . $date . '">
+                </div>
+                <div>
+                <label for="weeks">Nombre de semaines de planification</label>
+                <input type="number" name="weeks" id="weeks" value="1" min="1">
+                </div>
+            </div>
             <fieldset>
                 <legend>Jour de la semaine</legend>
-                <label for="monday">Lundi</label>
+                <div>
                 <input name="day[]" id="monday" type="checkbox" value="mo">
-                <label for="tuesday">Mardi</label>
+                <label for="monday">Lundi</label>
+                </div>
+                <div>
                 <input name="day[]" id="tuesday" type="checkbox" value="tu">
-                <label for="wednesday">Mercredi</label>
+                <label for="tuesday">Mardi</label>
+                </div>
+                <div>
                 <input name="day[]" id="wednesday" type="checkbox" value="we">
-                <label for="thursday">Jeudi</label>
+                <label for="wednesday">Mercredi</label>
+                </div>
+                <div>
                 <input name="day[]" id="thursday" type="checkbox" value="th">
-                <label for="friday">Vendredi</label>
+                <label for="thursday">Jeudi</label>
+                </div>
+                <div>
                 <input name="day[]" id="friday" type="checkbox" value="fr">
-                <label for="saturday">Samedi</label>
+                <label for="friday">Vendredi</label>
+                </div>
+                <div>
                 <input name="day[]" id="saturday" type="checkbox" value="sa">
-                <label for="sunday">Dimanche</label>
+                <label for="saturday">Samedi</label>
+                </div>
+                <div>
                 <input name="day[]" id="sunday" type="checkbox" value="su">
+                <label for="sunday">Dimanche</label>
+                </div>
             </fieldset>
-            <label for="start_time_hours">Heure de début</label>
-            <select name="start_time_hours" id="start_time_hours">' .
-            $select_options_hours
-            . '</select>
-            <select name="start_time_minutes" id="start_time_minutes">' .
-            $select_options_minutes
-            . '</select>
-            <label for="length">Durée en minutes</label>
-            <input type="number" name="length" id="length" min="0" required value="1">' .
+            <div>
+                <div>
+                <label for="start_time_hours">Heure de début</label>
+                <select name="start_time_hours" id="start_time_hours">' .
+                $select_options_hours
+                . '</select>
+                <select name="start_time_minutes" id="start_time_minutes">' .
+                $select_options_minutes
+                . '</select>
+                </div>
+                <div>
+                <label for="length">Durée en minutes du rendez-vous</label>
+                <input type="number" name="length" id="length" min="0" required value="1">
+                </div>
+            </div>
+            ' .
             $txt
-            . '<button type="submit">Créer</button>
+            . '<div><button type="submit">Créer</button></div>
         </form>
         ';
 
@@ -105,12 +136,12 @@ class Appointment
 
         // Si aucun jour de la semaine n'est coché, on affiche un message à l'utilisateur
         if (empty($_POST['day'])) {
-            echo 'Merci de choisir au moins un jour dans la liste.';
+            echo '<p class="error">Merci de choisir au moins un jour dans la liste.</p>';
             return;
         }
         // Si le jour de la semaine (lundi, mardi, mercredi ..) se référant à la date de publication n'est pas coché alors on affiche un message d'erreur :
         if (!in_array(substr($weekday, 0, 2), $_POST['day'])) {
-            echo 'Le début de planification doit correspondre à un des jours de la semaine.';
+            echo '<p class="error">Le début de planification doit correspondre à un des jours de la semaine.</p>';
             return;
         }
 

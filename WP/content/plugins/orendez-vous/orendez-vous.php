@@ -10,6 +10,7 @@ if (!defined('WPINC')) {
     die;
 }
 include_once(ABSPATH . 'wp-includes/pluggable.php');
+require plugin_dir_path(__FILE__) . 'inc/enqueue.php';
 require plugin_dir_path(__FILE__) . 'inc/osteo_cpt.php';
 require plugin_dir_path(__FILE__) . 'inc/pilates_cpt.php';
 require plugin_dir_path(__FILE__) . 'inc/info_custom_field.php';

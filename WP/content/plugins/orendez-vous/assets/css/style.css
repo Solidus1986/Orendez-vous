@@ -1,0 +1,34 @@
+form div, form fieldset {
+    margin-bottom: 1rem;
+}
+
+form input[type="number"] {
+    width: 50px;
+}
+
+form legend {
+    margin-bottom: .5rem;
+}
+
+form fieldset input[type="checkbox"] {
+    margin-right: 1rem;
+}
+
+form button {
+    padding: .375rem .75rem;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: .25rem;
+    color: white;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.error {
+    font-weight: bold;
+    color: red;
+}
