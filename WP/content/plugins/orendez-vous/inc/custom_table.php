@@ -57,4 +57,16 @@ class CustomTable
 
         dbDelta($booking_sql);
     }
+
+    public static function add_appointment($args)
+    {
+        global $wpdb;
+
+        $wpdb->query(
+            $wpdb->prepare(
+                "INSERT INTO wp_appointment (type, start_date, end_date, max_places, available_places, user_id) VALUES (%s, %s, %s, %d, %d, %d)",
+                $args
+            )
+        );
+    }
 }

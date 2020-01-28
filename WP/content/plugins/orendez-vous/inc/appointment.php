@@ -48,7 +48,7 @@ class Appointment
 
         echo '
         <h1>Créer des nouveaux créneaux</h1>
-        <form action="" method="POST">
+        <form method="POST">
             <label for="type">Type</label>
             <select name="type" id="type">
                 <option value="osteo">Ostéopathie</option>
@@ -122,8 +122,11 @@ class Appointment
 
         // on récupère le nombre de places disponibles dans le formulaire
         // ou on met par défaut 1 (cas des RDV ostéopathes)
-        $available_places = isset($_POST['available_places']) ? $_POST['available_places'] : 1 ;
+        $available_places = isset($_POST['available_places']) ? intval($_POST['available_places']) : 1 ;
 
+        $type = $_POST['type'];
+        $user_id = wp_get_current_user()->data->ID;
+        $length = $_POST['length'];
         // on utilise le package when (récupéré avec composer)
         // La méthode generateOccurrences retourne un tableau d'occurences
         $r = new When();
@@ -133,12 +136,24 @@ class Appointment
         ->byday($weekdays)
         ->generateOccurrences();
 
+        global $wpdb;
         // on boucle sur le tableau des occurences
         // pour chaque occurence, on va faire une requête pour insérer une nouvelle entrée dans la table wp_appointment
         foreach($r->occurrences as $value) {
-            echo '<pre>';
-            print_r($value->format('Y-m-d H:i:s'));
-            echo '<pre>';
+            $start_date = $value->format('Y-m-d H:i:s');
+            // $end_date = strtotime($start_date . " +10 min");
+            $end_date = date_add($value, new DateInterval("PT" . $length . "M"))->format('Y-m-d H:i:s');
+
+            $args = [
+                $type,
+                $start_date,
+                $end_date,
+                $available_places,
+                $available_places,
+                $user_id
+            ];
+            
+            CustomTable::add_appointment($args);
         }
     }
 }
