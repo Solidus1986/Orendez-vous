@@ -23,6 +23,7 @@ const styles = {
   },
   card: {
     display: 'flex',
+    margin: '2rem',
   },
   details: {
     display: 'flex',
@@ -50,6 +51,7 @@ class Praticiens extends React.Component {
   state = {
     osteopathes: [],
   }
+  
 
   componentDidMount() {
     axios.get(`${WP_URL}${Osteopathes}`)
@@ -71,34 +73,28 @@ class Praticiens extends React.Component {
             <h1 style={{ textTransform: 'uppercase', marginBottom: '1rem' }}>Les praticiens</h1>
           </Grid>
           <Grid style={classes.panel}>
-            {osteopathes.map((osteo=>{
-
-              {console.log('osteo',osteo)};
-              {console.log('title',osteo.title.rendered)};
-
-              <Card style={classes.card}>
-                <CardMedia
-                  style={classes.cover}
-                  image="src/Images/avatar1.jpg"
-                  title={osteo.title.rendered}
-                />
-                <div style={classes.details}>
-                  <CardContent style={classes.content}>
-                    <Typography component="h5" variant="h5">
-                      {osteo.title.rendered}
-                      {console.log('title',osteo.title.rendered)};
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                      {osteo.type}
-                      {console.log('type',osteo.type)};
-                    </Typography>
-                  </CardContent>
-                  <div style={classes.controls}>
-                    <Praticien />
+            {osteopathes.map((osteo=>(
+                <Card key={osteo.id} style={classes.card}>
+                  <CardMedia
+                    style={classes.cover}
+                    image="src/Images/avatar1.jpg"
+                    title={osteo.title.rendered}
+                  />
+                  <div style={classes.details}>
+                    <CardContent style={classes.content}>
+                      <Typography component="h5" variant="h5">
+                        {osteo.title.rendered}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        {osteo.type}
+                      </Typography>
+                    </CardContent>
+                    <div style={classes.controls}>
+                      <Praticien key={osteo.id} {...osteo}/>
+                    </div>
                   </div>
-                </div>
-              </Card>
-            }))}
+                </Card>
+            )))}
           </Grid>
         </Grid>
       </Grid>
