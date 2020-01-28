@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/';
-const Informations = 'osteopathie?category-osteo=4';
+const Informations = '/info';
 
 const styles = {
   root: {
@@ -21,6 +21,10 @@ const styles = {
   },
   summary:{
     boderRadius:'5px',
+  },
+  text :{
+    textAlign:'justify',
+    hyphens: 'none',
   }
 };
 
@@ -64,7 +68,8 @@ class Infos extends React.Component {
                        </ExpansionPanelSummary>
                        <ExpansionPanelDetails>
                          <Typography
-                         dangerouslySetInnerHTML={{__html:info.content.rendered}}
+                          style={classes.text}
+                          dangerouslySetInnerHTML={{__html:info.content.rendered}}
                          >
                          </Typography>
                        </ExpansionPanelDetails>

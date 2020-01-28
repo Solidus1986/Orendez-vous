@@ -17,9 +17,7 @@ const styles = {
   },
 };
 
-class Pratiques extends React.Component {
-
-  render () {
+const  Pratiques = (osteo) => {
     const classes = styles;
     return (
         <div>
@@ -28,7 +26,7 @@ class Pratiques extends React.Component {
           />
         </div>
     );
-  }
+  
 };
 
 export default Pratiques;

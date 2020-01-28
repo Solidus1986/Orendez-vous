@@ -95,7 +95,7 @@ class Praticiens extends React.Component {
                         {osteo.title.rendered}
                       </Typography>
                       <Typography variant="subtitle1" color="textSecondary">
-                        {osteo.type}
+                        Osteopathe
                       </Typography>
                     </CardContent>
                     <div style={classes.controls}>
@@ -119,7 +119,7 @@ class Praticiens extends React.Component {
                         {pilate.title.rendered}
                       </Typography>
                       <Typography variant="subtitle1" color="textSecondary">
-                        {pilate.type}
+                        Coach Pilates
                       </Typography>
                     </CardContent>
                     <div style={classes.controls}>
