@@ -116,7 +116,7 @@ class Appointment
             </div>
             ' .
             $txt
-            . '<div><button type="submit">Créer</button></div>
+            . '<div><button class="btn btn-success" type="submit">Créer</button></div>
         </form>
         ';
 

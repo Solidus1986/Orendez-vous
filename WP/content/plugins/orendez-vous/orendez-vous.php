@@ -18,6 +18,8 @@ require plugin_dir_path(__FILE__) . 'inc/rest_api.php';
 require plugin_dir_path(__FILE__) . 'inc/role.php';
 require plugin_dir_path(__FILE__) . 'inc/custom_table.php';
 require plugin_dir_path(__FILE__) . 'inc/appointment.php';
+require plugin_dir_path(__FILE__) . 'inc/planning.php';
+
 
 
 // CPT OSTEO + TAXOS
@@ -45,3 +47,6 @@ $custom_table = new CustomTable;
 
 // Appointment
 $appointment = new Appointment;
+
+// Planning 
+$planning = new Planning;

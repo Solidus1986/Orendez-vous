@@ -69,4 +69,13 @@ class CustomTable
             )
         );
     }
+
+    public static function read_appointment($user_id)
+    {
+        global $wpdb;
+
+        return $wpdb->get_results(
+            "SELECT * FROM wp_appointment WHERE user_id = $user_id ORDER BY start_date ASC"
+        );
+    }
 }
