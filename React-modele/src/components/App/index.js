@@ -67,8 +67,8 @@ class App extends React.Component {
               <Route exact path="/connexion">
                 <Login />
               </Route>
-              <Route exact path="/profil">
-                <Profil data={usersData} />
+              <Route exact path="/profil/:userName">
+                <Profil />
               </Route>
               <Route exact path="/pratiques">
                 <Pratiques data={pratiqueData}/>

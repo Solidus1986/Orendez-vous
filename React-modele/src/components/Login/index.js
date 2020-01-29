@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 
+
 const styles = {
   root: {
       display: 'flex',
@@ -61,7 +62,7 @@ class Login extends React.Component {
 		this.setState( { loading: true }, () => {
 			axios.post( `${siteUrl}/wp-json/jwt-auth/v1/token`, loginData )
 				.then( res => {
-          console.log('tokentome:',res.data.token);
+          // console.log('tokentome:',res.data);
 					if ( undefined === res.data.token ) {
 						this.setState( { error: res.data.message, loading: false } );
 						return;
@@ -74,14 +75,14 @@ class Login extends React.Component {
 
 					this.setState( {
 						loading: false,
-                        token: token,
-                        userNiceName: user_nicename,
+            token: token,
+            userNiceName: user_nicename,
 						userEmail: user_email,
 						loggedIn: true
 					} )
 				} )
 				.catch( err => {
-          console.log('error',err);
+          // console.log('error',err);
 					this.setState( { error: err.response.data.message, loading: false } );
 				} )
 		} )
@@ -97,6 +98,8 @@ class Login extends React.Component {
 
       const user = ( userNiceName ) ? userNiceName : localStorage.getItem( 'userName' );
 
+      
+
       if ( loggedIn || localStorage.getItem( 'token' ) ) {
         return ( <Redirect to={`/profil/${user}`} noThrow /> )
     } else {
@@ -108,7 +111,7 @@ class Login extends React.Component {
           <Grid container justify = "center">              
             <Grid >
               <div>
-                <h2 style={classes.title}>Se Connecter</h2>
+                <h2 style={classes.title}>SE CONNECTER</h2>
               </div>
               <form onSubmit={ this.onFormSubmit }>
               <TextField 

@@ -11,6 +11,9 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
+import { getUserName, isLoggedIn } from "../functions";
+
+
 
 // Import component
 import UserInfo from './UserInfo';
@@ -20,6 +23,9 @@ import SessionCard from './SessionCard';
 import './profil.scss';
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: '1'
+  },
   panel: {
     margin: '1rem 1rem',
   },
@@ -32,68 +38,68 @@ const useStyles = makeStyles(theme => ({
   title: {
     textAlign: 'center',
   },
+  
 }));
 
-const Profil = () => {
-
+const Profil = (props) => {
+  const userName = getUserName()
   const classes = useStyles();
-
+  
   return (
 
-    <Grid className={classes.root} container justify="center" item xs={12}>
-      <Grid classe={classes.panel}>
-      <ExpansionPanel>
-          <ExpansionPanelSummary 
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-            content={classes.title}
-          >
-            Mes informations
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <UserInfo />
-          </ExpansionPanelDetails>
-      </ExpansionPanel>
-      </Grid>
-      <Grid classe={classes.panel}>
-      <ExpansionPanel>
-          <ExpansionPanelSummary 
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            Mes Rendez-vous
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Dates />
-          </ExpansionPanelDetails>
-      </ExpansionPanel>
-      </Grid>
-      <Grid classe={classes.panel}>
-      <ExpansionPanel>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />} 
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            Ma carte Pilates
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <SessionCard />
-          </ExpansionPanelDetails>
-      </ExpansionPanel>
+    <Grid className={classes.root} >
+      <Grid container justify='center'>
+        <Grid item xs={12}>
+          <h1 style={{marginBottom:'1rem'}} className="take_date">{userName}</h1>
+        </Grid>
+        <Grid item xs={6} classe={classes.panel}>
+          <ExpansionPanel
+            className={classes.panel}>
+              <ExpansionPanelSummary 
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                content={classes.title}
+              >
+                Mes informations
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <UserInfo />
+              </ExpansionPanelDetails>
+          </ExpansionPanel>
+          
+          <ExpansionPanel
+            className={classes.panel}>
+              <ExpansionPanelSummary 
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                Mes Rendez-vous
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <Dates />
+              </ExpansionPanelDetails>
+          </ExpansionPanel>
+         
+          <ExpansionPanel
+            className={classes.panel}>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />} 
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                Ma carte Pilates
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <SessionCard />
+              </ExpansionPanelDetails>
+          </ExpansionPanel>
+          </Grid>
       </Grid>
     </Grid>
   );
 
-Profil.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      firstname: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
-};
 };
 
 export default Profil;
