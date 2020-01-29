@@ -59,9 +59,9 @@ class Form extends React.Component {
     });
   };
 
-  handleChange = input => e => {
+  handleChange = TextField => e => {
     this.setState({
-      [input]:e.target.value,
+      [TextField]:e.target.value,
     })
   }
   

@@ -16,6 +16,7 @@ import Praticiens from '../Praticiens';
 import Infos from '../Infos';
 import Profil from '../Profil';
 import Form from '../Form';
+import Login from '../Login';
 import Reservation from '../Reservation';
 import Praticien from '../Praticiens/singlePraticien';
 
@@ -60,10 +61,13 @@ class App extends React.Component {
               <Route exact path="/">
                 <Nav data={pratiqueData}/>
               </Route>
-              <Route path="/connexion">
+              <Route exact path="/inscription">
                 <Form />
               </Route>
-              <Route path="/profil">
+              <Route exact path="/connexion">
+                <Login />
+              </Route>
+              <Route exact path="/profil">
                 <Profil data={usersData} />
               </Route>
               <Route exact path="/pratiques">
@@ -78,7 +82,7 @@ class App extends React.Component {
               <Route exact path="/praticiens/praticien">
                 <Praticien />
               </Route>
-              <Route path="/infos">
+              <Route exact path="/infos">
                 <Infos infos={infosData}/>
               </Route>
             </Switch>
