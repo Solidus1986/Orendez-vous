@@ -8,7 +8,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 // import local
-import './pratique.scss'
 
 const useStyles = makeStyles(theme => ({
   root: {

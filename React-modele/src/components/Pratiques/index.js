@@ -2,7 +2,6 @@ import React from 'react';
 
 import Pratique from 'src/components/Pratiques/pratique';
 
-import './pratiques.scss';
 
 const styles = {
   title: {
