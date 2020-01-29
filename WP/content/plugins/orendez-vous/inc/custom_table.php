@@ -93,4 +93,34 @@ class CustomTable
             )
         );
     }
+
+    public static function book_appointment($appointment_id, $user_id)
+    {
+        global $wpdb;
+        // pour masquer les erreurs SQL
+        $wpdb->hide_errors();
+        
+        $result = $wpdb->query(
+            $wpdb->prepare(
+                "INSERT INTO wp_booking (a_id, user_id) VALUES (%d, %d);",
+                [
+                    $appointment_id,
+                    $user_id
+                ]
+            )
+        );
+
+        // $result est false si on a déjà un rdv
+        // dans ce cas, on quitte la méthode en retournant $result qui est false
+        if(!$result) {
+            return $result;
+        }
+
+        return $wpdb->query(
+            $wpdb->prepare(
+                "UPDATE wp_appointment SET available_places = available_places - 1 WHERE id = %d;",
+                $appointment_id
+            )
+        );
+    }
 }
