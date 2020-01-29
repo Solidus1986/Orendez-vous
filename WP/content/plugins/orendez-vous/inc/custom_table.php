@@ -78,4 +78,19 @@ class CustomTable
             "SELECT * FROM wp_appointment WHERE user_id = $user_id ORDER BY start_date ASC"
         );
     }
+
+    public static function read_available_appointments($user_id, $type)
+    {
+        global $wpdb;
+
+        return $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT * FROM wp_appointment WHERE user_id = %d AND type = '%s' AND available_places <> 0 ORDER BY start_date ASC",
+                [
+                    $user_id,
+                    $type
+                ]
+            )
+        );
+    }
 }
