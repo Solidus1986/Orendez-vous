@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import WebFont from 'webfontloader';
+import { Provider } from 'react-redux';
 
 WebFont.load({
   google: {
@@ -15,14 +16,18 @@ WebFont.load({
 import 'src/styles/index.scss';
 // Composant racine
 import App from 'src/components/App';
+import store from 'src/store'
 
 
 // == Render
 // 1. Le composant racine (celui qui contient l'ensemble de l'app)
-const rootComponent = 
-  <Router>
-    <App />
-  </Router>
+const rootComponent = (
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>
+);
 // 2. La cible du DOM (là où la structure doit prendre vie dans le DOM)
 const target = document.getElementById('root');
 

@@ -5,6 +5,9 @@ import { Image } from 'semantic-ui-react';
 import { isLoggedIn } from "../functions";
 import Button from '@material-ui/core/Button';
 
+
+
+
 import './header.scss';
 import logo from 'src/Images/logo.png';
 

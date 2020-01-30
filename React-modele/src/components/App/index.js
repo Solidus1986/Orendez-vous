@@ -16,15 +16,15 @@ import Praticiens from '../Praticiens';
 import Infos from '../Infos';
 import Profil from '../Profil';
 import Form from '../Form';
-import Login from '../Login';
+import Login from 'src/containers/Login';
 import Reservation from '../Reservation';
 import Praticien from '../Praticiens/singlePraticien';
 
 
 // Data
-import usersData from 'src/Data/users';
+// import usersData from 'src/Data/users';
 import pratiqueData from 'src/Data/pratiques';
-import infosData from 'src/Data/infos';
+// import infosData from 'src/Data/infos';
 
 // const WP_URL ='http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json';
 
@@ -83,7 +83,7 @@ class App extends React.Component {
                 <Praticien />
               </Route>
               <Route exact path="/infos">
-                <Infos infos={infosData}/>
+                <Infos />
               </Route>
             </Switch>
           </Grid>
