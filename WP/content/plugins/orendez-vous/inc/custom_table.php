@@ -85,7 +85,7 @@ class CustomTable
 
         return $wpdb->get_results(
             $wpdb->prepare(
-                "SELECT * FROM wp_appointment WHERE user_id = %d AND type = '%s' AND available_places <> 0 ORDER BY start_date ASC",
+                "SELECT * FROM wp_appointment WHERE user_id = %d AND type = '%s' AND available_places <> 0 AND start_date > CURRENT_DATE ORDER BY start_date ASC",
                 [
                     $user_id,
                     $type
@@ -159,7 +159,7 @@ class CustomTable
         global $wpdb;
         
         return $wpdb->get_results(
-            "SELECT * FROM wp_appointment WHERE id IN ($appointments_id);"
+            "SELECT * FROM wp_appointment WHERE id IN ($appointments_id) AND start_date > CURRENT_DATE ORDER BY start_date ASC;"
         );
     }
 
