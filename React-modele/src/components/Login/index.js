@@ -32,12 +32,13 @@ const styles = {
   }
 }
 
-const Login = ({ inputValue, onValueChange, onSubmit }) => {
+const Login = ({ username, password, onValueChange, onSubmit }) => {
   const classes = styles;
   
 	const handleOnChange =  e => {
-		onValueChange( e.target.value );
+		onValueChange(e.target.name, e.target.value);
   };
+
   
   return ( 
     <div style={classes.root}> 
@@ -52,8 +53,9 @@ const Login = ({ inputValue, onValueChange, onSubmit }) => {
             placeholder ="Identifiant"
             label="Identifiant"
             onChange={handleOnChange}
-            value={inputValue.username}
+            defaultValue={username}
             type="text"
+            name="username"
             variant="outlined"
             size='small'
           />
@@ -62,10 +64,11 @@ const Login = ({ inputValue, onValueChange, onSubmit }) => {
           <TextField 
             style={classes.field}
             type="password"
+            name="password"
             placeholder ="Mot de passe"
             label="Mot de passe"
             onChange={handleOnChange}
-            value={inputValue.password}
+            defaultValue={password}
             variant="outlined"
             size="small"
           />
@@ -86,11 +89,8 @@ const Login = ({ inputValue, onValueChange, onSubmit }) => {
         )
       };
       Login.propTypes = {
-        inputValue: PropTypes.arrayOf(
-          PropTypes.shape({
-          username: PropTypes.string.isRequired,
-          password: PropTypes.string.isRequired,
-          }),).isRequired,
+        username: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
         onValueChange: PropTypes.func.isRequired,
         onSubmit: PropTypes.func.isRequired,
       };

@@ -1,7 +1,6 @@
 // --- initial state
 const initialState = {
     // la valeur courante de l'input
-    inputValue: '',
     // la valeur du username après submit
     username: '',
     // la valeur du password après submit
@@ -18,7 +17,7 @@ const initialState = {
       case CHANGE_INPUT:
         return {
           ...state,
-          inputValue: action.value,
+          [action.inputName]: action.value,
         };
   
       default: return state;
@@ -26,13 +25,15 @@ const initialState = {
   };
   
   // --- action creators
-  export const changeInput = (value) => ({
+  export const changeInput = (inputName,value) => ({
     type: CHANGE_INPUT,
+    inputName,
     value,
   });
   
   export const connectUser = () => ({
     type: CONNECT_USER,
+    
   });
   
   // --- export

@@ -7,16 +7,19 @@ import { changeInput, connectUser } from 'src/store/reducer/login';
 // eslint-disable-next-line arrow-body-style
 const mapStateToProps = (state) => {
   return {
-    inputValue: state.login.inputValue,
+    username: state.login.username,
+    password: state.login.password,
+
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onValueChange: (value) => {
-    const action = changeInput(value);
+  onValueChange: (inputName, value) => {
+    const action = changeInput(inputName, value);
     dispatch(action);
   },
-  onSubmit: () => {
+  onSubmit: (e) => {
+    e.preventDefault();
     const action = connectUser();
     dispatch(action);
   },
