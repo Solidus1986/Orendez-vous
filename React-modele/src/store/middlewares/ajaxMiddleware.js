@@ -43,9 +43,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           console.log('refresh', response);
           // on veut mettre logged à true et stocker les infos de l'utilisateur
           const actionLogUser = logUser(
-            response.data.login,
+            response.data.token,
+            
 
           );
+          console.log('response data', response.data.token);
           store.dispatch(actionLogUser);
         })
         .catch((error) => {
