@@ -1,18 +1,18 @@
 /* Css for appointment */
 
-form div, form fieldset {
+.orendezvous-form div, .orendezvous-form fieldset {
     margin-bottom: 1rem;
 }
 
-form input[type="number"] {
+.orendezvous-form input[type="number"] {
     width: 50px;
 }
 
-form legend {
+.orendezvous-form legend {
     margin-bottom: .5rem;
 }
 
-form fieldset input[type="checkbox"] {
+.orendezvous-form fieldset input[type="checkbox"] {
     margin-right: 1rem;
 }
 
@@ -24,25 +24,25 @@ form fieldset input[type="checkbox"] {
 /* Css for planning */
 
 
-table {
+.orendezvous-table {
     border-collapse: collapse;
     text-align: center;
     background-color: #23282d;
     color: white;
 }
 
-table thead th {
+.orendezvous-table thead th {
     border-bottom: 2px solid black;
     border-top: 2px solid black;
     padding: .75rem;
 }
 
-table td {
+.orendezvous-table td {
     padding: .75rem;
     border-bottom: 1px solid black;
 }
 
-table a {
+.orendezvous-table a {
     text-decoration : none;
 }
 

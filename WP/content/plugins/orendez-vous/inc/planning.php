@@ -29,7 +29,7 @@ class Planning
         
         <h1>Consulter mon planning</h1>
 
-        <table>
+        <table class="orendezvous-table">
             <thead>
                 <tr>
                     <th>Type</th>

@@ -50,7 +50,7 @@ class Appointment
 
         echo '
         <h1>Créer des nouveaux créneaux</h1>
-        <form method="POST">
+        <form class="orendezvous-form" method="POST">
             <div>
                 <label for="type">Type</label>
                 <select name="type" id="type">
