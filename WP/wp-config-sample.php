@@ -1,5 +1,5 @@
 <?php
-
+require __DIR__.'/vendor/autoload.php';
 /**
  * The base configuration for WordPress
  *

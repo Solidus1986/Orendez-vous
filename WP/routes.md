@@ -276,8 +276,11 @@ Pour inscrire un nouvel utilisateur, les données du formulaire d'inscription do
   "lastname": "toto",
   "phone_number": "0123456789",
   "email": "example5@local.io",
+  "email_validation": "example5@local.io",
   "username": "toto",
-  "password": "toto"
+  "password": "toto",
+  "password_validation": "toto"
+
 }
 ```
 
@@ -308,6 +311,30 @@ Si l'utilisateur essaye de créer un compte avec la même adresse mail OU le mê
 {
     "code": 406,
     "message": "Email or Username already exists.",
+    "data": {
+        "status": 400
+    }
+}
+```
+
+Si l'utilisateur essaye de créer un compte et se trompe lors de la validation du password alors il sera bloqué et recevra ce message :
+
+```json
+{
+    "code": 404,
+    "message": "The password confirmation does not match.",
+    "data": {
+        "status": 400
+    }
+}
+```
+
+Si l'utilisateur essaye de créer un compte et se trompe lors de la validation du password alors il sera bloqué et recevra ce message :
+
+```json
+{
+    "code": 401,
+    "message": "The email confirmation does not match.",
     "data": {
         "status": 400
     }

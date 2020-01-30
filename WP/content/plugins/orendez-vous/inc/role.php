@@ -57,6 +57,7 @@ class ORdvRole
             $role->add_cap('edit_others_osteos');
             $role->add_cap('edit_osteos');
             $role->add_cap('publish_osteos');
+            $role->add_cap('moderate_comments');
         }
 
         $pilates_roles = [
@@ -76,6 +77,7 @@ class ORdvRole
             $role->add_cap('edit_others_pilatess');
             $role->add_cap('edit_pilatess');
             $role->add_cap('publish_pilatess');
+            $role->add_cap('moderate_comments');
         }
 
             $admin = get_role('administrator');

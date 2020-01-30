@@ -31,7 +31,10 @@ class RegisterUser
         $phone_number = sanitize_text_field($parameters['phone_number']);
         $username = sanitize_text_field($parameters['username']);
         $email = sanitize_text_field($parameters['email']);
+        $email_validation = sanitize_text_field($parameters['email_validation']);
         $password = sanitize_text_field($parameters['password']);
+        $password_validation = sanitize_text_field($parameters['password_validation']);
+
 
         $error = new WP_Error();
         if (empty($username)) {
@@ -58,8 +61,16 @@ class RegisterUser
             $error->add(404, __("Last Name field 'lastname' is required.", 'wp-rest-user'), array('status' => 400));
             return $error;
         }
+        if ($email != $email_validation) {
+            $error->add(401, __("The email confirmation does not match.", 'wp-rest-user'), array('status' => 400));
+            return $error;
+        }
+        if ($password != $password_validation) {
+            $error->add(404, __("The password confirmation does not match.", 'wp-rest-user'), array('status' => 400));
+            return $error;
+        }
 
-        // $user_id = false si username n'existe pas
+         //$user_id = false si username n'existe pas
         // $user_id = un id (un chiffre) si le user existe
         $user_id = username_exists($username);
         if (!$user_id && email_exists($email) == false) {
