@@ -123,4 +123,13 @@ class CustomTable
             )
         );
     }
+
+    public static function find_appointment($appointment_id)
+    {
+        global $wpdb;
+        $result = $wpdb->get_results(
+            "SELECT * FROM wp_appointment WHERE id = $appointment_id;"
+        );
+        return $result[0];
+    }
 }
