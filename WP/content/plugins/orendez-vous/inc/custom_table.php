@@ -142,6 +142,15 @@ class CustomTable
         );
     }
 
+    public static function find_booking_by_appointment_and_user($appointment_id, $user_id)
+    {
+        global $wpdb;
+        
+        return $wpdb->get_results(
+            "SELECT * FROM wp_booking WHERE a_id = $appointment_id AND user_id = $user_id;"
+        );
+    }
+
     /**
      * @param string $appointments_id Liste des id des RDV séparés par une virgule
      */
@@ -151,6 +160,19 @@ class CustomTable
         
         return $wpdb->get_results(
             "SELECT * FROM wp_appointment WHERE id IN ($appointments_id);"
+        );
+    }
+
+    public static function delete_booking($appointment_id, $user_id)
+    {
+        global $wpdb;
+        
+        $wpdb->query(
+            "DELETE FROM wp_booking WHERE a_id = $appointment_id AND user_id = $user_id;"
+        );
+
+        $wpdb->query(
+            "UPDATE wp_appointment SET available_places = available_places + 1 WHERE id = $appointment_id;"
         );
     }
 }

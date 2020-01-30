@@ -7,6 +7,7 @@ class AppointmentRest
         add_action('rest_api_init', [$this, 'show_appointments']);
         add_action('rest_api_init', [$this, 'book_appointments']);
         add_action('rest_api_init', [$this, 'my_appointments']);
+        add_action('rest_api_init', [$this, 'delete_my_appointment']);
     }
     
     /**
@@ -146,5 +147,64 @@ class AppointmentRest
         
         // on retourne ces datas dans l'API
         return new WP_REST_Response($data_appointments);
+    }
+
+    /**
+     * @param  WP_REST_Request $request Full details about the request.
+     */
+    public function delete_my_appointment($request)
+    {
+        register_rest_route('wp/v2', 'appointments/(?P<id>[\d]+)', array(
+            'methods' => WP_REST_Server::DELETABLE,
+            'callback' => [$this, 'rest_delete_my_appointment_endpoint_handler'],
+            'permission_callback' => function($request){
+                return is_user_logged_in();
+            },
+        ));
+    }
+
+    /**
+     * @param  WP_REST_Request $request Full details about the request.
+     */
+    public function rest_delete_my_appointment_endpoint_handler($request = null)
+    {
+        // on récupère l'id du RDV qu'on souhaite annuler
+        $appointment_id = $request['id'];
+
+        // on fait qq vérif :
+            // 1. on vérifie que le RDV est bien associé au user actuel
+        $user_id = wp_get_current_user()->data->ID;
+        $booking = CustomTable::find_booking_by_appointment_and_user($appointment_id, $user_id);
+        $error = new WP_Error();
+        if(empty($booking)) {
+            $error->add(400, __("Vous n'avez pas de rendez-vous.", 'wp-rest-user'), array('status' => 400));
+            return $error;
+        }
+            // 2. on vérifie si le RDV n'est pas dans les prochaines 48h
+        $data_appointment = CustomTable::find_appointment($appointment_id);
+        date_default_timezone_set('Europe/Paris');
+        $start_date = new DateTime($data_appointment->start_date);
+        $now = new DateTime();
+        $diff = date_diff($start_date, $now, true);
+        $days = $diff->format('%d');
+
+        if($days < 2) {
+            $error->add(400, __("Le rendez-vous n'est plus annulable", 'wp-rest-user'), array('status' => 400));
+            return $error;
+        }
+
+        // si tout est ok, on supprime l'entrée dans la table wp_booking
+        // et on rajoute une place disponible dans wp_appointment pour le RDV
+        CustomTable::delete_booking($appointment_id, $user_id);
+        // on recrédite le user avec une place si RDV pilates
+        if($data_appointment->type == 'pilates') {
+            $nb_seance = get_user_meta($user_id, 'nb_seance', true);
+            update_user_meta($user_id, 'nb_seance', $nb_seance + 1);
+        }
+
+        $response = [];
+        $response['code'] = 200;
+        $response['message'] = __("Booking deleted", "wp-rest-user");
+        return new WP_REST_Response($response);
     }
 }
