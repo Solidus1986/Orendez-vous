@@ -6,6 +6,7 @@ class AppointmentRest
     {
         add_action('rest_api_init', [$this, 'show_appointments']);
         add_action('rest_api_init', [$this, 'book_appointments']);
+        add_action('rest_api_init', [$this, 'my_appointments']);
     }
     
     /**
@@ -100,5 +101,50 @@ class AppointmentRest
         $response['code'] = 200;
         $response['message'] = __("Booking ok", "wp-rest-user");
         return new WP_REST_Response($response);
+    }
+
+    /**
+     * @param  WP_REST_Request $request Full details about the request.
+     */
+    public function my_appointments($request)
+    {
+        register_rest_route('wp/v2', 'appointments/me', array(
+            'methods' => 'GET',
+            'callback' => [$this, 'rest_my_appointments_endpoint_handler'],
+            'permission_callback' => function($request){
+                return is_user_logged_in();
+            }
+        ));
+    }
+
+    /**
+     * @param  WP_REST_Request $request Full details about the request.
+     */
+    public function rest_my_appointments_endpoint_handler($request = null)
+    {
+        // on récupère l'id du current user
+        $user_id = wp_get_current_user()->data->ID;
+        // dans la table wp_booking, on récupère les RDV associés à notre user
+        $bookings = CustomTable::find_booking_by_user($user_id);
+
+        // si le user n'a pas de réservation
+        if(empty($bookings)) {
+            $error = new WP_Error();
+            $error->add(400, __("Vous n'avez pas de rendez-vous.", 'wp-rest-user'), array('status' => 400));
+            return $error;
+        }
+
+        // on constitue un tableau qui contiendra tous les id des RDV du user
+        foreach ($bookings as $booking) {
+            $appointments[] = $booking->a_id;
+        }
+        // on transforme le tableau en chaine de caractère pour pouvoir l'utiliser dans notre requête SQL
+        $appointments_string = implode(",", $appointments);
+        
+        // avec ce tableau, on récupère depuis wp_appointment les datas des RDV du user
+        $data_appointments = CustomTable::find_appointments_by_id($appointments_string);
+        
+        // on retourne ces datas dans l'API
+        return new WP_REST_Response($data_appointments);
     }
 }

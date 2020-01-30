@@ -132,4 +132,25 @@ class CustomTable
         );
         return $result[0];
     }
+
+    public static function find_booking_by_user($user_id)
+    {
+        global $wpdb;
+        
+        return $wpdb->get_results(
+            "SELECT * FROM wp_booking WHERE user_id = $user_id;"
+        );
+    }
+
+    /**
+     * @param string $appointments_id Liste des id des RDV séparés par une virgule
+     */
+    public static function find_appointments_by_id($appointments_id)
+    {
+        global $wpdb;
+        
+        return $wpdb->get_results(
+            "SELECT * FROM wp_appointment WHERE id IN ($appointments_id);"
+        );
+    }
 }
