@@ -13,6 +13,7 @@ import Praticien from './singlePraticien';
 
 const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/';
 const Osteopathes = 'osteopathie?category-osteo=4';
+const Pilates = 'pilates?category-pilates=6';
 
 const styles = {
   root: {
@@ -50,6 +51,7 @@ const styles = {
 class Praticiens extends React.Component {
   state = {
     osteopathes: [],
+    pilates:[]
   }
   
 
@@ -58,14 +60,21 @@ class Praticiens extends React.Component {
       .then(res => {
         const osteopathes = res.data;
         this.setState({ osteopathes });
-        console.log('axios', res.data);
+        console.log('axios-osteo', res.data);
       })
+      axios.get(`${WP_URL}${Pilates}`)
+      .then(res => {
+        const pilates = res.data;
+        this.setState({ pilates });
+        console.log('axios-pilates', res.data);
+      })
+
   }
 
 
   render() {
     const classes = styles;
-    const { osteopathes } = this.state;
+    const { osteopathes, pilates } = this.state;
     return (
       <Grid container style={classes.root}>
         <Grid container justify="center">
@@ -77,7 +86,7 @@ class Praticiens extends React.Component {
                 <Card key={osteo.id} style={classes.card}>
                   <CardMedia
                     style={classes.cover}
-                    image="src/Images/avatar1.jpg"
+                    image={osteo.thumbnail_url}
                     title={osteo.title.rendered}
                   />
                   <div style={classes.details}>
@@ -86,11 +95,35 @@ class Praticiens extends React.Component {
                         {osteo.title.rendered}
                       </Typography>
                       <Typography variant="subtitle1" color="textSecondary">
-                        {osteo.type}
+                        Osteopathe
                       </Typography>
                     </CardContent>
                     <div style={classes.controls}>
                       <Praticien key={osteo.id} {...osteo}/>
+                    </div>
+                  </div>
+                </Card>
+            )))}
+          </Grid>
+          <Grid style={classes.panel}>
+            {pilates.map((pilate=>(
+                <Card key={pilate.id} style={classes.card}>
+                  <CardMedia
+                    style={classes.cover}
+                    image={pilate.thumbnail_url}
+                    title={pilate.title.rendered}
+                  />
+                  <div style={classes.details}>
+                    <CardContent style={classes.content}>
+                      <Typography component="h5" variant="h5">
+                        {pilate.title.rendered}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        Coach Pilates
+                      </Typography>
+                    </CardContent>
+                    <div style={classes.controls}>
+                      <Praticien key={pilate.id} {...pilate}/>
                     </div>
                   </div>
                 </Card>

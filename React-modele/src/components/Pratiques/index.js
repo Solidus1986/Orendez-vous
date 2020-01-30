@@ -2,7 +2,6 @@ import React from 'react';
 
 import Pratique from 'src/components/Pratiques/pratique';
 
-import './pratiques.scss';
 
 const styles = {
   title: {
@@ -17,9 +16,7 @@ const styles = {
   },
 };
 
-class Pratiques extends React.Component {
-
-  render () {
+const  Pratiques = (osteo) => {
     const classes = styles;
     return (
         <div>
@@ -28,7 +25,7 @@ class Pratiques extends React.Component {
           />
         </div>
     );
-  }
+  
 };
 
 export default Pratiques;
