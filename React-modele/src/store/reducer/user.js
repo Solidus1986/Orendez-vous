@@ -2,14 +2,11 @@
 
 // --- initial state
 const initialState = {
-  first_name: '',
-  last_name: '',
-  nb_seance: '',
-  phone_number:'',
-  email:'',
+  user_display_name: '',
+  user_email: '',
+  user_nicename: '',
   logged: false,
 };
-
 
 
 // --- action types
@@ -21,11 +18,9 @@ const reducer = (state = initialState, action = {}) => {
     case LOG_USER:
       return {
         ...state,
-        first_name: action.first_name,
-        last_name: action.last_name,
-        nb_seance: action.nb_seance,
-        phone_number:action.phone_number,
-        email: action.email,
+        user_display_name: action.user_display_name,
+        user_email: action.user_email,
+        user_nicename: action.user_nicename,
         logged: true,
       };
 
@@ -34,13 +29,11 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // --- action creators
-export const logUser = (first_name, last_name, nb_seance, phone_number, email) => ({
+export const logUser = (user_display_name, user_nicename, user_email) => ({
   type: LOG_USER,
-  first_name,
-  last_name, 
-  nb_seance, 
-  phone_number, 
-  email
+  user_display_name,
+  user_nicename,
+  user_email,
 });
 
 // --- export

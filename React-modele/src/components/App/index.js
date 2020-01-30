@@ -39,13 +39,22 @@ const styles = {
 class App extends React.Component {
   // state = {}
 
-  // componentDidMount() {
-  //   axios.get(`${WP_URL}`)
-  //     .then(res => {
-  //       const persons = res.data;
-  //       this.setState({ persons });
-  //     })
-  // }
+  componentDidMount() {
+    // axios.get(`${WP_URL}`)
+    //   .then(res => {
+    //     const persons = res.data;
+    //     this.setState({ persons });
+    //   })
+
+    // Vérifier que j'ai un token dans le local storage
+
+    // => code
+
+    // Si j'ai un token, appeler l'action refresh du middleware pour récupérer mes informations
+
+    // => code
+
+  }
 
 
   render() {

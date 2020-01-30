@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CONNECT_USER } from 'src/store/reducer/login';
+import { CONNECT_USER, REFRESH } from 'src/store/reducer/login';
 import { logUser } from 'src/store/reducer/user';
 
 const ajaxMiddleware = (store) => (next) => (action) => {
@@ -10,19 +10,19 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       // console.log("je vais faire l'appel à l'API");
       // console.log(store.getState().form.inputValue);
       axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/jwt-auth/v1/token', {
-    
-          username: store.getState().login.username,
-          password: store.getState().login.password,
-        
+
+        username: store.getState().login.username,
+        password: store.getState().login.password,
+
       })
         .then((response) => {
-
-          localStorage.setItem( 'token', token );
-					localStorage.setItem( 'userName', user_nicename );
+          localStorage.setItem('token', response.data.token);
           // on veut mettre logged à true et stocker les infos de l'utilisateur
           const actionLogUser = logUser(
-            response.data.login,
-            
+            response.data.user_display_name,
+            response.data.user_nicename,
+            response.data.user_email,
+
           );
           store.dispatch(actionLogUser);
         })
@@ -31,18 +31,32 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           console.error(error);
         });
       break;
-    default:
-      // par défaut, je laisse passer l'action
-      next(action);
 
     case REFRESH:
 
       axios.get('http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/jwt-auth/v1/token/validate', {
         headers: {
-            Authorization: `token ${store.getState().login.inputValue}`,
-        }
-      });
-    break;
+          Authorization: `token ${localStorage.getItem('token')}`,
+        },
+      })
+        .then((response) => {
+          console.log('refresh', response);
+          // on veut mettre logged à true et stocker les infos de l'utilisateur
+          const actionLogUser = logUser(
+            response.data.login,
+
+          );
+          store.dispatch(actionLogUser);
+        })
+        .catch((error) => {
+        // eslint-disable-next-line no-console
+          console.error(error);
+        });
+      break;
+
+    default:
+      // par défaut, je laisse passer l'action
+      next(action);
   }
 };
 
