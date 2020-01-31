@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
     e.preventDefault();
     const action = connectUser();
     dispatch(action);
+    // window.location.assign('/profil');
   },
 });
 

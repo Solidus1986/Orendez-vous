@@ -11,9 +11,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
-import { getUserName, isLoggedIn } from "../functions";
-
-
+import { getUserName } from "../functions";
 
 // Import component
 import UserInfo from './UserInfo';
@@ -41,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   
 }));
 
-const Profil = (props) => {
+const Profil = () => {
   const userName = getUserName()
   const classes = useStyles();
   

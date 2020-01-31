@@ -40,15 +40,15 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log('refresh', response);
           // on veut mettre logged à true et stocker les infos de l'utilisateur
-          const actionLogUser = logUser(
-            response.data.token,
-            
+          const actionRefresh = logUser(
+            response.data.user_display_name,
+            response.data.user_nicename,
+            response.data.user_email,
 
           );
-          console.log('response data', response.data.token);
-          store.dispatch(actionLogUser);
+          console.log('response data', response);
+          store.dispatch(actionRefresh);
         })
         .catch((error) => {
         // eslint-disable-next-line no-console

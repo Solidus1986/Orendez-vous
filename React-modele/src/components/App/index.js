@@ -15,6 +15,7 @@ import Footer from 'src/components/Footer';
 import './app.scss';
 import Login from 'src/containers/Login';
 
+import pratiqueData from 'src/Data/pratiques';
 import Pratiques from '../Pratiques';
 import Praticiens from '../Praticiens';
 import Infos from '../Infos';
@@ -25,7 +26,6 @@ import Praticien from '../Praticiens/singlePraticien';
 
 // Data
 // import usersData from 'src/Data/users';
-import pratiqueData from 'src/Data/pratiques';
 // import infosData from 'src/Data/infos';
 
 // const WP_URL ='http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json';
@@ -39,7 +39,7 @@ const styles = {
 
 // == Composant
 class App extends React.Component {
-  state = {}
+  state = { token: false }
 
   componentDidMount() {
     // Vérifier que j'ai un token dans le local storage
@@ -59,45 +59,45 @@ class App extends React.Component {
     const classes = styles.root;
     return (
       <div id="app" className={classes}>
-          <Grid container justify='center' spacing={2}>
-            <Grid item xs={12}>
-              <Header />
-            </Grid>
-            <Grid item xs={12}>
-              <Switch>
-                <Route exact path="/">
-                  <Nav data={pratiqueData}/>
-                </Route>
-                <Route exact path="/inscription">
-                  <Form />
-                </Route>
-                <Route exact path="/connexion">
-                  <Login />
-                </Route>
-                <Route exact path="/profil/:userName">
-                  <Profil />
-                </Route>
-                <Route exact path="/pratiques">
-                  <Pratiques data={pratiqueData}/>
-                </Route>
-                <Route exact path="/pratiques/reservation">
-                  <Reservation />
-                </Route>
-                <Route exact path="/praticiens">
-                  <Praticiens />
-                </Route>
-                <Route exact path="/praticiens/praticien">
-                  <Praticien />
-                </Route>
-                <Route exact path="/infos">
-                  <Infos />
-                </Route>
-              </Switch>
-            </Grid>
-            <Grid item xs={12}>
-              <Footer  />
-            </Grid>
+        <Grid container justify="center" spacing={2}>
+          <Grid item xs={12}>
+            <Header />
           </Grid>
+          <Grid item xs={12}>
+            <Switch>
+              <Route exact path="/">
+                <Nav data={pratiqueData} />
+              </Route>
+              <Route exact path="/inscription">
+                <Form />
+              </Route>
+              <Route exact path="/connexion">
+                <Login />
+              </Route>
+              <Route exact path="/profil">
+                <Profil />
+              </Route>
+              <Route exact path="/pratiques">
+                <Pratiques data={pratiqueData} />
+              </Route>
+              <Route exact path="/pratiques/reservation">
+                <Reservation />
+              </Route>
+              <Route exact path="/praticiens">
+                <Praticiens />
+              </Route>
+              <Route exact path="/praticiens/praticien">
+                <Praticien />
+              </Route>
+              <Route exact path="/infos">
+                <Infos />
+              </Route>
+            </Switch>
+          </Grid>
+          <Grid item xs={12}>
+            <Footer />
+          </Grid>
+        </Grid>
       </div>
     );
   }
