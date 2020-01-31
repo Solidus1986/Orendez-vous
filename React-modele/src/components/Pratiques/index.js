@@ -7,7 +7,7 @@ const styles = {
   title: {
     paddingBottom: 25,
     color: 'black',
-    textAlign: 'center',
+    textAlign: 'justify',
     textTranform: 'uppercase',
   },
   button: {

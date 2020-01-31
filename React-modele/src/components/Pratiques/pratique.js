@@ -14,15 +14,6 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     margin:'1rem 0rem',
   },
-  pratique:{
-    display:'inline-block',
-    margin:'1.4rem',
-    textTransform: 'uppercase',
-    fontSize: '12rem',
-    backgroundColor:'white',
-    '@media screen and (min-width: 600px) and (max-width: 1200px)': {
-      fontSize: '10rem',
-  },
   button: {
     borderRadius: 3,
     border: 1,
@@ -30,7 +21,11 @@ const useStyles = makeStyles(theme => ({
     padding: '.5rem 1.4rem',
     margin:'.5rem',
     boxShadow: '0 3px 5px 2px grey',
-  }
+  },
+  text:{
+    margin:'1.4rem',
+    textAlign:'justify',
+    
 }
 }));
 
@@ -47,25 +42,25 @@ const Pratique = () => {
            <Grid item xs={12}>
               <Button
               variant='outline'
-              style={classes.button}
+              className={classes.button}
               >
                 Adulte
               </Button>
               <Button
               variant='outline'
-              style={classes.button}
+              className={classes.button}
               >
                 Femme enceinte
               </Button>
               <Button
               variant='outline'
-              style={classes.button}
+              className={classes.button}
               >
                 Nourisson
               </Button>
               <Button
               variant='outline'
-              style={classes.button}
+              className={classes.button}
               >
                 Sportif
               </Button>
@@ -73,15 +68,16 @@ const Pratique = () => {
             <Grid item xs={12}>
               <Link to={'/praticiens'}>
                 <Button 
+                  style={{marginTop:'1.5rem',padding:'.5rem 1rem',border:'solid 2px black'}}
                   variant='outline'
-                  style={classes.button}
+                  
                 >
                 Praticiens
                 </Button>
               </Link>
             </Grid>
-            <Grid item xs={6}>
-              <p>
+            <Grid style={{margin:'2rem 0rem'}}item xs={6}>
+              <p className={classes.text}>
               L’ostéopathie est une thérapie manuelle reconnue en France qui vise à maintenir et
               restituer un bon état de santé à votre corps. Elle ne substitue pas à la médecine
               traditionnelle. Néanmoins, c’est une médecine complémentaire qui entretient,
@@ -101,7 +97,7 @@ const Pratique = () => {
               <Link to={'/pratiques/reservation'}>
                 <Button 
                   variant='outline'
-                  className={classes.button}
+                  style={{marginTop:'1.5rem',padding:'.5rem 1rem',border:'solid 2px black'}}
                 >
                  Rendez vous
                 </Button>
