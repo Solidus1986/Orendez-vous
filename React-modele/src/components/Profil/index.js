@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Profil = () => {
+const Profil = ({ user_nicename }) => {
   const classes = useStyles();
 
   return (
@@ -44,7 +44,7 @@ const Profil = () => {
     <Grid className={classes.root}>
       <Grid container justify="center">
         <Grid item xs={12}>
-          <h1 style={{ marginBottom: '1rem' }} className="take_date">profil</h1>
+          <h1 style={{ marginBottom: '1rem' }} className="take_date">{user_nicename}</h1>
         </Grid>
         <Grid item xs={6} classe={classes.panel}>
           <ExpansionPanel
@@ -96,6 +96,10 @@ const Profil = () => {
       </Grid>
     </Grid>
   );
+};
+
+Profil.propTypes = {
+  user_nicename: PropTypes.string.isRequired,
 };
 
 export default Profil;
