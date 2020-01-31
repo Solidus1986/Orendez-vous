@@ -5,8 +5,6 @@ const initialState = {
   username: '',
   // la valeur du password après submit
   password: '',
-
-  token: '',
 };
 
 // --- action types
@@ -39,9 +37,9 @@ export const connectUser = () => ({
 
 });
 
-export const refresh = (token) => ({
+export const refresh = () => ({
   type: REFRESH,
-  token,
+
 
 });
 

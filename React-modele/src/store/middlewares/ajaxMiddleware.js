@@ -22,7 +22,6 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             response.data.user_display_name,
             response.data.user_nicename,
             response.data.user_email,
-
           );
           store.dispatch(actionLogUser);
         })
@@ -34,18 +33,18 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     case REFRESH:
 
-      axios.get('http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/jwt-auth/v1/token/validate', {
+      axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/users/me', {}, {
         headers: {
-          Authorization: `token ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       })
         .then((response) => {
           // on veut mettre logged à true et stocker les infos de l'utilisateur
-          const actionRefresh = logUser(
-            response.data.user_display_name,
-            response.data.user_nicename,
-            response.data.user_email,
 
+          const actionRefresh = logUser(
+            response.data.last_name,
+            response.data.name,
+            response.data.email,
           );
           console.log('response data', response);
           store.dispatch(actionRefresh);

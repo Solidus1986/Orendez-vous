@@ -4,10 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 import store from 'src/store';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
+import { refresh } from 'src/store/reducer/login';
 
 
 // Import composants
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 import Footer from 'src/components/Footer';
 
@@ -39,7 +40,7 @@ const styles = {
 
 // == Composant
 class App extends React.Component {
-  state = { token: false }
+  state = {}
 
   componentDidMount() {
     // Vérifier que j'ai un token dans le local storage
@@ -50,8 +51,9 @@ class App extends React.Component {
     console.log('Token, mon token, es-tu la?', log);
 
     // Si j'ai un token, appeler l'action refresh du middleware pour récupérer mes informations
-    const data = localStorage.getItem('user_email');
-    console.log('Data, ma data, es-tu la?', data);
+    if (log) {
+      store.dispatch(refresh());
+    }
     // => code
   }
 

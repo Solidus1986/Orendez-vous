@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
     display:'inline-block',
     textTransform: 'uppercase',
     fontSize: '12rem',
-    backgroundColor:'white',
     '@media screen and (min-width: 600px) and (max-width: 1200px)': {
 
       fontSize: '9rem',
