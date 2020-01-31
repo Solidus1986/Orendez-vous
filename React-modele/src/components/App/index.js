@@ -61,45 +61,45 @@ class App extends React.Component {
     const classes = styles.root;
     return (
       <div id="app" className={classes}>
-        <Grid container id='carton' spacing={2}>
-          <Grid item xs={12}>
-            <Header />
+          <Grid container justify='center' spacing={2}>
+            <Grid item xs={12}>
+              <Header />
+            </Grid>
+            <Grid item xs={12}>
+              <Switch>
+                <Route exact path="/">
+                  <Nav data={pratiqueData}/>
+                </Route>
+                <Route exact path="/inscription">
+                  <Form />
+                </Route>
+                <Route exact path="/connexion">
+                  <Login />
+                </Route>
+                <Route exact path="/profil/:userName">
+                  <Profil />
+                </Route>
+                <Route exact path="/pratiques">
+                  <Pratiques data={pratiqueData}/>
+                </Route>
+                <Route exact path="/pratiques/reservation">
+                  <Reservation />
+                </Route>
+                <Route exact path="/praticiens">
+                  <Praticiens />
+                </Route>
+                <Route exact path="/praticiens/praticien">
+                  <Praticien />
+                </Route>
+                <Route exact path="/infos">
+                  <Infos />
+                </Route>
+              </Switch>
+            </Grid>
+            <Grid item xs={12}>
+              <Footer  />
+            </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <Switch>
-              <Route exact path="/">
-                <Nav data={pratiqueData}/>
-              </Route>
-              <Route exact path="/inscription">
-                <Form />
-              </Route>
-              <Route exact path="/connexion">
-                <Login />
-              </Route>
-              <Route exact path="/profil/:userName">
-                <Profil />
-              </Route>
-              <Route exact path="/pratiques">
-                <Pratiques data={pratiqueData}/>
-              </Route>
-              <Route exact path="/pratiques/reservation">
-                <Reservation />
-              </Route>
-              <Route exact path="/praticiens">
-                <Praticiens />
-              </Route>
-              <Route exact path="/praticiens/praticien">
-                <Praticien />
-              </Route>
-              <Route exact path="/infos">
-                <Infos />
-              </Route>
-            </Switch>
-          </Grid>
-          <Grid item xs={12}>
-            <Footer  />
-          </Grid>
-        </Grid>
       </div>
     );
   }

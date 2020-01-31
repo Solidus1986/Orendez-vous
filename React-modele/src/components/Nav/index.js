@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -12,17 +13,15 @@ const useStyles = makeStyles(theme => ({
 
   pratique:{
     display:'inline-block',
-    margin:'1.4rem',
-    
     textTransform: 'uppercase',
     fontSize: '12rem',
     backgroundColor:'white',
     '@media screen and (min-width: 600px) and (max-width: 1200px)': {
 
-      fontSize: '10rem',
+      fontSize: '9rem',
   },
   '@media screen and (min-width: 200px) and (max-width: 600px)': {
-    fontSize: '6rem',
+    fontSize: '4rem',
   },
   '&:hover':{
     color:'#ffef05'
@@ -38,16 +37,16 @@ const Nav = (props) => {
   console.log("data:",data);
 
   return (
-      <Grid container className={classes.root} spacing={2}>
-        <Grid item xs={12} >
-          <Grid container justify="center" spacing={2}>
-            {data.map(p => (
-              <Grid key={p.id}>
-                <Link to="/pratiques" className={classes.pratique}>{p.pratique}</Link>
-              </Grid>
-            ))}
+    <Grid container className={classes.root}>
+      <Grid item xs={12}>
+        <Grid container justify="center">
+                {data.map(p => (
+                  <div key={p.id}>
+                    <Link to="/pratiques" className={classes.pratique}>{p.pratique}</Link>
+                  </div>
+                ))}
           </Grid>
-        </Grid>
+    </Grid>
     </Grid>
   );
 };

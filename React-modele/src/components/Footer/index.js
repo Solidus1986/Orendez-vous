@@ -21,11 +21,10 @@ const styles = {
     bottom: "0",
     height: "50px",
     width: "100%",
-    'z-index':'2000'
+    'z-index':'3'
   }
 }
 
-import './footer.scss';
 
 const Footer = () => {
   const classes = styles
