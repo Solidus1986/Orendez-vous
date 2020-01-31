@@ -5,18 +5,18 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import WebFont from 'webfontloader';
 import { Provider } from 'react-redux';
 
-WebFont.load({
-  google: {
-    families: ['Varela Round Web:400', 'sans-serif']
-  }
-});
-
 // == Import : local
 // Styles de base
 import 'src/styles/index.scss';
 // Composant racine
 import App from 'src/components/App';
-import store from 'src/store'
+import store from 'src/store';
+
+WebFont.load({
+  google: {
+    families: ['Varela Round Web:400', 'sans-serif'],
+  },
+});
 
 
 // == Render
