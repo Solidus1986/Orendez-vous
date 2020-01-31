@@ -11,18 +11,16 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
-import { getUserName } from "../functions";
+
 
 // Import component
 import UserInfo from './UserInfo';
 import Dates from './Dates';
 import SessionCard from './SessionCard';
 
-import './profil.scss';
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: '1'
+    flexGrow: '1',
   },
   panel: {
     margin: '1rem 1rem',
@@ -36,68 +34,68 @@ const useStyles = makeStyles(theme => ({
   title: {
     textAlign: 'center',
   },
-  
 }));
 
 const Profil = () => {
-  const userName = getUserName()
   const classes = useStyles();
-  
+
   return (
 
-    <Grid className={classes.root} >
-      <Grid container justify='center'>
+    <Grid className={classes.root}>
+      <Grid container justify="center">
         <Grid item xs={12}>
-          <h1 style={{marginBottom:'1rem'}} className="take_date">{userName}</h1>
+          <h1 style={{ marginBottom: '1rem' }} className="take_date">profil</h1>
         </Grid>
         <Grid item xs={6} classe={classes.panel}>
           <ExpansionPanel
-            className={classes.panel}>
-              <ExpansionPanelSummary 
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-                content={classes.title}
-              >
+            className={classes.panel}
+          >
+            <ExpansionPanelSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              content={classes.title}
+            >
                 Mes informations
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <UserInfo />
-              </ExpansionPanelDetails>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <UserInfo />
+            </ExpansionPanelDetails>
           </ExpansionPanel>
-          
+
           <ExpansionPanel
-            className={classes.panel}>
-              <ExpansionPanelSummary 
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
+            className={classes.panel}
+          >
+            <ExpansionPanelSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
                 Mes Rendez-vous
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <Dates />
-              </ExpansionPanelDetails>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Dates />
+            </ExpansionPanelDetails>
           </ExpansionPanel>
-         
+
           <ExpansionPanel
-            className={classes.panel}>
-              <ExpansionPanelSummary
-                expandIcon={<ExpandMoreIcon />} 
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
+            className={classes.panel}
+          >
+            <ExpansionPanelSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
                 Ma carte Pilates
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <SessionCard />
-              </ExpansionPanelDetails>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <SessionCard />
+            </ExpansionPanelDetails>
           </ExpansionPanel>
-          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
-
 };
 
 export default Profil;

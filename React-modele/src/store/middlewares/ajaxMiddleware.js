@@ -23,6 +23,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             response.data.user_nicename,
             response.data.user_email,
           );
+          console.log('connect', response.data);
           store.dispatch(actionLogUser);
         })
         .catch((error) => {
@@ -46,7 +47,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
             response.data.name,
             response.data.email,
           );
-          console.log('response data', response);
+          console.log('response data', response.data);
           store.dispatch(actionRefresh);
         })
         .catch((error) => {
