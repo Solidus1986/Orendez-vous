@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-import { CONNECT_USER, REFRESH } from 'src/store/reducer/login';
+import { CONNECT_USER, USER_DATA } from 'src/store/reducer/login';
 import { logUser } from 'src/store/reducer/user';
+
 
 const ajaxMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -32,7 +33,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         });
       break;
 
-    case REFRESH:
+    case USER_DATA:
 
       axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/users/me', {}, {
         headers: {
@@ -42,13 +43,13 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // on veut mettre logged à true et stocker les infos de l'utilisateur
 
-          const actionRefresh = logUser(
+          const actionUserData = logUser(
             response.data.last_name,
             response.data.name,
             response.data.email,
           );
-          console.log('response data', response.data);
-          store.dispatch(actionRefresh);
+          console.log('user data', response.data);
+          store.dispatch(actionUserData);
         })
         .catch((error) => {
         // eslint-disable-next-line no-console

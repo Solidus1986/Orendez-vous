@@ -5,7 +5,7 @@ import Profil from 'src/components/Profil';
 // eslint-disable-next-line arrow-body-style
 const mapStateToProps = (state) => {
   return {
-    username: state.name,
+    user_nicename: state.user_nicename,
   };
 };
 

@@ -10,7 +10,7 @@ const initialState = {
 // --- action types
 const CHANGE_INPUT = 'CHANGE_INPUT';
 export const CONNECT_USER = 'CONNECT_USER';
-export const REFRESH = 'REFRESH';
+export const USER_DATA = 'USER_DATA';
 
 // --- Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -19,6 +19,10 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.inputName]: action.value,
+      };
+    case USER_DATA:
+      return {
+        ...state,
       };
 
     default: return state;
@@ -37,9 +41,8 @@ export const connectUser = () => ({
 
 });
 
-export const refresh = () => ({
-  type: REFRESH,
-
+export const userData = () => ({
+  type: USER_DATA,
 
 });
 

@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import store from 'src/store';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
-import { refresh } from 'src/store/reducer/login';
+import { userData } from 'src/store/reducer/login';
 
 
 // Import composants
@@ -52,7 +52,7 @@ class App extends React.Component {
 
     // Si j'ai un token, appeler l'action refresh du middleware pour récupérer mes informations
     if (log) {
-      store.dispatch(refresh());
+      store.dispatch(userData());
     }
     // => code
   }
@@ -77,7 +77,8 @@ class App extends React.Component {
                 <Login />
               </Route>
               <Route exact path="/profil">
-                <Profil />
+                <Profil data={userData} />
+                {console.log('je suis le userData', userData)};
               </Route>
               <Route exact path="/pratiques">
                 <Pratiques data={pratiqueData} />

@@ -5,6 +5,7 @@ const initialState = {
   user_display_name: '',
   user_email: '',
   user_nicename: '',
+  username: '',
   logged: false,
 };
 
