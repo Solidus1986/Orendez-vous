@@ -15,8 +15,8 @@ import Footer from 'src/components/Footer';
 import './app.scss';
 import Login from 'src/containers/Login';
 
-import pratiqueData from 'src/Data/pratiques';
-import Pratiques from '../Pratiques';
+import Pilates from '../Pilates';
+import Osteopathie from '../Osteopathie';
 import Praticiens from '../Praticiens';
 import Infos from '../Infos';
 import Profil from '../Profil';
@@ -39,7 +39,6 @@ const styles = {
 
 // == Composant
 class App extends React.Component {
-  state = {}
 
   componentDidMount() {
     // Vérifier que j'ai un token dans le local storage
@@ -63,7 +62,7 @@ class App extends React.Component {
           <Grid item xs={12}>
             <Switch>
               <Route exact path="/">
-                <Nav data={pratiqueData} />
+                <Nav />
               </Route>
               <Route exact path="/inscription">
                 <Form />
@@ -74,8 +73,11 @@ class App extends React.Component {
               <Route exact path="/profil">
                 <Profil  />
               </Route>
-              <Route exact path="/pratiques">
-                <Pratiques data={pratiqueData} />
+              <Route exact path="/osteopathie">
+                <Osteopathie />
+              </Route>
+              <Route exact path="/pilates">
+                <Pilates />
               </Route>
               <Route exact path="/pratiques/reservation">
                 <Reservation />

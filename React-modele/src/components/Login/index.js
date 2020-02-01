@@ -14,6 +14,9 @@ const styles = {
     height: 'auto',
     width: '100vw',
   },
+  '& label.Mui-focused': {
+    color: 'green',
+  },
   title: {
     paddingBottom: 25,
     color: 'black',

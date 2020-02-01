@@ -59,10 +59,11 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         });
       break;
 
-    default:
-      // par défaut, je laisse passer l'action
-      next(action);
-  }
+      default:
+        // par défaut, je laisse passer l'action
+        next(action);
+    }
+
 };
 
 export default ajaxMiddleware;

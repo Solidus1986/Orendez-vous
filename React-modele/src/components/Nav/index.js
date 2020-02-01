@@ -39,11 +39,11 @@ const Nav = (props) => {
     <Grid container className={classes.root}>
       <Grid item xs={12}>
         <Grid container justify="center">
-                {data.map(p => (
-                  <div key={p.id}>
-                    <Link to="/pratiques" className={classes.pratique}>{p.pratique}</Link>
-                  </div>
-                ))}
+          <div>
+            <Link to="/osteopathie" className={classes.pratique}>Osteopathie</Link>
+            <Link to="/pilates" className={classes.pratique}>Pilates</Link>
+
+          </div>
           </Grid>
     </Grid>
     </Grid>

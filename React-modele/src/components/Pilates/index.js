@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Pratique from 'src/components/Pratiques/pratique';
+import Pratique from 'src/components/Pilates/pratique';
 
 
 const styles = {
@@ -16,11 +16,11 @@ const styles = {
   },
 };
 
-const  Pratiques = (osteo) => {
+const  Pilates = () => {
     const classes = styles;
     return (
         <div>
-          <Pratique 
+          <Pratique
             classes={classes}
           />
         </div>
@@ -28,5 +28,5 @@ const  Pratiques = (osteo) => {
   
 };
 
-export default Pratiques;
+export default Pilates;
 
