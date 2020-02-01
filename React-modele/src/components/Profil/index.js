@@ -108,7 +108,7 @@ Profil.propTypes = {
     email: PropTypes.string.isRequired,
     first_name: PropTypes.string.isRequired,
     last_name: PropTypes.string.isRequired,
-    nb_seance: PropTypes.number.isRequired,
+    nb_seance: PropTypes.string.isRequired,
     phone_number: PropTypes.string.isRequired,
   }),
 
