@@ -3,11 +3,11 @@ import React from 'react';
 //import 
 
 
-const SessionCard = () => {
-
+const SessionCard = ({meta}) => {
+  console.log('session',meta)
    return (
     <div>
-    10 séances pilates
+    {meta.nb_seance} séances pilates
     </div>
   );
 };

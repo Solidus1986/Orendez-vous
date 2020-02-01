@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { CONNECT_USER, USER_DATA } from 'src/store/reducer/login';
-import { logUser } from 'src/store/reducer/user';
+import { logUser, dataUser } from 'src/store/reducer/user';
 
 
 const ajaxMiddleware = (store) => (next) => (action) => {
@@ -43,10 +43,12 @@ const ajaxMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // on veut mettre logged à true et stocker les infos de l'utilisateur
 
-          const actionUserData = logUser(
+          const actionUserData = dataUser(
+            response.data.id,
+            response.data.first_name,
             response.data.last_name,
-            response.data.name,
-            response.data.email,
+            response.data.slug,
+            response.data.meta
           );
           console.log('user data', response.data);
           store.dispatch(actionUserData);

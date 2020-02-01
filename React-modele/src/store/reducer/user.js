@@ -7,11 +7,19 @@ const initialState = {
   user_nicename: '',
   username: '',
   logged: false,
+
+  // dataUser
+  id: '', 
+  first_name: '', 
+  last_name: '', 
+  slug: '', 
+  meta: '',
 };
 
 
 // --- action types
 const LOG_USER = 'LOG_USER';
+const DATA_USER = 'DATA_USER';
 
 // --- Reducer
 const reducer = (state = initialState, action = {}) => {
@@ -24,6 +32,16 @@ const reducer = (state = initialState, action = {}) => {
         user_nicename: action.user_nicename,
         logged: true,
       };
+    case DATA_USER:
+      return {
+        ...state,
+        id: action.id, 
+        first_name: action.first_name, 
+        last_name: action.last_name, 
+        slug: action.slug, 
+        meta: action.meta,
+        logged:true
+      }
 
     default: return state;
   }
@@ -36,6 +54,15 @@ export const logUser = (user_display_name, user_nicename, user_email) => ({
   user_nicename,
   user_email,
 });
+
+export const dataUser = ( id, first_name, last_name, slug, meta) => ({
+  type: DATA_USER,
+  id, 
+  first_name, 
+  last_name, 
+  slug, 
+  meta,
+})
 
 // --- export
 export default reducer;

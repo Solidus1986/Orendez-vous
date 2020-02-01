@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { connect } from 'react-redux';
 
 import './profil.scss';
 
@@ -36,21 +36,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Profil = ({ user_nicename }) => {
+const Profil = ({ id,first_name,last_name,meta}) => {
   const classes = useStyles();
-
+  console.log('je suis l\'id du user',id)
   return (
 
     <Grid className={classes.root}>
       <Grid container justify="center">
         <Grid item xs={12}>
-          <h1 style={{ marginBottom: '1rem' }} className="take_date">{user_nicename}</h1>
+          <h1 style={{ marginBottom: '1rem' }} className="take_date">{first_name} {last_name}</h1>
         </Grid>
         <Grid item xs={6} classe={classes.panel}>
           <ExpansionPanel
             className={classes.panel}
           >
             <ExpansionPanelSummary
+
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
               id="panel1a-header"
@@ -59,7 +60,7 @@ const Profil = ({ user_nicename }) => {
                 Mes informations
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <UserInfo />
+              <UserInfo meta={meta}/>
             </ExpansionPanelDetails>
           </ExpansionPanel>
 
@@ -89,7 +90,7 @@ const Profil = ({ user_nicename }) => {
                 Ma carte Pilates
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <SessionCard />
+              <SessionCard meta={meta}/>
             </ExpansionPanelDetails>
           </ExpansionPanel>
         </Grid>
@@ -99,7 +100,29 @@ const Profil = ({ user_nicename }) => {
 };
 
 Profil.propTypes = {
-  user_nicename: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  first_name: PropTypes.string.isRequired,
+  last_name: PropTypes.string.isRequired,
+  meta: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    first_name: PropTypes.string.isRequired,
+    last_name: PropTypes.string.isRequired,
+    nb_seance: PropTypes.number.isRequired,
+    phone_number: PropTypes.string.isRequired,
+  }),
+
 };
 
-export default Profil;
+const mapStateToProps = (state) => {
+  return {
+    id: state.user.id,
+    slug: state.user.slug,
+    meta: state.user.meta,
+    first_name: state.user.first_name, 
+    last_name: state.user.last_name,
+    
+  };
+}
+
+export default connect(mapStateToProps)(Profil)

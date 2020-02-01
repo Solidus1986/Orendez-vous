@@ -2,7 +2,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import store from 'src/store';
-import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import { userData } from 'src/store/reducer/login';
 
@@ -44,17 +43,13 @@ class App extends React.Component {
 
   componentDidMount() {
     // Vérifier que j'ai un token dans le local storage
-
-    // => code
     const log = localStorage.getItem('token');
 
     console.log('Token, mon token, es-tu la?', log);
-
-    // Si j'ai un token, appeler l'action refresh du middleware pour récupérer mes informations
     if (log) {
       store.dispatch(userData());
     }
-    // => code
+ 
   }
 
   render() {
@@ -77,8 +72,7 @@ class App extends React.Component {
                 <Login />
               </Route>
               <Route exact path="/profil">
-                <Profil data={userData} />
-                {console.log('je suis le userData', userData)};
+                <Profil  />
               </Route>
               <Route exact path="/pratiques">
                 <Pratiques data={pratiqueData} />

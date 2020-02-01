@@ -8,7 +8,8 @@ import './header.scss';
 import logo from 'src/Images/logo.png';
 
 
-const Header = ({ logged }) => {
+const Header = ({ logged}) => {
+  console.log('header:',logged)
   const handleLogout = () => {
     localStorage.removeItem('token');
     window.location.assign('/connexion');

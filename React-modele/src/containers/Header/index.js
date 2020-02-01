@@ -4,11 +4,9 @@ import Header from 'src/components/Header';
 
 // eslint-disable-next-line arrow-body-style
 const mapStateToProps = (state) => {
-  // console.log(state);
-
-  // en combinant les reducers on a un niveau supplémentaire "state.user"
   return {
     logged: state.user.logged,
+    
   };
 };
 

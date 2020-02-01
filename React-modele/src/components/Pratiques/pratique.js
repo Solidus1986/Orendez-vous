@@ -20,12 +20,11 @@ const useStyles = makeStyles(theme => ({
     color: 'black',
     padding: '.5rem 1.4rem',
     margin:'.5rem',
-    boxShadow: '0 3px 5px 2px grey',
+    boxShadow: '0 1px 2px 1px rgb(196, 196, 196)',
   },
   text:{
     margin:'1.4rem',
-    textAlign:'justify',
-    
+    textAlign:'justify', 
 }
 }));
 

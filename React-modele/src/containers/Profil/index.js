@@ -1,19 +1,26 @@
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
-import Profil from 'src/components/Profil';
+// import Profil from 'src/components/Profil';
 
-// eslint-disable-next-line arrow-body-style
-const mapStateToProps = (state) => {
-  return {
-    user_nicename: state.user_nicename,
-  };
-};
+// // import { dataUser } from 'src/store/reducer/user';
 
-const mapDispatchToProps = {};
+// // eslint-disable-next-line arrow-body-style
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     id: state.user.id,
+//     slug: state.user.slug,
+//     meta: state.user.meta,
+//     first_name: state.user.first_name, 
+//     last_name: state.user.last_name,
+    
+//   };
+// };
 
-const ProfilContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Profil);
+// const mapDispatchToProps = {};
 
-export default ProfilContainer;
+// const ProfilContainer = connect(
+//   mapStateToProps,
+//   mapDispatchToProps,
+// )(Profil);
+
+// export default ProfilContainer;
