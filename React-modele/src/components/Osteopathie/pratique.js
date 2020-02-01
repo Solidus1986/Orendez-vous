@@ -49,15 +49,10 @@ const Pratique = ({osteo,people}) => {
               <Button
               className={classes.button}
               variant='outline'
-              onClick={() => {
-              <Public
-                key={p.id}
-                data={p}
-                />;
-              }}
-                >
-              {p.title.rendered}
-            </Button>
+              
+                ><Public key={p.id} {...p} />
+              {/* {p.title.rendered}z */}
+              </Button>
            ))}
             <Public />
             </Grid>

@@ -1,11 +1,11 @@
 import React from 'react';
 // import PropTypes from 'proptypes';
- const Public = () => {
-  //  console.log('public:',title,content)
+ const Public = ({title, content}) => {
+   console.log('public:',title, content)
    return(
    <div>
-     <h2>YOYOYO</h2>
-     <p>LDKZ NJBHFE?DEALIEXDAE?XD??AXNxah,erefe</p>
+     <h2>{title}</h2>
+     <p>{content}</p>
    </div>
    )
  };
