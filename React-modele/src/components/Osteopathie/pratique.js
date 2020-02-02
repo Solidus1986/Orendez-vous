@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
 
 const Pratique = ({osteo,people}) => {
   console.log('pratique:',osteo[1],people)
+  console.log(Object.keys(people))
   const classes = useStyles();
   
     return(
@@ -45,23 +46,13 @@ const Pratique = ({osteo,people}) => {
           </Grid>
           <Grid container justify="center">
            <Grid item xs={12}>
-           {people.map(p => (
-              <Button
-              className={classes.button}
-              variant='outline'
-              
-                ><Public key={p.id} {...p} />
-              {/* {p.title.rendered}z */}
-              </Button>
-           ))}
-            <Public />
+            <Public people={people} />
             </Grid>
             <Grid item xs={12}>
               <Link to={'/praticiens'}>
                 <Button 
                   style={{marginTop:'1.5rem',padding:'.5rem 1rem',border:'solid 2px black'}}
                   variant='outline'
-                  
                 >
                 Praticiens
                 </Button>
