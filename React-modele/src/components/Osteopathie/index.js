@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import Pratique from 'src/components/Osteopathie/pratique';
 
-const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/';
+const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/';
 const OSTEO_URL = 'osteopathie';
 const PUBLIC_URL = 'osteopathie?category-osteo=2';
 

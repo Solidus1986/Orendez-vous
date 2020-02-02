@@ -13,7 +13,7 @@ import Public from './public';
 
 // import local
 
-const useStyles = makeStyles(theme => ({
+const useStyles = { 
   root: {
     flexGrow: 1,
     margin:'1rem 0rem',
@@ -30,13 +30,24 @@ const useStyles = makeStyles(theme => ({
     margin:'1.4rem',
     textAlign:'justify', 
 }
-}));
+};
 
 
-const Pratique = ({osteo,people}) => {
-  console.log('pratique:',osteo[1],people)
-  console.log(Object.keys(people))
-  const classes = useStyles();
+class Pratique extends React.Component {
+  state={
+    category:'',
+  }
+
+  handleCategorySelected =category=>{
+    this.setState({
+      category:'senior'
+    })
+  }
+  
+  render() {
+    const { osteo,people } = this.props;
+    const { category } = this.state;
+    const classes = useStyles;
   
     return(
       <Grid>
@@ -46,7 +57,11 @@ const Pratique = ({osteo,people}) => {
           </Grid>
           <Grid container justify="center">
            <Grid item xs={12}>
-            <Public people={people} />
+            <Public 
+              category={category}
+              people={people} 
+              onSelect={this.handleCategorySelected}
+              />
             </Grid>
             <Grid item xs={12}>
               <Link to={'/praticiens'}>
@@ -90,6 +105,7 @@ const Pratique = ({osteo,people}) => {
     </Grid>
     )
   }
+}
 
 export default Pratique;
 

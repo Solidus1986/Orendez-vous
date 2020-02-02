@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 
 import Praticien from './singlePraticien';
 
-const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/';
+const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/';
 const Osteopathes = 'osteopathie?category-osteo=4';
 const Pilates = 'pilates?category-pilates=6';
 

@@ -10,7 +10,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
       console.log(store.getState());
       // console.log("je vais faire l'appel à l'API");
       // console.log(store.getState().form.inputValue);
-      axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/jwt-auth/v1/token', {
+      axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/jwt-auth/v1/token', {
 
         username: store.getState().login.username,
         password: store.getState().login.password,
@@ -35,7 +35,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
 
     case USER_DATA:
 
-      axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/users/me', {}, {
+      axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/users/me', {}, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
