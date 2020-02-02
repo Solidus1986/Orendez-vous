@@ -38,17 +38,17 @@ class Pratique extends React.Component {
     category:'',
   }
 
-  handleCategorySelected =category=>{
+  handleCategorySelected = category => {
     this.setState({
-      category:'senior'
-    })
+      category,
+    });
   }
-  
+
   render() {
-    const { osteo,people } = this.props;
+    const { osteo,peoples } = this.props;
     const { category } = this.state;
     const classes = useStyles;
-  
+
     return(
       <Grid>
         <Grid container className={classes.root}>
@@ -56,13 +56,12 @@ class Pratique extends React.Component {
             <h1 style={{marginBottom:'1rem'}}>OSTEOPATHIE</h1>
           </Grid>
           <Grid container justify="center">
-           <Grid item xs={12}>
-            <Public 
-              category={category}
-              people={people} 
-              onSelect={this.handleCategorySelected}
-              />
+           
+           {peoples.map(people => (
+            <Grid item xs={12}>
+            <Public key={people.id} {...people}/>
             </Grid>
+            ))}
             <Grid item xs={12}>
               <Link to={'/praticiens'}>
                 <Button 
