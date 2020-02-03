@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect, useRef }from 'react';
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -13,6 +14,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 
+
+const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/';
+ const PRATIQUE_URL = 'practitioners';
 
 const styles = makeStyles(theme => ({
   root: {
@@ -54,20 +58,49 @@ const styles = makeStyles(theme => ({
 const Reservation = () => {
 
   const classes = styles();
-  const [pratique, setAge] = React.useState('');
+  const [pratique, setPratique] = useState('');
 
-  const inputLabel = React.useRef(null);
-  const [labelWidth, setLabelWidth] = React.useState(0);
-  React.useEffect(() => {
+// ------------------> APPEL AXIOS <-----------------------
+  const [practiciens, setPraticiens] = useState([]);
+
+  useEffect(()=>{
+    axios.get(`${WP_URL}${PRATIQUE_URL}`)
+      .then(res => {
+        console.log('RDV', res);
+        setPraticiens(res.data)
+      })
+      .catch(e => console.log(e));
+  },[])
+
+// ------------------------------------------------------
+
+
+  const inputLabel = useRef(null);
+  const [labelWidth, setLabelWidth] = useState(0);
+  useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
 
   const handleChange = event => {
-    setAge(event.target.value);
+    setPratique(event.target.value);
   };
 
 
   return (
+    <>
+{/* // ------------------> SHOW APPEL<----------------------- */}
+
+    <div>
+      <ul>
+      {practiciens.map(prat=>
+        <li key={prat.id}> {prat.id}</li>
+      )}
+      </ul>
+    </div>
+
+{/* // ------------------------------------------------------ */}
+
+
     <Grid container className={classes.root}>
       <Grid container justify="center">
         <Grid item xs={12}>
@@ -208,7 +241,7 @@ const Reservation = () => {
         </Grid>
     </Grid>
   </Grid>
+</>
   );
 }
  export default withStyles(styles)(Reservation);
-

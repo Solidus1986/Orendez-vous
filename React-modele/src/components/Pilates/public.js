@@ -41,13 +41,7 @@ function a11yProps(index) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
-// const primary = yellow[500];
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
+
 const AntTabs = withStyles({
     indicator: {
       backgroundColor: 'yellow',
@@ -62,7 +56,6 @@ const AntTabPanel = withStyles({
   
 
 export default function SimpleTabs({ pilates }) {
-  const classes = useStyles();
   
   const [value, setValue] = React.useState(0);
 
@@ -71,7 +64,7 @@ export default function SimpleTabs({ pilates }) {
   };
 
   return (
-    <div className={classes.root}>
+    <div>
       <AntTabs value={value} onChange={handleChange} aria-label="simple tabs example" centered>
         {pilates.map((pilate, index) => (
           <Tab label={pilate.slug} {...a11yProps(index)} />
