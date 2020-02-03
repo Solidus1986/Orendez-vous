@@ -10,6 +10,13 @@
 - [Page de connexion](#page-de-connexion)
 - [Validation du bearer token](#validation-du-bearer-token)
 - [Page Mon Compte](#page-mon-compte)
+  - [Informations personnelles](#informations-personnelles)
+  - [Mes rendez-vous](#mes-rendez-vous)
+  - [Supprimer un de mes RDV](#supprimer-un-de-mes-rdv)
+- [Formulaire de réservation](#formulaire-de-r%c3%a9servation)
+  - [Récupération dynamique des praticiens par type de pratique](#r%c3%a9cup%c3%a9ration-dynamique-des-praticiens-par-type-de-pratique)
+  - [Récupération des RDV du praticien et selon le type de pratique](#r%c3%a9cup%c3%a9ration-des-rdv-du-praticien-et-selon-le-type-de-pratique)
+  - [Envoi des informations de réservation](#envoi-des-informations-de-r%c3%a9servation)
 
 ## Préambule
 
@@ -413,6 +420,8 @@ Si le token est invalide, on obtient :
 
 ## Page Mon Compte
 
+### Informations personnelles
+
 Pour accéder aux informations de l'utilisateur, on va sur l'url : `/wp-json/wp/v2/users/me` et on aura besoin de passer le bearer token en header (voir [Page de connexion](#page-de-connexion) pour le récupérer).
 
 On recoit alors la réponse suivante :
@@ -447,6 +456,158 @@ Autrement sans bearer token l'utilisateur rencontrera cette réponse :
 }
 ```
 
-## Mes créneaux 
+### Mes rendez-vous
 
-Pour accèder aux créneaux disponibles d'un praticien et d'un type de pratique en particulier je dois utiliser la route : `/wp-json/wp/v2/appointments/ 
+Pour obtenir la liste des RDV du patient **connecté**, on doit se rendre sur l'url `wp-json/wp/v2/appointments/me` en GET et **en passant le Bearer Token**.
+
+Si l'utilisateur a des RDV dans le futur, on renvoie un tableau qui contient un ou plusieurs objets json avec les informations de ces RDV :
+
+```json
+[
+    {
+        "id": "6",
+        "type": "osteo",
+        "start_date": "2020-02-03 10:00:00",
+        "end_date": "2020-02-03 12:10:00",
+        "max_places": "1",
+        "available_places": "1",
+        "user_id": "1",
+        "created_at": "2020-01-29 11:09:08",
+        "updated_at": null
+    },
+    {
+        "id": "7",
+        "type": "osteo",
+        "start_date": "2020-02-04 10:00:00",
+        "end_date": "2020-02-04 12:10:00",
+        "max_places": "1",
+        "available_places": "1",
+        "user_id": "1",
+        "created_at": "2020-01-29 11:09:08",
+        "updated_at": null
+    }
+]
+```
+
+En revanche, si l'utilisateur n'a pas de RDV dans le futur, on renvoie une erreur.
+
+Une fois l'annulation effective, on renvoie un message pour préciser que l'annulation s'est bien passée (code HTTP 200).
+
+### Supprimer un de mes RDV
+
+L'utilisateur peut vouloir annuler un RDV. On l'autorise uniquement si le RDV est dans plus de 48h.
+
+Pour cela, on doit se rendre sur l'url `wp-json/wp/v2/appointments/<id>`, où on remplace `<id>` par l'id du RDV à annuler. La requête doit être avec la méthode **DELETE**, et on doit aussi envoyer le Bearer Token.
+
+Si le RDV est dans moins de 48h, on renvoie un message d'erreur.
+
+## Formulaire de réservation
+
+### Récupération dynamique des praticiens par type de pratique
+
+L'utilisateur choisit dans le formulaire le type de pratique (ostéopathie ou pilates). En fonction, il doit pouvoir choisir un praticien qui a ce rôle dans le back office.
+
+Pour cela, il faut envoyer un objet json qui contient le type de pratique, sur la route `/wp-json/v2/practitioners` en GET :
+
+```json
+{
+    "type": "osteo"
+}
+```
+
+ou
+
+```json
+{
+    "type": "coach"
+}
+```
+
+En résultat, on obtient un tableau, qui contient un ou des objets json, un objet par praticien. Par exemple :
+
+```json
+[
+    {
+        "id": 1,
+        "first_name": "Dario",
+        "last_name": "Spagnolo"
+    },
+    {
+        "id": 2,
+        "first_name": "Jean",
+        "last_name": "O'Clock"
+    }
+]
+```
+
+### Récupération des RDV du praticien et selon le type de pratique
+
+Pour accèder aux créneaux disponibles d'un praticien et d'un type de pratique en particulier, je dois utiliser la route : `/wp-json/wp/v2/appointments/` en GET.
+
+On doit transmettre à cette route un objet json qui contient le type de pratique et l'id du praticien. Par exemple :
+
+```json
+{
+    "type": "osteo",
+    "user_id": 1
+}
+```
+
+ou
+
+```json
+{
+    "type": "pilates",
+    "user_id": 1
+}
+```
+
+En résultat, on obtient un tableau, qui contient un ou plusieurs objets json (un par RDV) :
+
+```json
+[
+    {
+        "id": "6",
+        "type": "osteo",
+        "start_date": "2020-02-03 10:00:00",
+        "end_date": "2020-02-03 12:10:00",
+        "max_places": "1",
+        "available_places": "1",
+        "user_id": "1",
+        "created_at": "2020-01-29 11:09:08",
+        "updated_at": null
+    },
+    {
+        "id": "7",
+        "type": "osteo",
+        "start_date": "2020-02-04 10:00:00",
+        "end_date": "2020-02-04 12:10:00",
+        "max_places": "1",
+        "available_places": "1",
+        "user_id": "1",
+        "created_at": "2020-01-29 11:09:08",
+        "updated_at": null
+    }
+]
+```
+
+### Envoi des informations de réservation
+
+**Le processus de réservation est réservé aux utilisateurs connectés.**
+
+Pour créer une réservation, il faut envoyer côté serveur l'id du RDV dans un objet json, sur la route `wp-json/wp/v2/appointments` en **POST**, et avec le **Bearer Token** de l'utilisateur :
+
+```json
+{
+    "appointment_id": 12
+}
+```
+
+Note :
+
+- l'id de l'utilisateur qui réserve est récupéré automatiquement grâce au Bearer Token
+- si le nombre de place disponible est égal à zéro alors le rendez-vous n'est plus disponible, et on retourne un message d'erreur. Cela peut se produire si le rendez vous était visible par le current user mais qu'un autre user l'a réservé entre temps.
+- si la séance est de type pilates, on s'assure que l'utilisateur a encore des séances sur sa carte. Si ce n'est pas le cas, on retourne un message d'erreur.
+- si l'utilisateur a déjà réservé la séance, on retourne un message d'erreur car il ne peut pas réserver 2 fois la même séance
+
+Si tout est ok, on renvoie simplement un objet json qui précise que la réservation s'est bien passée (code HTTP 200).
