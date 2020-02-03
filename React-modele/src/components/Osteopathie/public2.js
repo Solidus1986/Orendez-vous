@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import yellow from '@material-ui/core/colors/yellow';
 
 function TabPanel(props) {
   const {
@@ -38,16 +39,29 @@ function a11yProps(index) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
-
+// const primary = yellow[500];
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
 }));
+const AntTabs = withStyles({
+    indicator: {
+      backgroundColor: 'yellow',
+    },
+  })(Tabs);
+
+const AntTabPanel = withStyles({
+  text: {
+    backgroundColor: 'yellow',
+  },
+})(TabPanel);
+  
 
 export default function SimpleTabs({ peoples }) {
   const classes = useStyles();
+  
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -56,11 +70,11 @@ export default function SimpleTabs({ peoples }) {
 
   return (
     <div className={classes.root}>
-      <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+      <AntTabs value={value} onChange={handleChange} aria-label="simple tabs example" centered scrollButtons="on" >
         {peoples.map((peo, index) => (
           <Tab label={peo.slug} {...a11yProps(index)} />
         ))}
-      </Tabs>
+      </AntTabs>
       {peoples.map((peo, index) => (
         <TabPanel key={peo.id} value={value} index={index}>
             <div dangerouslySetInnerHTML={{ __html: peo.content.rendered }} />

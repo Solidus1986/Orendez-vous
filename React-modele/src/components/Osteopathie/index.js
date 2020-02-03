@@ -73,9 +73,9 @@ class Osteopathie extends React.Component {
             <h1 style={{ marginBottom: '1rem' }}>OSTEOPATHIE</h1>
           </Grid>
           <Grid container justify="center">
-              <Grid item xs={12}>
-                <Public2  peoples={peoples} />
-              </Grid>
+            <Grid item xs={12}>
+              <Public2 peoples={peoples} />
+            </Grid>
             <Grid item xs={12}>
               <Link to="/praticiens">
                 <Button
