@@ -24,9 +24,25 @@ const useStyles = makeStyles(theme => ({
   },
   
   '&:hover':{
-    color:'#ffef05'
+    color:'#C2DCFF'
+  }
+},
+pratique2:{
+  display:'inline-block',
+  textTransform: 'uppercase',
+  fontSize: '12rem',
+  '@media screen and (min-width: 900px) and (max-width: 1000px)': {
+
+    fontSize: '9rem',
+},
+'@media screen and (min-width: 500px) and (max-width: 900px)': {
+  fontSize: '4rem',
+},
+  '&:hover':{
+    color:'#EEC2FF'
   }
 }
+
 }));
 
 
@@ -42,7 +58,7 @@ const Nav = (props) => {
         <Grid container justify="center">
           <div>
             <Link to="/osteopathie" className={classes.pratique}>Osteopathie</Link>
-            <Link to="/pilates" className={classes.pratique}>Pilates</Link>
+            <Link to="/pilates" className={classes.pratique2}>Pilates</Link>
 
           </div>
           </Grid>
