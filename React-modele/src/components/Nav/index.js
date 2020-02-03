@@ -15,13 +15,14 @@ const useStyles = makeStyles(theme => ({
     display:'inline-block',
     textTransform: 'uppercase',
     fontSize: '12rem',
-    '@media screen and (min-width: 600px) and (max-width: 1200px)': {
+    '@media screen and (min-width: 900px) and (max-width: 1000px)': {
 
       fontSize: '9rem',
   },
-  '@media screen and (min-width: 200px) and (max-width: 600px)': {
+  '@media screen and (min-width: 500px) and (max-width: 900px)': {
     fontSize: '4rem',
   },
+  
   '&:hover':{
     color:'#ffef05'
   }
