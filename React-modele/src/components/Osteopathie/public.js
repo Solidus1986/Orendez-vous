@@ -58,8 +58,11 @@ const AntTabPanel = withStyles({
   },
 })(TabPanel);
   
+const styleText = {
+  
+}
 
-export default function SimpleTabs({ peoples }) {
+export default function SimpleTabs({ osteo, peoples }) {
   const classes = useStyles();
   
   const [value, setValue] = React.useState(0);
@@ -70,14 +73,16 @@ export default function SimpleTabs({ peoples }) {
 
   return (
     <div className={classes.root}>
-      <AntTabs value={value} onChange={handleChange} aria-label="simple tabs example" centered scrollButtons="on" >
+      <AntTabs value={value} onChange={handleChange} aria-label="simple tabs example" centered variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example">
         {peoples.map((peo, index) => (
           <Tab label={peo.slug} {...a11yProps(index)} />
         ))}
       </AntTabs>
       {peoples.map((peo, index) => (
         <TabPanel key={peo.id} value={value} index={index}>
-            <div dangerouslySetInnerHTML={{ __html: peo.content.rendered }} />
+            <div style={{fontSize:'1.2rem',textAlign:'justify'}} dangerouslySetInnerHTML={{ __html: peo.content.rendered }} />
         </TabPanel>
       ))}
     </div>

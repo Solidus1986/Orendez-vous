@@ -78,7 +78,7 @@ class App extends React.Component {
               <Route exact path="/pilates">
                 <Pilates />
               </Route>
-              <Route exact path="/pratiques/reservation">
+              <Route exact path="/reservation">
                 <Reservation />
               </Route>
               <Route exact path="/praticiens">

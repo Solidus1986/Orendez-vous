@@ -50,7 +50,7 @@ class Infos extends React.Component {
             <h1 style={{marginBottom:'1rem'}}>INFOS</h1>
           </Grid>
            <Grid container justify="center">
-             <Grid item xs={6}>
+             <Grid item xs={8}>
                {infos.map(info => (
                  <Grid key={info.id}>
                  {console.log('info:',info.title.rendered)}
