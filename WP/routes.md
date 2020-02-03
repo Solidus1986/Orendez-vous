@@ -446,3 +446,7 @@ Autrement sans bearer token l'utilisateur rencontrera cette réponse :
     }
 }
 ```
+
+## Mes créneaux 
+
+Pour accèder aux créneaux disponibles d'un praticien et d'un type de pratique en particulier je dois utiliser la route : `/wp-json/wp/v2/appointments/ 
