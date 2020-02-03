@@ -20,6 +20,8 @@ require plugin_dir_path(__FILE__) . 'inc/custom_table.php';
 require plugin_dir_path(__FILE__) . 'inc/appointment.php';
 require plugin_dir_path(__FILE__) . 'inc/planning.php';
 require plugin_dir_path(__FILE__) . 'inc/customers_pilates.php';
+require plugin_dir_path(__FILE__) . 'inc/dashboard.php';
+require plugin_dir_path(__FILE__) . 'inc/interface.php';
 
 // CPT OSTEO + TAXOS
 $osteo_cpt = new Osteo_cpt;

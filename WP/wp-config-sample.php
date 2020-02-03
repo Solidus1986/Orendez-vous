@@ -60,6 +60,8 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/editing-wp-config-php/#advanced-options
  * @link https://www.php.net/manual/fr/function.rtrim.php
  */
+
+define('FRONT_URL', rtrim('put_your_front_url_here', '/'));
 define('WP_HOME', rtrim('put_your_home_url_here', '/'));
 define('WP_SITEURL', WP_HOME . '/wp');
 define('WP_CONTENT_URL', WP_HOME . '/content');

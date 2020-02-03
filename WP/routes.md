@@ -507,7 +507,7 @@ Si le RDV est dans moins de 48h, on renvoie un message d'erreur.
 
 L'utilisateur choisit dans le formulaire le type de pratique (ostéopathie ou pilates). En fonction, il doit pouvoir choisir un praticien qui a ce rôle dans le back office.
 
-Pour cela, il faut envoyer un objet json qui contient le type de pratique, sur la route `/wp-json/v2/practitioners` en GET :
+Pour cela, il faut envoyer un objet json qui contient le type de pratique, sur la route `/wp-json/wp/v2/practitioners` en GET :
 
 ```json
 {
