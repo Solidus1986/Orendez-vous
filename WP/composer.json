@@ -19,7 +19,8 @@
         "wpackagist-plugin/advanced-custom-fields": "^5.8",
         "wpackagist-plugin/what-the-file": "^1.5",
         "wpackagist-plugin/jwt-authentication-for-wp-rest-api": "^1.2",
-        "tplaner/when": "^3.0"
+        "tplaner/when": "^3.0",
+        "wpackagist-plugin/multiple-roles": "^1.2"
     },
     "extra" : {
         "wordpress-install-dir": "wp",
