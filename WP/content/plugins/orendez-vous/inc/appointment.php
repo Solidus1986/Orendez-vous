@@ -186,5 +186,7 @@ class Appointment
             
             CustomTable::add_appointment($args);
         }
+
+        echo '<p class="success">Les rendez-vous ont bien été créés.<p>';
     }
 }

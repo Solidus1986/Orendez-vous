@@ -21,6 +21,11 @@
     color: red;
 }
 
+.success {
+    font-weight: bold;
+    color: green;
+}
+
 /* Css for planning */
 
 
