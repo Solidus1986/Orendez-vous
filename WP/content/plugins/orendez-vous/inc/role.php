@@ -15,10 +15,7 @@ class ORdvRole
             'Ostéopathe',
             [
                 'read' => true,
-                'upload_files' => true,
-                'edit_posts' => true,
-                'edit_published_posts' => true,
-                'delete_posts' => true
+                'upload_files' => true
             ]
         );
 
@@ -27,10 +24,7 @@ class ORdvRole
             'Coach Pilates',
             [
                 'read' => true,
-                'upload_files' => true,
-                'edit_posts' => true,
-                'edit_published_posts' => true,
-                'delete_posts' => true
+                'upload_files' => true
             ]
         );
     }
@@ -91,6 +85,18 @@ class ORdvRole
             $admin->add_cap('edit_others_infos');
             $admin->add_cap('edit_infos');
             $admin->add_cap('publish_infos');
+
+        $practicioners = [
+            'osteo',
+            'coach'
+        ];
+
+        foreach ($practicioners as $role_name) {
+            $role = get_role($role_name);
+            $role->remove_cap('edit_posts');
+            $role->remove_cap('edit_published_posts');
+            $role->remove_cap('delete_posts');
+        }
     }
 
     public function removeRole()
