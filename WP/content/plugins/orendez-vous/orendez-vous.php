@@ -19,8 +19,7 @@ require plugin_dir_path(__FILE__) . 'inc/role.php';
 require plugin_dir_path(__FILE__) . 'inc/custom_table.php';
 require plugin_dir_path(__FILE__) . 'inc/appointment.php';
 require plugin_dir_path(__FILE__) . 'inc/planning.php';
-
-
+require plugin_dir_path(__FILE__) . 'inc/customers_pilates.php';
 
 // CPT OSTEO + TAXOS
 $osteo_cpt = new Osteo_cpt;
@@ -50,3 +49,7 @@ $appointment = new Appointment;
 
 // Planning 
 $planning = new Planning;
+
+// Customers Pilates
+// Gestion des cartes de séance
+$customers = new CustomersPilates;
