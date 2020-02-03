@@ -130,6 +130,10 @@ class CustomTable
         $result = $wpdb->get_results(
             "SELECT * FROM wp_appointment WHERE id = $appointment_id;"
         );
+
+        if(empty($result)) {
+            return null;
+        }
         return $result[0];
     }
 
