@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/projet-orendez-vous/WP/wp-json/wp/v2/';
+const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/';
 const Informations = '/info';
 
 const styles = {
@@ -50,7 +50,7 @@ class Infos extends React.Component {
             <h1 style={{marginBottom:'1rem'}}>INFOS</h1>
           </Grid>
            <Grid container justify="center">
-             <Grid item xs={6}>
+             <Grid item xs={8}>
                {infos.map(info => (
                  <Grid key={info.id}>
                  {console.log('info:',info.title.rendered)}
