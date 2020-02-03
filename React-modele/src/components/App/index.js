@@ -48,7 +48,6 @@ class App extends React.Component {
     if (log) {
       store.dispatch(userData());
     }
- 
   }
 
   render() {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CONNECT_USER, USER_DATA } from 'src/store/reducer/login';
+import { CONNECT_USER, USER_DATA, userData } from 'src/store/reducer/login';
 import { logUser, dataUser } from 'src/store/reducer/user';
 
 
@@ -26,6 +26,7 @@ const ajaxMiddleware = (store) => (next) => (action) => {
           );
           console.log('connect', response.data);
           store.dispatch(actionLogUser);
+          store.dispatch(userData());
         })
         .catch((error) => {
           // eslint-disable-next-line no-console

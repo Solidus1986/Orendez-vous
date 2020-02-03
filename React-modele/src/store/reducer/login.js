@@ -20,10 +20,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.inputName]: action.value,
       };
-    case USER_DATA:
-      return {
-        ...state,
-      };
+
 
     default: return state;
   }

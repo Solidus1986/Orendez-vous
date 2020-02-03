@@ -34,20 +34,10 @@ const useStyles = {
 
 
 class Pratique extends React.Component {
-  state={
-    category:'',
-  }
-
-  handleCategorySelected = category => {
-    this.setState({
-      category,
-    });
-  }
-
-  render() {
-    const { osteo,peoples } = this.props;
-    const { category } = this.state;
+  const { osteo,peoples } = this.props;
     const classes = useStyles;
+  render() {
+   
 
     return(
       <Grid>
@@ -59,7 +49,7 @@ class Pratique extends React.Component {
            
            {peoples.map(people => (
             <Grid item xs={12}>
-            <Public key={people.id} {...people}/>
+            <Public key={people.id} {...people} osteo={osteo}/>
             </Grid>
             ))}
             <Grid item xs={12}>
