@@ -112,7 +112,7 @@ useEffect(() => {
     
     axios.get(`${WP_URL}${HORAIRES_URL}?user_id=${selectPractitioner}&type=${selectValue}`)
       .then(res => {
-        console.log('creneaux des praticiens', res);
+        console.log('creneaux des praticiens', res.data);
         setDates(res.data)
       })
       .catch(e => console.log(e));
@@ -214,8 +214,7 @@ useEffect(() => {
         </Grid>
         
         <Grid item xs={6}>
-        {dates.map(date=> (
-
+        {Object.keys(dates).map((date, index) => (
           <ExpansionPanel
             className={classes.panel}
           >
@@ -226,19 +225,23 @@ useEffect(() => {
               id="panel1a-header"
             >
             
-              <Typography className={classes.heading}>{date.data}</Typography>
+              <Typography key={index} className={classes.heading}>{date}</Typography>
+              {console.log('qui es tu?', date)}
             </ExpansionPanelSummary>
               <ExpansionPanelDetails>
+              {Object.keys(date).map((d, index) => (
+                <RadioGroup aria-label="position" name="position" value={selectDate} onChange={handleChangeDate} row>
+                {console.log('quelle heure est t-il?', d)}
+                    <FormControlLabel
+                      key={index}
+                      value="end"
+                      control={<Radio color="primary" />}
+                      label={d.start_date}
+                      labelPlacement="end"
+                    />
+                  </RadioGroup>
 
-              <RadioGroup aria-label="position" name="position" value={selectDate} onChange={handleChangeDate} row>
-                
-                  <FormControlLabel
-                    value="end"
-                    control={<Radio color="primary" />}
-                    label="22H00"
-                    labelPlacement="end"
-                  />
-                </RadioGroup>
+              ))}
               </ExpansionPanelDetails>
 
           </ExpansionPanel>
