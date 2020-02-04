@@ -83,7 +83,6 @@ class Pilates extends React.Component {
                   <Button
                     variant="outline"
                     style={classes.button}
-
                   >
                  Rendez vous
                   </Button>
