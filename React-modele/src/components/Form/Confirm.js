@@ -5,24 +5,38 @@ import Grid from '@material-ui/core/Grid';
 
 
 class Confirm extends Component {
-  continue = e => {
+  onSumit = e => {
     e.preventDefault();
     // PROCESS FORM //
-    this.props.nextStep();
+    const { values } = this.state;
+    
+
+    axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/users/register', { values }, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then((result) => {
+        console.log(result)
+        alert('Votre inscription est réussi');
+         this.props.nextStep();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
-  back = e => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
+  
 
   render() {
     const {
       values: {  
         firstName,
         lastName,
+        userName,
         phone,
         email,
+        emailConfirm,
+        password,
+        confirmPassword,
       }, classes
     } = this.props;
     return (
@@ -35,6 +49,9 @@ class Confirm extends Component {
             </ListItem>
             <ListItem>
               <ListItemText primary="Nom :" secondary={lastName} /> 
+            </ListItem>
+            <ListItem>
+              <ListItemText primary="Pseudo :" secondary={userName} /> 
             </ListItem>
             <ListItem>
               <ListItemText primary="Téléphone :" secondary={phone} /> 
@@ -54,7 +71,7 @@ class Confirm extends Component {
           <Button
             variant='outline'
             style={classes.button}
-            onClick={this.continue}
+            onClick={this.onSubmit}
           >Confirm</Button>
         </Grid>
       </Grid>

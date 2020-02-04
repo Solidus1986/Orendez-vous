@@ -3,16 +3,16 @@ import Grid from '@material-ui/core/Grid';
 
 
 class Success extends Component {
-  continue = e => {
-    e.preventDefault();
-    // PROCESS FORM //
-    this.props.nextStep();
-  };
+  // continue = e => {
+  //   e.preventDefault();
+  //   // PROCESS FORM //
+  //   this.props.nextStep();
+  // };
 
-  back = e => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
+  // back = e => {
+  //   e.preventDefault();
+  //   this.props.prevStep();
+  // };
 
   render() {
     const {classes} = this.props

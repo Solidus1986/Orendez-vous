@@ -22,8 +22,8 @@ import Button from '@material-ui/core/Button';
 
 
 const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/';
- const PRATIQUE_URL = 'practitioners';
- const HORAIRES_URL = 'appointments';
+const PRATIQUE_URL = 'practitioners';
+const HORAIRES_URL = 'appointments';
 
 const styles = makeStyles(theme => ({
   root: {
@@ -64,7 +64,7 @@ const Reservation = ( { logged }) => {
   const [values, setValues] = useState([{
     type:'osteo'
   },{
-    type:'coach'
+    type:'pilates'
   }
 ]);
 
@@ -86,9 +86,12 @@ useEffect(() => {
 
   useEffect(()=>{
     console.log('type',values);
+    console.log('selectValue', selectValue);
+ 
     axios.get(`${WP_URL}${PRATIQUE_URL}?type=${selectValue}`)
       .then(res => {
         console.log('praticiens', res);
+    
         setPractitioners(res.data)
       })
       .catch(e => console.log(e));
@@ -170,7 +173,7 @@ useEffect(() => {
               labelWidth={labelWidth}
               >
               <MenuItem value={"osteo"}>Ostéopathie</MenuItem>
-              <MenuItem value={"coach"}>Pilates</MenuItem>
+              <MenuItem value={"pilates"}>Pilates</MenuItem>
             </Select>
           </FormControl>
       <br/>

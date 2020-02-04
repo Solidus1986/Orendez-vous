@@ -36,6 +36,7 @@ class Form extends React.Component {
     step: 1,
     firstName: '',
     lastName:'',
+    userName:'',
     phone:'',
     email:'',
     emailConfirm:'',
@@ -72,6 +73,7 @@ class Form extends React.Component {
     const { 
     firstName,
     lastName,
+    userName,
     phone,
     email,
     emailConfirm,
@@ -81,6 +83,7 @@ class Form extends React.Component {
     const values = {
     firstName,
     lastName,
+    userName,
     phone,
     email,
     emailConfirm,
