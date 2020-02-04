@@ -36,7 +36,14 @@ class AppointmentRest
         $user_id = sanitize_text_field($parameters['user_id']);
 
         $results = CustomTable::read_available_appointments($user_id, $type);
-        return new WP_REST_Response($results);
+        $appointments = [];
+        foreach ($results as $appointment) {
+            setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
+            $date = strftime('%A %d %B %Y', strtotime($appointment->start_date));
+            $appointments[$date][] = $appointment;
+        }
+        
+        return new WP_REST_Response($appointments);
     }
 
     /**
