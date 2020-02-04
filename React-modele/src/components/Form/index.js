@@ -34,14 +34,14 @@ const styles = {
 class Form extends React.Component {
   state = { 
     step: 1,
-    firstName: '',
-    lastName:'',
-    userName:'',
-    phone:'',
+    firstname: '',
+    lastname:'',
+    username:'',
+    phone_number:'',
     email:'',
-    emailConfirm:'',
+    email_validation:'',
     password:'',
-    confirmPassword:'',
+    password_validation:'',
    }
   
    // Proceed to next step
@@ -71,24 +71,24 @@ class Form extends React.Component {
     const classes = styles;
     const { step } = this.state;
     const { 
-    firstName,
-    lastName,
-    userName,
-    phone,
+    firstname,
+    lastname,
+    username,
+    phone_number,
     email,
-    emailConfirm,
+    email_validation,
     password,
-    confirmPassword,
+    password_validation,
     } = this.state;
     const values = {
-    firstName,
-    lastName,
-    userName,
-    phone,
+    firstname,
+    lastname,
+    username,
+    phone_number,
     email,
-    emailConfirm,
+    email_validation,
     password,
-    confirmPassword,
+    password_validation,
     }
 
     switch(step){

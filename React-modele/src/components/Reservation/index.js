@@ -226,7 +226,7 @@ useEffect(() => {
               id="panel1a-header"
             >
             
-              <Typography className={classes.heading}>{date.start_date}</Typography>
+              <Typography className={classes.heading}>{date.data}</Typography>
             </ExpansionPanelSummary>
               <ExpansionPanelDetails>
 
