@@ -55,8 +55,8 @@ const Login = ({
           <form onSubmit={onSubmit}>
             <TextField
               style={classes.field}
-              placeholder="Identifiant"
-              label="Identifiant"
+              placeholder="Username"
+              label="Username"
               onChange={handleOnChange}
               defaultValue={username}
               type="text"

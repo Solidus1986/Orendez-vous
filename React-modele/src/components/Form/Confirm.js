@@ -2,41 +2,48 @@ import React, { Component } from 'react';
 import { List, ListItem, ListItemText } from '@material-ui/core/';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import axios from 'axios';
+
 
 
 class Confirm extends Component {
-  onSumit = e => {
+
+
+  onSubmit = e => {
     e.preventDefault();
     // PROCESS FORM //
-    const { values } = this.state;
+    const { values } = this.props;
     
 
-    axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/users/register', { values }, {
+    axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/users/register', values , {
       headers: { 'Content-Type': 'application/json' }
     })
       .then((result) => {
         console.log(result)
-        alert('Votre inscription est réussi');
          this.props.nextStep();
       })
       .catch((error) => {
-        console.error(error);
+        console.error('c\'est une erreur', error.response);
       });
   };
+  back = e => {
+      e.preventDefault();
+      this.props.prevStep();
+    };
 
-  
+
 
   render() {
     const {
       values: {  
-        firstName,
-        lastName,
-        userName,
-        phone,
+        firstname,
+        lastname,
+        username,
+        phone_number,
         email,
-        emailConfirm,
+        email_validation,
         password,
-        confirmPassword,
+        password_validation,
       }, classes
     } = this.props;
     return (
@@ -45,16 +52,16 @@ class Confirm extends Component {
           <Grid>
           <List>
             <ListItem>
-              <ListItemText primary="Prénom :" secondary={firstName} /> 
+              <ListItemText primary="Prénom :" secondary={firstname} /> 
             </ListItem>
             <ListItem>
-              <ListItemText primary="Nom :" secondary={lastName} /> 
+              <ListItemText primary="Nom :" secondary={lastname} /> 
             </ListItem>
             <ListItem>
-              <ListItemText primary="Pseudo :" secondary={userName} /> 
+              <ListItemText primary="Pseudo :" secondary={username} /> 
             </ListItem>
             <ListItem>
-              <ListItemText primary="Téléphone :" secondary={phone} /> 
+              <ListItemText primary="Téléphone :" secondary={phone_number} /> 
             </ListItem>
             <ListItem>
               <ListItemText primary="adresse email :" secondary={email} /> 

@@ -87,7 +87,17 @@ useEffect(() => {
   useEffect(()=>{
     console.log('type',values);
     console.log('selectValue', selectValue);
- 
+    // axios({
+    //   method: 'get',
+    //   url: `${WP_URL}${PRATIQUE_URL}`,
+    //   param: {
+    //     type: 'coach'
+    //     },
+    //   headers: {
+    //     // 'Authorization': 'Bearer ' + app.getToken()
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
     axios.get(`${WP_URL}${PRATIQUE_URL}?type=${selectValue}`)
       .then(res => {
         console.log('praticiens', res);
@@ -100,9 +110,9 @@ useEffect(() => {
 
   useEffect(()=>{
     
-    axios.get(`${WP_URL}${HORAIRES_URL}id=${selectPractitioner}&type=${selectValue}`)
+    axios.get(`${WP_URL}${HORAIRES_URL}?user_id=${selectPractitioner}&type=${selectValue}`)
       .then(res => {
-        console.log('dates', res);
+        console.log('creneaux des praticiens', res);
         setDates(res.data)
       })
       .catch(e => console.log(e));
@@ -204,7 +214,8 @@ useEffect(() => {
         </Grid>
         
         <Grid item xs={6}>
-        {/* {dates.map(date=> ( */}
+        {dates.map(date=> (
+
           <ExpansionPanel
             className={classes.panel}
           >
@@ -215,9 +226,10 @@ useEffect(() => {
               id="panel1a-header"
             >
             
-              <Typography className={classes.heading}>Dimanche 31 Février</Typography>
+              <Typography className={classes.heading}>{date.data}</Typography>
             </ExpansionPanelSummary>
               <ExpansionPanelDetails>
+
               <RadioGroup aria-label="position" name="position" value={selectDate} onChange={handleChangeDate} row>
                 
                   <FormControlLabel
@@ -228,8 +240,9 @@ useEffect(() => {
                   />
                 </RadioGroup>
               </ExpansionPanelDetails>
+
           </ExpansionPanel>
-        {/* ))} */}
+        ))} 
           <Button
             type='button'
             variant='outline'
