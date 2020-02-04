@@ -507,21 +507,7 @@ Si le RDV est dans moins de 48h, on renvoie un message d'erreur.
 
 L'utilisateur choisit dans le formulaire le type de pratique (ostéopathie ou pilates). En fonction, il doit pouvoir choisir un praticien qui a ce rôle dans le back office.
 
-Pour cela, il faut envoyer un objet json qui contient le type de pratique, sur la route `/wp-json/wp/v2/practitioners` en GET :
-
-```json
-{
-    "type": "osteo"
-}
-```
-
-ou
-
-```json
-{
-    "type": "coach"
-}
-```
+Pour cela, on se rend sur l'url `/wp-json/wp/v2/practitioners?type=<type>` en GET, où `<type>` est à remplacer par `osteo` ou `pilates` :
 
 En résultat, on obtient un tableau, qui contient un ou des objets json, un objet par praticien. Par exemple :
 
@@ -542,25 +528,7 @@ En résultat, on obtient un tableau, qui contient un ou des objets json, un obje
 
 ### Récupération des RDV du praticien et selon le type de pratique
 
-Pour accèder aux créneaux disponibles d'un praticien et d'un type de pratique en particulier, je dois utiliser la route : `/wp-json/wp/v2/appointments/` en GET.
-
-On doit transmettre à cette route un objet json qui contient le type de pratique et l'id du praticien. Par exemple :
-
-```json
-{
-    "type": "osteo",
-    "user_id": 1
-}
-```
-
-ou
-
-```json
-{
-    "type": "pilates",
-    "user_id": 1
-}
-```
+Pour accèder aux créneaux disponibles d'un praticien et d'un type de pratique en particulier, je dois utiliser la route : `/wp-json/wp/v2/appointments?type=<type>&user_id=<id>` en GET, où `<type>` est à remplacer par `osteo` ou `pilates` et `<id>` est à remplacer par l'id du praticien.
 
 En résultat, on obtient un tableau, qui contient un ou plusieurs objets json (un par RDV) :
 

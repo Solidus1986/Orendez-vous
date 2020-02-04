@@ -26,7 +26,12 @@ class AppointmentRest
      */
     public function rest_show_appointments_endpoint_handler($request = null)
     {
-        $parameters = $request->get_json_params();
+        $parameters = $request->get_params();
+        if(!isset($parameters['type']) || !isset($parameters['user_id'])) {
+            $error = new WP_Error();
+            $error->add(400, __("Paramètre(s) manquant(s)", 'wp-rest-user'), array('status' => 400));
+            return $error;
+        }
         $type = sanitize_text_field($parameters['type']);
         $user_id = sanitize_text_field($parameters['user_id']);
 

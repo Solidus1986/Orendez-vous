@@ -23,9 +23,14 @@ class Practitioners
      */
     public function rest_show_practitioners_endpoint_handler($request = null)
     {
-        $parameters = $request->get_json_params();
+        $parameters = $request->get_params();
+        if(!isset($parameters['type']) || !in_array($parameters['type'], ["pilates","osteo"])) {
+            $error = new WP_Error();
+            $error->add(400, __("Le type n'est pas correct", 'wp-rest-user'), array('status' => 400));
+            return $error;
+        }
         $type = sanitize_text_field($parameters['type']);
-        
+        $type = $type == 'pilates' ? 'coach' : 'osteo';
         $users = get_users(['role' => $type]);
         $result = [];
         foreach ($users as $user) {
