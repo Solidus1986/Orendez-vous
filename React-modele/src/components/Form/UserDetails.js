@@ -44,6 +44,16 @@ class UserDetails extends Component {
             <br/>
             <TextField 
               style={classes.field}
+              placeholder ="Pseudo"
+              label="Pseudo"
+              onChange={handleChange('userName')}
+              defaultValue={values.userName}
+              variant="outlined"
+              size="small"
+            />
+            <br/>
+            <TextField 
+              style={classes.field}
               placeholder="Téléphone"
               label="Téléphone"
               onChange={handleChange('phone')}
