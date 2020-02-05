@@ -179,4 +179,13 @@ class CustomTable
             "UPDATE wp_appointment SET available_places = available_places + 1 WHERE id = $appointment_id;"
         );
     }
+
+    public static function delete_appointment($appointment_id)
+    {
+        global $wpdb;
+        
+        $wpdb->query(
+            "DELETE FROM wp_appointment WHERE id = $appointment_id;"
+        );
+    }
 }
