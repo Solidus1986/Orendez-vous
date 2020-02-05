@@ -805,6 +805,17 @@
   dependencies:
     "@babel/runtime" "^7.4.4"
 
+"@material-ui/lab@^4.0.0-alpha.41":
+  version "4.0.0-alpha.41"
+  resolved "https://registry.yarnpkg.com/@material-ui/lab/-/lab-4.0.0-alpha.41.tgz#3848fd0ad224f02d86f737b60ce78c1524c122a3"
+  integrity sha512-nVXW5eHOLtExRSlfd6Hxa0hna1xenqCunoQv1MbGAVqW3XzLgWdCE2xKWwG3Ewdt/CZ4QUF5+KTTLVtZIqIeOw==
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@material-ui/utils" "^4.7.1"
+    clsx "^1.0.4"
+    prop-types "^15.7.2"
+    react-is "^16.8.0"
+
 "@material-ui/pickers@^3.2.9":
   version "3.2.9"
   resolved "https://registry.yarnpkg.com/@material-ui/pickers/-/pickers-3.2.9.tgz#34feea26d0681264765ba41a94bf75b9f1c99ea9"

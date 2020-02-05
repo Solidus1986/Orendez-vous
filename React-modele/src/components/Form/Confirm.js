@@ -3,10 +3,23 @@ import { List, ListItem, ListItemText } from '@material-ui/core/';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
+import Snackbar from '@material-ui/core/Snackbar';
 
+import Alert from '@material-ui/lab/Alert';
 
 
 class Confirm extends Component {
+  state={
+    snackOpen:false,
+    snackMessage:'',
+  }
+
+  handleClose = e => {
+  this.setSate({snackOpen:false})}
+
+  Alert = (props) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
 
   onSubmit = e => {
@@ -23,7 +36,8 @@ class Confirm extends Component {
          this.props.nextStep();
       })
       .catch((error) => {
-        console.error('c\'est une erreur', error.response);
+        console.error('c\'est une erreur', error.response.data.message);
+        this.setState({snackOpen:true, snackMessage:error.response.data.message})
       });
   };
   back = e => {
@@ -48,6 +62,18 @@ class Confirm extends Component {
     } = this.props;
     return (
       <div style={classes.root}> 
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        open={this.state.snackOpen}
+        autoHideDuration={6000} 
+        onClose={this.handleClose}>
+        <Alert onClose={this.handleClose} severity="error">
+          Verifiez vos informations!
+        </Alert>
+        </Snackbar>
         <Grid container justify = "center">
           <Grid>
           <List>

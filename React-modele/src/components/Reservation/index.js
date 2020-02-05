@@ -18,6 +18,9 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 
 
@@ -58,9 +61,19 @@ const styles = makeStyles(theme => ({
 }));
 
 
-const Reservation = ( { logged }) => {
+const Reservation = ( ) => {
 
   const classes = styles();
+
+  const [snack, setSnack] = useState([
+    { snackOpen:false,
+      snackMessage:''}
+  ]);
+
+  const handleClose = event =>
+  // event.preventDefault();
+  setSnack({snackOpen:false});
+
   const [values, setValues] = useState([{
     type:'osteo'
   },{
@@ -81,6 +94,10 @@ const [labelWidth, setLabelWidth] = useState(0);
 useEffect(() => {
   setLabelWidth(inputLabel.current.offsetWidth);
 }, []);
+
+
+
+
 
 // ------------------> APPEL AXIOS <-----------------------
 
@@ -118,37 +135,6 @@ useEffect(() => {
       .catch(e => console.log(e));
   },[selectPractitioner])
 
-  // useEffect(()=>{
-    
-  //   axios.post(`${WP_URL}${HORAIRES_URL}id=${selectDate}`, {}, {
-  //     headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
-  // })
-  //     .then(res => {
-  //       console.log('dates', res);
-  //       selectDate(res.data)
-  //     })
-  //     .catch(e => console.log(e));
-  // },[selectDate])
-
-
-  //onSubmit = e => {
-  //  e.preventDefault();
-  //  // PROCESS FORM //
-  //  // const { values } = this.props;
-  //  const values = dates[date][d].id 
-  //  
-//
-  //  axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/users/appointments',values, {
-  //    headers: { 'Authorization': 'Bearer ' + app.getToken() }
-  //  })
-  //    .then((result) => {
-  //      console.log(result)
-//
-  //    })
-  //    .catch((error) => {
-  //      console.error('c\'est une erreur', error.response);
-  //    });
-  //};
 
 // ------------------> HANDLE <-----------------------
 
@@ -180,11 +166,13 @@ useEffect(() => {
     })
         .then(res => {
           console.log('dates', res);
-          alert('Votre réservation est validé')
-          res.redirect('/profil')
+          setSnack({snackOpen:true, snackMessage:"Votre Rendez-vous est bien confirmé"});
+          
         })
         .catch(e => {
           console.log('c\'est une erreur', e.response)
+          setSnack({snackOpen:true, snackMessage:"Vous devez au préalable vous inscrire pour prendre Rendez-vous"})
+
         });
   }
 
@@ -200,6 +188,23 @@ useEffect(() => {
 
     <>
   {/* // ------------------> SELECT <----------------------- */}
+    <Snackbar
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'center',
+        }}
+        open={snack.snackOpen}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={snack.snackMessage}
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
 
     <Grid container className={classes.root}>
       <Grid container justify="center">
@@ -264,7 +269,7 @@ useEffect(() => {
             >
             
               <Typography key={index} className={classes.heading}>{date}</Typography>
-              {console.log('qui es tu?', dates)}
+              {/* {console.log('qui es tu?', dates)} */}
             </ExpansionPanelSummary>
               <ExpansionPanelDetails>
               {Object.keys(dates[date]).map((d, index) => (
