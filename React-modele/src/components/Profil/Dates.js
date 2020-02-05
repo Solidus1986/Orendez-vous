@@ -55,9 +55,6 @@ const Dates = () => {
     return datum;
   }
   
-
-  
-
   return (
     <List className={classes.root}>
     {date.map(myDate => (
