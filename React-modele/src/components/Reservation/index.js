@@ -112,23 +112,43 @@ useEffect(() => {
     
     axios.get(`${WP_URL}${HORAIRES_URL}?user_id=${selectPractitioner}&type=${selectValue}`)
       .then(res => {
-        console.log('creneaux des praticiens', res);
+        console.log('creneaux des praticiens', res.data);
         setDates(res.data)
       })
       .catch(e => console.log(e));
   },[selectPractitioner])
 
-  useEffect(()=>{
+  // useEffect(()=>{
     
-    axios.post(`${WP_URL}${HORAIRES_URL}id=${selectDate}`, {}, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
-  })
-      .then(res => {
-        console.log('dates', res);
-        selectDate(res.data)
-      })
-      .catch(e => console.log(e));
-  },[selectDate])
+  //   axios.post(`${WP_URL}${HORAIRES_URL}id=${selectDate}`, {}, {
+  //     headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
+  // })
+  //     .then(res => {
+  //       console.log('dates', res);
+  //       selectDate(res.data)
+  //     })
+  //     .catch(e => console.log(e));
+  // },[selectDate])
+
+
+  //onSubmit = e => {
+  //  e.preventDefault();
+  //  // PROCESS FORM //
+  //  // const { values } = this.props;
+  //  const values = dates[date][d].id 
+  //  
+//
+  //  axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/users/appointments',values, {
+  //    headers: { 'Authorization': 'Bearer ' + app.getToken() }
+  //  })
+  //    .then((result) => {
+  //      console.log(result)
+//
+  //    })
+  //    .catch((error) => {
+  //      console.error('c\'est une erreur', error.response);
+  //    });
+  //};
 
 // ------------------> HANDLE <-----------------------
 
@@ -151,17 +171,33 @@ useEffect(() => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    { logged ? (
-      onSubmit(selectDate)
-    ) : (
-     alert(<Link to="/connexion" className="profil">connexion</Link>) 
-    )}
-    
+    const bookingForm = event.target;
+    const bookingFormData = new FormData(bookingForm);
+    const data_appointment = {};
+    data_appointment.appointment_id = bookingFormData.get('position');
+      axios.post(`${WP_URL}${HORAIRES_URL}`, data_appointment ,{
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
+    })
+        .then(res => {
+          console.log('dates', res);
+          alert('Votre réservation est validé')
+          res.redirect('/profil')
+        })
+        .catch(e => {
+          console.log('c\'est une erreur', e.response)
+        });
   }
 
+  const cleanDate = (date) => {
+    const event = new Date (date)
+    const datum = event.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    return datum;
+  }
+  
   // ------------------> RETURN <-----------------------
 
   return (
+
     <>
   {/* // ------------------> SELECT <----------------------- */}
 
@@ -212,11 +248,12 @@ useEffect(() => {
         <Grid item xs={12}>
           <h2 style={{margin:'1rem'}} className="datum">Choisir votre date de rendez-vous</h2>
         </Grid>
-        
-        <Grid item xs={6}>
-        {dates.map(date=> (
 
+        <Grid item xs={6}>
+        <form onSubmit={handleSubmit}>
+        {Object.keys(dates).map((date,index) => (
           <ExpansionPanel
+            key={index}
             className={classes.panel}
           >
             <ExpansionPanelSummary
@@ -226,31 +263,37 @@ useEffect(() => {
               id="panel1a-header"
             >
             
-              <Typography className={classes.heading}>{date.data}</Typography>
+              <Typography key={index} className={classes.heading}>{date}</Typography>
+              {console.log('qui es tu?', dates)}
             </ExpansionPanelSummary>
               <ExpansionPanelDetails>
+              {Object.keys(dates[date]).map((d, index) => (
+                <RadioGroup key={index} aria-label="position" name="position" value={selectDate} onChange={handleChangeDate} row>
+                {/* {console.log('quelle heure est t-il?', cleanDate(dates[date][d].start_date))} */}
+                    <FormControlLabel
+                      key={index}
+                      value={dates[date][d].id}
+                      control={<Radio color="primary" />}
+                      label={cleanDate(dates[date][d].start_date)}
+                      labelPlacement="end"
+                    />
+                  </RadioGroup>
 
-              <RadioGroup aria-label="position" name="position" value={selectDate} onChange={handleChangeDate} row>
-                
-                  <FormControlLabel
-                    value="end"
-                    control={<Radio color="primary" />}
-                    label="22H00"
-                    labelPlacement="end"
-                  />
-                </RadioGroup>
+              ))}
               </ExpansionPanelDetails>
 
           </ExpansionPanel>
         ))} 
           <Button
-            type='button'
-            variant='outline'
+            type='submit'
+            // variant='outline'
             className={classes.button}
-            onSubmit={handleSubmit}
+            
           >VALIDATION
-          </Button>
+          </Button> 
+          </form>
         </Grid>
+       
     </Grid>
   </Grid>
 </>

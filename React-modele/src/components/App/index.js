@@ -21,7 +21,7 @@ import Praticiens from '../Praticiens';
 import Infos from '../Infos';
 import Profil from '../Profil';
 import Form from '../Form';
-import Reservation from 'src/containers/Reservation';
+import Reservation from '../Reservation';
 import Praticien from '../Praticiens/singlePraticien';
 
 // Data
