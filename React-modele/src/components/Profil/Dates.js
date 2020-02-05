@@ -59,12 +59,16 @@ const Dates = () => {
     <List className={classes.root}>
     {date.map(myDate => (
       <>
-        <ListItem alignItems="flex-start">
+      
+      {console.log('myDate',myDate)}
+        <ListItem key={myDate.id} alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt="logo" src="src/Images/logo.png" />
           </ListItemAvatar>
           <ListItemText
-            primary={myDate.type}
+            primary={
+              myDate.type == "osteo" ? 'Pilates' : 'Ostéopathie'
+              }
             secondary={
               <React.Fragment>
               

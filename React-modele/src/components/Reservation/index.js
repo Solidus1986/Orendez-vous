@@ -166,7 +166,8 @@ useEffect(() => {
     })
         .then(res => {
           console.log('dates', res);
-          setSnack({snackOpen:true, snackMessage:"Votre Rendez-vous est bien confirmé"})
+          setSnack({snackOpen:true, snackMessage:"Votre Rendez-vous est bien confirmé"});
+          
         })
         .catch(e => {
           console.log('c\'est une erreur', e.response)
