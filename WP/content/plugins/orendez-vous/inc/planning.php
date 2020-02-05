@@ -21,8 +21,12 @@ class Planning
 
     public function page_content()
     {
-        if(!empty($_GET['appointment_id'])) {
-            return $this->show_patients();
+        if(!empty($_GET['appointment_id']) && !empty($_GET['action'])) {
+            if($_GET['action'] == "show") {
+                return $this->show_patients();
+            } else if($_GET['action'] == "delete") {
+                return $this->delete_appointment();
+            }
         }
         $current_user_ID = wp_get_current_user()->data->ID;
 
@@ -41,7 +45,7 @@ class Planning
                     <th>Heure de fin</th>
                     <th>Place dispo</th>
                     <th>Place max</th>
-                    <th colspan="3">Actions</th>
+                    <th colspan="2">Actions</th>
                 </tr>
             </thead>
             <tbody>';
@@ -64,9 +68,8 @@ class Planning
                     <td>$end_time</td>
                     <td>$available_places</td>
                     <td>$max_places</td>
-                    <td><a class='btn btn-success' href='?page=planning&appointment_id=$appointment->id'>Afficher le(s) patient(s)</a></td>
-                    <td><a class='btn btn-primary' href=''>Modifier</a></td>
-                    <td><a class='btn btn-danger' href=''>Supprimer</a></td>
+                    <td><a class='btn btn-success' href='?page=planning&appointment_id=$appointment->id&action=show'>Afficher le(s) patient(s)</a></td>
+                    <td><a class='btn btn-danger' href='?page=planning&appointment_id=$appointment->id&action=delete'>Supprimer</a></td>
                 </tr>
                 ";
             }
@@ -75,20 +78,24 @@ class Planning
         ';
     }
 
-    public function show_patients()
+    public function show_patients($show_title = true, $show_button = true)
     {
-        echo '
-        <h1>Détail du rendez-vous</h1>
-        ';
+        if($show_title) {
+            echo '
+            <h1>Détail du rendez-vous</h1>
+            ';
+        }
         // afficher un rappel des données du RDV :
         $appointment_id = $_GET['appointment_id'];
         $data_appointment = CustomTable::find_appointment($appointment_id);
         // si l'id ne correspond à aucun RDV : message d'erreur
         if(is_null($data_appointment)) {
             echo '
-            <p class="error">Pas de rendez-vous trouvé.</p>
-            <a href="?page=planning" class="btn btn-success">Retour vers le planning<a>
-            ';
+            <p class="error">Pas de rendez-vous trouvé.</p>';
+            if($show_button) {
+                echo '<a href="?page=planning" class="btn btn-success">Retour vers le planning<a>
+                ';
+            }
             return;
         }
         $type = $data_appointment->type;
@@ -114,10 +121,14 @@ class Planning
         // si pas de résa, message d'info
         if(empty($bookings)) {
             echo '
-            <p class="error">Pas de patient pour ce rendez-vous.</p>
-            <a href="?page=planning" class="btn btn-success">Retour vers le planning<a>
-            ';
-            return;
+            <p class="error">Pas de patient pour ce rendez-vous.</p>';
+
+            if($show_button) {
+                echo '<a href="?page=planning" class="btn btn-success">Retour vers le planning<a>
+                ';
+            }
+
+            return [$data_appointment, $bookings];
         }
 
         echo '<table class="orendezvous-table">
@@ -148,8 +159,60 @@ class Planning
 
         // et à la fin un bouton retour vers la page de planning
         echo '</tbody>
-        </table>
-        <a href="?page=planning" style="margin-top: 1rem;" class="btn btn-success">Retour vers le planning<a>
+        </table>';
+        if($show_button) {
+            echo '<a href="?page=planning" style="margin-top: 1rem;" class="btn btn-success">Retour vers le planning<a>
+            ';
+        }
+        return [
+            'data_appointment' => $data_appointment, 
+            'data_booking' => $bookings,
+        ];
+    }
+
+    public function delete_appointment()
+    {
+        echo '<h1>Suppression du rendez-vous</h1>';
+        
+        // afficher les détails du RDV + récupérer les données du RDV
+        $data = $this->show_patients(false, false);
+
+        echo '
+        <form method="post">
+            <input name="id" id="id" type="hidden" value="' . $_GET["appointment_id"] . '">
+            <button type="submit" class="btn btn-danger" style="margin-top: 1rem; line-height: 1.4em;">Supprimer</button>
+            <a href="?page=planning" style="margin-top: 1rem;" class="btn btn-success">Retour vers le planning<a>
+        </form>
         ';
+
+        // gestion de la soumission du formulaire
+        if(!empty($_POST)) {
+            if(is_null($data)) {
+                return;
+            }
+            // s'il y a des réservations
+            if(!empty($data['data_booking'])) {
+                // TODO : on envoie un mail pour prévenir de l'annulation
+                // si c'est une séance pilates
+                $type = $data['data_appointment']->type;
+                if($type == "pilates") {
+                    // recrédite les users avec 1 séance
+                    foreach($data['data_booking'] as $booking) {
+                        $user_id = $booking->user_id;
+                        $old_nb_seance = get_user_meta($user_id, 'nb_seance', true);
+                        update_user_meta($user_id, 'nb_seance', $old_nb_seance + 1);
+                    }
+                }
+            }
+
+            // on supprime le RDV de la table wp_appointment
+            // normalement, avec la contrainte de clé étrangère, les réservations dans wp_booking devraient être supprimées (à vérifier)
+            CustomTable::delete_appointment($_POST['id']);
+            
+            // affichage d'un message de confirmation de la suppression
+            echo '<p class="success">Rendez-vous supprimé.</p>';
+        }
+       
+      
     }
 }
