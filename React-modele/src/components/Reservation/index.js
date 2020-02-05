@@ -159,9 +159,16 @@ useEffect(() => {
     
   }
 
+  const cleanDate = (date) => {
+    const event = new Date (date)
+    const datum = event.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    return datum;
+  }
+  
   // ------------------> RETURN <-----------------------
 
   return (
+
     <>
   {/* // ------------------> SELECT <----------------------- */}
 
@@ -214,7 +221,7 @@ useEffect(() => {
         </Grid>
         
         <Grid item xs={6}>
-        {Object.keys(dates).map((date, index) => (
+        {Object.keys(dates).map((date,index) => (
           <ExpansionPanel
             className={classes.panel}
           >
@@ -226,17 +233,17 @@ useEffect(() => {
             >
             
               <Typography key={index} className={classes.heading}>{date}</Typography>
-              {console.log('qui es tu?', date)}
+              {console.log('qui es tu?', dates)}
             </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-              {Object.keys(date).map((d, index) => (
+              {Object.keys(dates[date]).map((d, index) => (
                 <RadioGroup aria-label="position" name="position" value={selectDate} onChange={handleChangeDate} row>
-                {console.log('quelle heure est t-il?', d)}
+                {console.log('quelle heure est t-il?', cleanDate(dates[date][d].start_date))}
                     <FormControlLabel
                       key={index}
-                      value="end"
+                      value={dates[date][d].id}
                       control={<Radio color="primary" />}
-                      label={d.start_date}
+                      label={cleanDate(dates[date][d].start_date)}
                       labelPlacement="end"
                     />
                   </RadioGroup>
