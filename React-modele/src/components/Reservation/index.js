@@ -58,7 +58,7 @@ const styles = makeStyles(theme => ({
 }));
 
 
-const Reservation = ( { logged }) => {
+const Reservation = ( ) => {
 
   const classes = styles();
   const [values, setValues] = useState([{
@@ -118,37 +118,6 @@ useEffect(() => {
       .catch(e => console.log(e));
   },[selectPractitioner])
 
-  // useEffect(()=>{
-    
-  //   axios.post(`${WP_URL}${HORAIRES_URL}id=${selectDate}`, {}, {
-  //     headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
-  // })
-  //     .then(res => {
-  //       console.log('dates', res);
-  //       selectDate(res.data)
-  //     })
-  //     .catch(e => console.log(e));
-  // },[selectDate])
-
-
-  //onSubmit = e => {
-  //  e.preventDefault();
-  //  // PROCESS FORM //
-  //  // const { values } = this.props;
-  //  const values = dates[date][d].id 
-  //  
-//
-  //  axios.post('http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/users/appointments',values, {
-  //    headers: { 'Authorization': 'Bearer ' + app.getToken() }
-  //  })
-  //    .then((result) => {
-  //      console.log(result)
-//
-  //    })
-  //    .catch((error) => {
-  //      console.error('c\'est une erreur', error.response);
-  //    });
-  //};
 
 // ------------------> HANDLE <-----------------------
 
@@ -264,7 +233,7 @@ useEffect(() => {
             >
             
               <Typography key={index} className={classes.heading}>{date}</Typography>
-              {console.log('qui es tu?', dates)}
+              {/* {console.log('qui es tu?', dates)} */}
             </ExpansionPanelSummary>
               <ExpansionPanelDetails>
               {Object.keys(dates[date]).map((d, index) => (
