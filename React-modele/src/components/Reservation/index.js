@@ -18,6 +18,9 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 
 
@@ -61,6 +64,16 @@ const styles = makeStyles(theme => ({
 const Reservation = ( ) => {
 
   const classes = styles();
+
+  const [snack, setSnack] = useState([
+    { snackOpen:false,
+      snackMessage:''}
+  ]);
+
+  const handleClose = event =>
+  // event.preventDefault();
+  setSnack({snackOpen:false});
+
   const [values, setValues] = useState([{
     type:'osteo'
   },{
@@ -81,6 +94,10 @@ const [labelWidth, setLabelWidth] = useState(0);
 useEffect(() => {
   setLabelWidth(inputLabel.current.offsetWidth);
 }, []);
+
+
+
+
 
 // ------------------> APPEL AXIOS <-----------------------
 
@@ -149,11 +166,12 @@ useEffect(() => {
     })
         .then(res => {
           console.log('dates', res);
-          alert('Votre réservation est validé')
-          res.redirect('/profil')
+          setSnack({snackOpen:true, snackMessage:"Votre Rendez-vous est bien confirmé"})
         })
         .catch(e => {
           console.log('c\'est une erreur', e.response)
+          setSnack({snackOpen:true, snackMessage:"Vous devez au préalable vous inscrire pour prendre Rendez-vous"})
+
         });
   }
 
@@ -169,6 +187,23 @@ useEffect(() => {
 
     <>
   {/* // ------------------> SELECT <----------------------- */}
+    <Snackbar
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'center',
+        }}
+        open={snack.snackOpen}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message={snack.snackMessage}
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
 
     <Grid container className={classes.root}>
       <Grid container justify="center">
