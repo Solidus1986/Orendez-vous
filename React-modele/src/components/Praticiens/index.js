@@ -82,51 +82,51 @@ class Praticiens extends React.Component {
             <h1 style={{ textTransform: 'uppercase', marginBottom: '1rem' }}>Les praticiens</h1>
           </Grid>
           <Grid style={classes.panel}>
-            {osteopathes.map((osteo=>(
-                <Card key={osteo.id} style={classes.card}>
-                  <CardMedia
-                    style={classes.cover}
-                    image={osteo.thumbnail_url}
-                    title={osteo.title.rendered}
-                  />
-                  <div style={classes.details}>
-                    <CardContent style={classes.content}>
-                      <Typography component="h5" variant="h5">
-                        {osteo.title.rendered}
-                      </Typography>
-                      <Typography variant="subtitle1" color="textSecondary">
-                        Osteopathe
-                      </Typography>
-                    </CardContent>
-                    <div style={classes.controls}>
-                      <Praticien key={osteo.id} {...osteo}/>
-                    </div>
+            {osteopathes.map((osteo => (
+              <Card key={osteo.id} style={classes.card}>
+                <CardMedia
+                  style={classes.cover}
+                  image={osteo.thumbnail_url}
+                  title={osteo.title.rendered}
+                />
+                <div style={classes.details}>
+                  <CardContent style={classes.content}>
+                    <Typography component="h5" variant="h5">
+                      {osteo.title.rendered}
+                    </Typography>
+                    <Typography variant="subtitle1" color="textSecondary">
+                      Ostéopathe
+                    </Typography>
+                  </CardContent>
+                  <div style={classes.controls}>
+                    <Praticien key={osteo.id} {...osteo} />
                   </div>
-                </Card>
+                </div>
+              </Card>
             )))}
           </Grid>
           <Grid style={classes.panel}>
-            {pilates.map((pilate=>(
-                <Card key={pilate.id} style={classes.card}>
-                  <CardMedia
-                    style={classes.cover}
-                    image={pilate.thumbnail_url}
-                    title={pilate.title.rendered}
-                  />
-                  <div style={classes.details}>
-                    <CardContent style={classes.content}>
-                      <Typography component="h5" variant="h5">
-                        {pilate.title.rendered}
-                      </Typography>
-                      <Typography variant="subtitle1" color="textSecondary">
-                        Coach Pilates
-                      </Typography>
-                    </CardContent>
-                    <div style={classes.controls}>
-                      <Praticien key={pilate.id} {...pilate}/>
-                    </div>
+            {pilates.map((pilate => (
+              <Card key={pilate.id} style={classes.card}>
+                <CardMedia
+                  style={classes.cover}
+                  image={pilate.thumbnail_url}
+                  title={pilate.title.rendered}
+                />
+                <div style={classes.details}>
+                  <CardContent style={classes.content}>
+                    <Typography component="h5" variant="h5">
+                      {pilate.title.rendered}
+                    </Typography>
+                    <Typography variant="subtitle1" color="textSecondary">
+                      Coach Pilates
+                    </Typography>
+                  </CardContent>
+                  <div style={classes.controls}>
+                    <Praticien key={pilate.id} {...pilate} />
                   </div>
-                </Card>
+                </div>
+              </Card>
             )))}
           </Grid>
         </Grid>
