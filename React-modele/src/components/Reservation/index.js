@@ -50,13 +50,6 @@ const styles = makeStyles((theme) => ({
     margin: '1.5rem',
     border: 'solid 2px black',
   },
-  button2: {
-    margin: '1.5rem',
-    border: 'solid 2px black',
-    background: 'white',
-  },
-
-
   panel: {
     margin: '1rem 0rem',
   },
@@ -171,7 +164,7 @@ const Reservation = () => {
       })
       .catch((e) => {
         console.log('c\'est une erreur', e.response.data.message);
-        setSnack({ snackOpen: true, snackMessage: e.response.data.message });
+        setSnack({ snackOpen: true, snackMessage: "Veuillez vous connecter au préalable pour choisir un Rendez-vous"});
       });
   };
 
@@ -198,9 +191,8 @@ const Reservation = () => {
         message={snack.snackMessage}
         action={(
           <>
-            <Link to="/"><Button className={classes.button2}>Retour</Button></Link>
             <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
-              <CloseIcon fontSize="small" />
+            <Link to="/"><CloseIcon fontSize="small" /></Link>
             </IconButton>
           </>
         )}
