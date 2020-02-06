@@ -21,6 +21,7 @@ const Header = ({ logged }) => {
         <div>
           <Link to="/profil" className="profil">Profil</Link>
           <Button onClick={handleLogout} className="btn-header">Logout</Button>
+          <Redirect to="/profil" />
         </div>
       ) : (
         <Link to="/connexion" className="profil">connexion</Link>

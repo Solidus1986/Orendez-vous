@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Praticien = ({ content, title, type}) => {
+const Praticien = ({ content, title, type }) => {
   // config pour slide botton
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -85,11 +85,10 @@ const Praticien = ({ content, title, type}) => {
               <Typography variant="subtitle1" color="textSecondary">
                 {type}
               </Typography>
-              <Typography 
+              <Typography
                 variant="body"
-                dangerouslySetInnerHTML={{__html:content.rendered}}
-              >
-              </Typography>
+                dangerouslySetInnerHTML={{ __html: content.rendered }}
+               />
             </CardContent>
           </div>
         </Card>
