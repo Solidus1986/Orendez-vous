@@ -72,7 +72,7 @@ class Practitioners
             $error->add(400, __("Cet utilisateur n'existe pas", 'wp-rest-user'), array('status' => 400));
             return $error;
         }
-        var_dump($user->roles);
+        
         if(in_array('subscriber', $user->roles)) {
             $error->add(400, __("Cet utilisateur n'est pas un praticien", 'wp-rest-user'), array('status' => 400));
             return $error;
