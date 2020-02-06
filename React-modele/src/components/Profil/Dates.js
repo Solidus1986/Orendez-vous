@@ -67,7 +67,7 @@ const Dates = () => {
           </ListItemAvatar>
           <ListItemText
             primary={
-              myDate.type == "osteo" ? 'Pilates' : 'Ostéopathie'
+              myDate.type == "osteo" ? 'Ostéopathie' : 'Pilates'
               }
             secondary={
               <React.Fragment>
