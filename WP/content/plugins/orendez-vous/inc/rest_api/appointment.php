@@ -76,7 +76,7 @@ class AppointmentRest
         $data_appointment = CustomTable::find_appointment($appointment_id);
         $error = new WP_Error();
         if(is_null($data_appointment)) {
-            $error->add(400, __("Ce RDV n'existe pas.", 'wp-rest-user'), array('status' => 400));
+            $error->add(400, __("Ce rendez-vous n'existe pas.", 'wp-rest-user'), array('status' => 400));
             return $error;
         }
         // le type est soit osteo soit pilates
