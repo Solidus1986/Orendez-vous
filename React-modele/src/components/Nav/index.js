@@ -9,18 +9,19 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     margin: '7rem 0rem',
+    flexWrap: 'no-wrap',
   },
 
   pratique:{
     display:'inline-block',
     textTransform: 'uppercase',
     fontSize: '12rem',
-    '@media screen and (min-width: 900px) and (max-width: 1000px)': {
+    '@media screen and (min-width: 900px) and (max-width: 2000px)': {
 
       fontSize: '9rem',
   },
-  '@media screen and (min-width: 500px) and (max-width: 900px)': {
-    fontSize: '4rem',
+  '@media screen and (min-width: 300px) and (max-width: 900px)': {
+    fontSize: '3rem',
   },
   
   '&:hover':{
@@ -31,12 +32,12 @@ pratique2:{
   display:'inline-block',
   textTransform: 'uppercase',
   fontSize: '12rem',
-  '@media screen and (min-width: 900px) and (max-width: 1000px)': {
+  '@media screen and (min-width: 900px) and (max-width: 2000px)': {
 
     fontSize: '9rem',
 },
-'@media screen and (min-width: 500px) and (max-width: 900px)': {
-  fontSize: '4rem',
+'@media screen and (min-width: 300px) and (max-width: 900px)': {
+  fontSize: '3rem',
 },
   '&:hover':{
     color:'#EEC2FF'
