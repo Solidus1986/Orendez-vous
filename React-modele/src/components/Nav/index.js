@@ -9,14 +9,16 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     margin: '7rem 0rem',
-    flexWrap: 'no-wrap',
+  },
+  title: {
+    textAlign: 'center',
   },
 
   pratique:{
-    display:'inline-block',
+    
     textTransform: 'uppercase',
     fontSize: '12rem',
-    '@media screen and (min-width: 900px) and (max-width: 2000px)': {
+    '@media screen and (min-width: 900px) and (max-width: 1000px)': {
 
       fontSize: '9rem',
   },
@@ -29,10 +31,11 @@ const useStyles = makeStyles(theme => ({
   }
 },
 pratique2:{
-  display:'inline-block',
+  
+  
   textTransform: 'uppercase',
   fontSize: '12rem',
-  '@media screen and (min-width: 900px) and (max-width: 2000px)': {
+  '@media screen and (min-width: 900px) and (max-width: 1000px)': {
 
     fontSize: '9rem',
 },
@@ -57,8 +60,9 @@ const Nav = (props) => {
     <Grid container className={classes.root}>
       <Grid item xs={12}>
         <Grid container justify="center">
-          <div>
+          <div className={classes.title}>
             <Link to="/osteopathie" className={classes.pratique}>Osteopathie</Link>
+            <br />
             <Link to="/pilates" className={classes.pratique2}>Pilates</Link>
 
           </div>

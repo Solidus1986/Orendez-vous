@@ -5,6 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { Grid } from '@material-ui/core';
 
 function TabPanel(props) {
   const {
@@ -53,7 +54,7 @@ export default function SimpleTabs({ peoples }) {
   };
 
   return (
-    <div >
+    <div>
       <AntTabs value={value} onChange={handleChange} aria-label="simple tabs example" centered variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example">

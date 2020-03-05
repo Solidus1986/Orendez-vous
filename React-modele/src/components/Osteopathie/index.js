@@ -63,17 +63,17 @@ class Osteopathie extends React.Component {
     const classes = styles;
     const { peoples } = this.state;
     return (
-      <Grid>
-        <Grid container className={classes.root}>
-          <Grid item xs={12}>
+      <Grid container className={classes.root}>
+        <Grid>
+          <Grid xs={12}>
             <h1 style={{ marginBottom: '1rem' }}>OSTEOPATHIE</h1>
           </Grid>
           <Grid container justify="center">
-            <Grid item xs={10}>
+            <Grid xs={10}>
               <Public peoples={peoples} />
             </Grid>
-            <Grid container justify='center'>
-              <Grid item xs={3}>
+            <Grid container justify="center">
+              <Grid xs={3}>
                 <Link to="/praticiens">
                   <Button
                     style={classes.button}
@@ -83,7 +83,7 @@ class Osteopathie extends React.Component {
                   </Button>
                 </Link>
               </Grid>
-              <Grid item xs={3}>
+              <Grid xs={3}>
                 <Link to="/reservation">
                   <Button
                     variant="outline"
