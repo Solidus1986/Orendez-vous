@@ -10,7 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-
+import Button from '@material-ui/core/Button';
 
 const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/';
 const HORAIRES_URL = 'appointments/me';
@@ -18,11 +18,16 @@ const HORAIRES_URL = 'appointments/me';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    maxWidth: 360,
+    maxWidth: 700,
     backgroundColor: theme.palette.background.paper,
   },
   inline: {
     display: 'inline',
+  },
+  button: {
+    marginTop: '.4rem',
+    padding: '.5rem 1rem',
+    border: 'solid 2px black',
   },
 }));
 
@@ -83,7 +88,13 @@ const Dates = () => {
               </React.Fragment>
             )}
           />
+          <Button
+          className={classes.button}
+        >
+        Annuler le rendez-vous
+        </Button>  
         </ListItem>
+            
         <Divider variant="inset" component="li" />
       </>
     ))}
