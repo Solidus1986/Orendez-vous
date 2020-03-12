@@ -14,6 +14,7 @@ import Button from '@material-ui/core/Button';
 
 const WP_URL = 'http://ec2-54-243-1-38.compute-1.amazonaws.com/wordpress/wp-json/wp/v2/';
 const HORAIRES_URL = 'appointments/me';
+const DELETE_URL = 'appointments/';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,6 +61,23 @@ const Dates = () => {
     return datum;
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+    const id = e.target.parentElement;
+    date.splice(id, 1);
+    setDate([...date]);
+    axios.delete(`${WP_URL}${DELETE_URL}`, date, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+      .then((res) => {
+        console.log('votre annulation est validé', res.data);
+        setDate(res.data);
+      })
+      .catch((e) => {
+        console.log('vous ne pouvez pas annuler', e.response.data.message);
+      });
+  };
+
   return (
     <List className={classes.root}>
       {date.map((myDate) => (
@@ -89,12 +107,13 @@ const Dates = () => {
             )}
           />
           <Button
-          className={classes.button}
-        >
-        Annuler le rendez-vous
-        </Button>  
+            key={myDate.id}
+            className={classes.button}
+            onClick={handleDelete}
+          >
+          Annuler le rendez-vous
+          </Button>
         </ListItem>
-            
         <Divider variant="inset" component="li" />
       </>
     ))}
